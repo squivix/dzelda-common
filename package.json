@@ -1,0 +1,20 @@
+{
+  "name": "dzelda-types",
+  "version": "1.0.0",
+  "description": "OpenAPI schema for dzelda backend APi and generated schema",
+  "main": "schema.ts",
+  "scripts": {
+    "generate-schema": "npx swagger-typescript-api -p ./dzelda-api.json -o . -n schema.ts --type-suffix Schema --api-class-name ApiClient --disable-throw-on-error"
+  },
+  "keywords": [],
+  "author": "squivix <devintheamateurdevin@gmail.com> (https://github.com/squivix)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/squivix/dzelda-types.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "swagger-typescript-api": "^13.0.2"
+  }
+}
