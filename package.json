@@ -1,7 +1,7 @@
 {
   "name": "dzelda-common",
   "version": "1.0.0",
-  "main": "src/main.ts",
+  "main": "build/src/main.js",
   "description": "Common code for dzelda",
   "scripts": {
     "generate-schema": "npx swagger-typescript-api -p ./specs/api.json -o . -n ./specs/api-schema.ts --type-suffix Schema --api-class-name ApiClient --disable-throw-on-error"
