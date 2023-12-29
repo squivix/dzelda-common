@@ -61,7 +61,7 @@ export class SpaceBasedWordParser extends WordParser {
                     }
                     if (isTokenFirstInPhrase) {
                         tokenObject.phrases[phraseText] = { indexInPhrase: 0, phraseLength: phraseWords.length };
-                        phraseWordQueues[phraseText] = [...Array(phraseWords.length).keys()].map(j => ({
+                        phraseWordQueues[phraseText] = [...Array(phraseWords.length - 1).keys()].map(j => ({
                             indexInPhrase: j + 1,
                             phraseLength: phraseWords.length
                         }));
