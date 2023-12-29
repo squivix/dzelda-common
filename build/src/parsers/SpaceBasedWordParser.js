@@ -33,7 +33,7 @@ export class SpaceBasedWordParser extends WordParser {
     }
     tokenizeText(text, phrases) {
         const keepDelimiterRegex = new RegExp(`(${this.notWordCharsRegex.source})`, this.notWordCharsRegex.flags);
-        const tokens = text.split(keepDelimiterRegex);
+        const tokens = text.split(keepDelimiterRegex).filter(t => t !== "");
         if (tokens.length == 0)
             return [];
         const tokenObjects = [];
