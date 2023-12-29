@@ -1,8 +1,8 @@
 export type TokenObject = {
     text: string,
-    parsedToken: string | undefined,
+    parsedText: string | undefined,
     isWord: boolean,
-    phrases: { [phraseText: string]: { indexInPhrase: number, phraseLength: number } }
+    phrases: { [phraseText: string]: { indexInPhrase: number } }
 }
 
 export abstract class WordParser {

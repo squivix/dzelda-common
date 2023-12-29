@@ -61,7 +61,7 @@ export class SpaceBasedWordParser extends WordParser {
         for (let i = 0; i < tokens.length; i++) {
             const tokenObject: TokenObject = {
                 text: tokens[i],
-                parsedToken: this.transformWords(tokens[i]),
+                parsedText: this.transformWords(tokens[i]),
                 isWord: isWord,
                 phrases: {}
             };
@@ -76,14 +76,11 @@ export class SpaceBasedWordParser extends WordParser {
                         }
                     }
                     if (isTokenFirstInPhrase) {
-                        tokenObject.phrases[phraseText] = {indexInPhrase: 0, phraseLength: phraseWords.length};
+                        tokenObject.phrases[phraseText] = {indexInPhrase: 0};
                         phraseToWordInvIndex[phraseText] = phraseWords.length - 1;
                     } else {
                         if (phraseToWordInvIndex[phraseText] && phraseToWordInvIndex[phraseText] !== 0) {
-                            tokenObject.phrases[phraseText] = {
-                                indexInPhrase: phraseWords.length - phraseToWordInvIndex[phraseText],
-                                phraseLength: phraseWords.length
-                            };
+                            tokenObject.phrases[phraseText] = {indexInPhrase: phraseWords.length - phraseToWordInvIndex[phraseText],};
                             phraseToWordInvIndex[phraseText]--;
                         }
                     }
