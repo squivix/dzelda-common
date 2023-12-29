@@ -1,5 +1,5 @@
-import {SpaceBasedWordParser} from "@/src/utils/parsers/SpaceBasedWordParser.js";
-import {WordParser} from "@/src/utils/parsers/WordParser.js";
+import {SpaceBasedWordParser} from "@/src/parsers/SpaceBasedWordParser.js";
+import {WordParser} from "@/src/parsers/WordParser.js";
 
 export const parsers: { [languageCode: string]: WordParser } = {
     //temporary naive parsers

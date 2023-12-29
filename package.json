@@ -13,7 +13,8 @@
     "type": "git",
     "url": "git+https://github.com/squivix/dzelda-common.git"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "swagger-typescript-api": "^13.0.2",
     "@swc/cli": "^0.1.57",

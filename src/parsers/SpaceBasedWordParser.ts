@@ -1,4 +1,4 @@
-import {TokenObject, WordParser} from "@/src/utils/parsers/WordParser.js";
+import {TokenObject, WordParser} from "@/src/parsers/WordParser.js";
 import {escapeRegExp} from "@/src/utils/utils.js";
 
 type ReplaceCharsMap = { [character: string]: string }
