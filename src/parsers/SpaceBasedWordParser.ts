@@ -70,7 +70,7 @@ export class SpaceBasedWordParser extends WordParser {
                 for (const {text: phraseText, words: phraseWords} of phraseObjects) {
                     let isTokenFirstInPhrase = true;
                     for (let j = 0; j < phraseWords.length; j++) {
-                        if (phraseWords[j] != tokens[i + (j * 2)]) {
+                        if (phraseWords[j] != this.transformWords(tokens[i + (j * 2)])) {
                             isTokenFirstInPhrase = false;
                             break;
                         }
