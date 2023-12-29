@@ -41,7 +41,7 @@ export class SpaceBasedWordParser extends WordParser {
         const phraseObjects = [];
         for (const phrase of phrases)
             phraseObjects.push({ text: phrase, words: phrase.split(" ") });
-        const phraseWordStacks = {};
+        const phraseWordQueues = {};
         for (let i = 0; i < tokens.length; i++) {
             const tokenObject = {
                 text: tokens[i],
@@ -54,21 +54,21 @@ export class SpaceBasedWordParser extends WordParser {
                 for (const { text: phraseText, words: phraseWords } of phraseObjects) {
                     let isTokenFirstInPhrase = true;
                     for (let j = 0; j < phraseWords.length; j++) {
-                        if (phraseWords[j] != tokens[i + (j * 2)]) {
+                        if (phraseWords[j] != this.transformWords(tokens[i + (j * 2)])) {
                             isTokenFirstInPhrase = false;
                             break;
                         }
                     }
                     if (isTokenFirstInPhrase) {
                         tokenObject.phrases[phraseText] = { indexInPhrase: 0, phraseLength: phraseWords.length };
-                        phraseWordStacks[phraseText] = [...Array(phraseWords.length).keys()].map(j => ({
-                            indexInPhrase: phraseWords.length - j,
+                        phraseWordQueues[phraseText] = [...Array(phraseWords.length).keys()].map(j => ({
+                            indexInPhrase: j + 1,
                             phraseLength: phraseWords.length
                         }));
                     }
                     else {
-                        if (phraseWordStacks[phraseText] && phraseWordStacks[phraseText].length != 0)
-                            tokenObject.phrases[phraseText] = phraseWordStacks[phraseText].pop();
+                        if (phraseWordQueues[phraseText] && phraseWordQueues[phraseText].length != 0)
+                            tokenObject.phrases[phraseText] = phraseWordQueues[phraseText].shift();
                     }
                 }
             }
