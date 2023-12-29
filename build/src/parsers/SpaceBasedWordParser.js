@@ -1,5 +1,5 @@
-import { WordParser } from "@/src/parsers/WordParser.js";
-import { escapeRegExp } from "@/src/utils/utils.js";
+import { WordParser } from "../../src/parsers/WordParser.js";
+import { escapeRegExp } from "../../src/utils/utils.js";
 export class SpaceBasedWordParser extends WordParser {
     constructor(wordChars = "", replaceCharsMap = {}, ignoreCase = true) {
         super();

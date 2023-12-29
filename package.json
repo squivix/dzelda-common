@@ -4,6 +4,7 @@
   "main": "build/src/main.js",
   "description": "Common code for dzelda",
   "scripts": {
+    "compile": "npx tsc --declaration&& tsc-alias",
     "generate-schema": "npx swagger-typescript-api -p ./specs/api.json -o . -n ./specs/api-schema.ts --type-suffix Schema --api-class-name ApiClient --disable-throw-on-error"
   },
   "keywords": [],
@@ -13,12 +14,11 @@
     "type": "git",
     "url": "git+https://github.com/squivix/dzelda-common.git"
   },
-  "dependencies": {
-  },
   "devDependencies": {
-    "swagger-typescript-api": "^13.0.2",
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.3.14",
+    "swagger-typescript-api": "^13.0.2",
+    "tsc-alias": "^1.8.8",
     "tsx": "^3.12.7"
   }
 }

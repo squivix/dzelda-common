@@ -1,4 +1,4 @@
-import { SpaceBasedWordParser } from "@/src/parsers/SpaceBasedWordParser.js";
+import { SpaceBasedWordParser } from "../../src/parsers/SpaceBasedWordParser.js";
 export const parsers = {
     //temporary naive parsers
     "en": new SpaceBasedWordParser("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'-"),
