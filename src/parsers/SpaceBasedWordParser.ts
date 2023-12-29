@@ -57,7 +57,7 @@ export class SpaceBasedWordParser extends WordParser {
         const phraseObjects: { text: string, words: string[] } [] = [];
         for (const phrase of phrases)
             phraseObjects.push({text: phrase, words: phrase.split(" ")});
-        const phraseWordQueues: { [phraseKey: string]: any[] } = {};
+        const phraseToWordInvIndex: { [phraseKey: string]: number } = {};
         for (let i = 0; i < tokens.length; i++) {
             const tokenObject: TokenObject = {
                 text: tokens[i],
@@ -70,20 +70,22 @@ export class SpaceBasedWordParser extends WordParser {
                 for (const {text: phraseText, words: phraseWords} of phraseObjects) {
                     let isTokenFirstInPhrase = true;
                     for (let j = 0; j < phraseWords.length; j++) {
-                        if (phraseWords[j] != this.transformWords(tokens[i + (j * 2)])) {
+                        if (phraseWords[j] !== this.transformWords(tokens[i + (j * 2)])) {
                             isTokenFirstInPhrase = false;
                             break;
                         }
                     }
                     if (isTokenFirstInPhrase) {
                         tokenObject.phrases[phraseText] = {indexInPhrase: 0, phraseLength: phraseWords.length};
-                        phraseWordQueues[phraseText] = [...Array(phraseWords.length - 1).keys()].map(j => ({
-                            indexInPhrase: j + 1,
-                            phraseLength: phraseWords.length
-                        }));
+                        phraseToWordInvIndex[phraseText] = phraseWords.length - 1;
                     } else {
-                        if (phraseWordQueues[phraseText] && phraseWordQueues[phraseText].length != 0)
-                            tokenObject.phrases[phraseText] = phraseWordQueues[phraseText].shift();
+                        if (phraseToWordInvIndex[phraseText] && phraseToWordInvIndex[phraseText] !== 0) {
+                            tokenObject.phrases[phraseText] = {
+                                indexInPhrase: phraseWords.length - phraseToWordInvIndex[phraseText],
+                                phraseLength: phraseWords.length
+                            };
+                            phraseToWordInvIndex[phraseText]--;
+                        }
                     }
                 }
             }
