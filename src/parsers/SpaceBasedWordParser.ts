@@ -57,7 +57,7 @@ export class SpaceBasedWordParser extends WordParser {
         const phraseObjects: { text: string, words: string[] } [] = [];
         for (const phrase of phrases)
             phraseObjects.push({text: phrase, words: phrase.split(" ")});
-        const phraseWordStacks: { [phraseKey: string]: any[] } = {};
+        const phraseWordQueues: { [phraseKey: string]: any[] } = {};
         for (let i = 0; i < tokens.length; i++) {
             const tokenObject: TokenObject = {
                 text: tokens[i],
@@ -77,13 +77,13 @@ export class SpaceBasedWordParser extends WordParser {
                     }
                     if (isTokenFirstInPhrase) {
                         tokenObject.phrases[phraseText] = {indexInPhrase: 0, phraseLength: phraseWords.length};
-                        phraseWordStacks[phraseText] = [...Array(phraseWords.length).keys()].map(j => ({
-                            indexInPhrase: phraseWords.length-j,
+                        phraseWordQueues[phraseText] = [...Array(phraseWords.length).keys()].map(j => ({
+                            indexInPhrase: j + 1,
                             phraseLength: phraseWords.length
                         }));
                     } else {
-                        if (phraseWordStacks[phraseText] && phraseWordStacks[phraseText].length != 0)
-                            tokenObject.phrases[phraseText] = phraseWordStacks[phraseText].pop();
+                        if (phraseWordQueues[phraseText] && phraseWordQueues[phraseText].length != 0)
+                            tokenObject.phrases[phraseText] = phraseWordQueues[phraseText].shift();
                     }
                 }
             }

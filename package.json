@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Common code for dzelda",
   "scripts": {
-    "compile": "npx tsc --declaration&& tsc-alias",
+    "compile": "rm rm -rf build && npx tsc --declaration&& tsc-alias",
     "generate-schema": "npx swagger-typescript-api -p ./specs/api.json -o . -n ./specs/api-schema.ts --type-suffix Schema --api-class-name ApiClient --disable-throw-on-error"
   },
   "keywords": [],
