@@ -1,79 +1,79 @@
-import {TokenObject, TokeObjectPhrases, WordParser} from "@/src/parsers/WordParser.js";
-import {cleanObject, escapeRegExp} from "@/src/utils/utils.js";
-
-type ReplaceCharsMap = { [character: string]: string }
+import {TokenObject, TokenWithPhrases, TokeObjectPhrases, WordParser} from "@/src/parsers/WordParser.js";
+import {escapeRegExp} from "@/src/utils/utils.js";
 
 
 export class SpaceBasedWordParser extends WordParser {
     notWordCharsRegex: RegExp;
-    replaceCharsMap: ReplaceCharsMap;
+    notWordCharsKeepDelimiterRegex: RegExp;
     ignoreCase: boolean;
 
-    constructor(wordChars: string = "", replaceCharsMap: ReplaceCharsMap = {}, ignoreCase: boolean = true) {
+    constructor(wordChars: string = "", {ignoreCase = true}: { ignoreCase?: boolean } = {}) {
         super();
         this.notWordCharsRegex = new RegExp(`[^${escapeRegExp(wordChars)}]+`, "gmu");
-        this.replaceCharsMap = replaceCharsMap;
+        this.notWordCharsKeepDelimiterRegex = new RegExp(`(${this.notWordCharsRegex.source})`, this.notWordCharsRegex.flags);
         this.ignoreCase = ignoreCase;
     }
 
-    parseText(text: string, keepDuplicates = false): [string, string[]] {
+    parseText(text: string, options: { transform: boolean }): string {
         //TODO investigate why - is being added as a vocab with sample data
         let parsedText = text;
 
-        //replace special characters
-        Object.keys(this.replaceCharsMap).forEach(c => parsedText = parsedText.replace(c, this.replaceCharsMap[c]));
-
         //replace all non-word characters with a space
         parsedText = parsedText.replace(this.notWordCharsRegex, " ");
-
-        //trim
-        parsedText = parsedText.trim();
-
-        if (this.ignoreCase)
-            //change all to lowercase
-            parsedText = parsedText.toLowerCase();
-        const wordArray = parsedText.split(" ").filter(w => w !== "");
-        if (keepDuplicates)
-            return [parsedText, wordArray];
-        else
-            return [parsedText, Array.from(new Set(wordArray))];
+        if (options.transform)
+            parsedText = this.transformWord(parsedText);
+        return parsedText;
     }
 
-    transformWords(wordsText: string) {
+    transformWord(wordText: string) {
+        wordText = wordText.trim();
         if (this.ignoreCase)
-            return wordsText.toLowerCase();
-        else
-            return wordsText;
+            wordText = wordText.toLowerCase();
+        return wordText;
     }
 
-    tokenizeText(text: string, phrases: string[]) {
-        const keepDelimiterRegex = new RegExp(`(${this.notWordCharsRegex.source})`, this.notWordCharsRegex.flags);
-        const tokens = text.split(keepDelimiterRegex).filter(t => t !== "");
+
+    tokenizeText(text: string) {
+        const tokens = text.split(this.notWordCharsKeepDelimiterRegex).filter(t => t !== "");
         if (tokens.length == 0)
             return [];
-
         const tokenObjects: TokenObject[] = [];
-        let isWord = !tokens[0].match(keepDelimiterRegex);
+
+        let isWord = !tokens[0].match(this.notWordCharsKeepDelimiterRegex);
+        for (let i = 0; i < tokens.length; i++) {
+            if (isWord) {
+                tokenObjects.push({
+                    text: tokens[i],
+                    parsedText: this.transformWord(tokens[i]),
+                    isWord: isWord,
+                });
+            } else {
+                tokenObjects.push(...tokens[i].split("").map(t => ({
+                    text: t,
+                    isWord: isWord,
+                })));
+            }
+
+            isWord = !isWord;
+        }
+        return tokenObjects;
+    }
+
+    detectPhrases(text: string, phrases: string[]): TokenWithPhrases[] {
+        const tokens = this.tokenizeText(text) as TokenWithPhrases[]; //well it's about to be anyway
         const phraseObjects: { [pt: string]: { occurrencesCount: number, words: string[] } } = {};
         for (const phrase of phrases)
             phraseObjects[phrase] = {words: phrase.split(" "), occurrencesCount: 0};
         const phraseWordQueues: Set<TokeObjectPhrases> = new Set();
         for (let i = 0; i < tokens.length; i++) {
-            if (isWord) {
-                const tokenObject: TokenObject = {
-                    text: tokens[i],
-                    parsedText: this.transformWords(tokens[i]),
-                    isWord: isWord,
-                    phrases: []
-                };
-                tokenObjects.push(tokenObject);
-
+            tokens[i].phrases = [];
+            if (tokens[i].isWord) {
                 for (const phraseText of phrases) {
                     let isTokenFirstInPhrase = true;
                     const phraseWords = phraseObjects[phraseText].words;
                     for (let j = 0; j < phraseWords.length; j++) {
-                        const futureTokens = tokens[i + (j * 2)];
-                        if (!futureTokens || phraseWords[j] !== this.transformWords(futureTokens)) {
+                        const futureToken = tokens[i + (j * 2)];
+                        if (!futureToken || phraseWords[j] !== futureToken.parsedText) {
                             isTokenFirstInPhrase = false;
                             break;
                         }
@@ -89,33 +89,20 @@ export class SpaceBasedWordParser extends WordParser {
                 }
                 phraseWordQueues.forEach((queue) => {
                     if (queue.length != 0)
-                        tokenObject.phrases.push(queue.shift()!);
+                        tokens[i].phrases.push(queue.shift()!);
                     else
                         phraseWordQueues.delete(queue);
                 });
             } else {
-                const middlePhrases: TokeObjectPhrases = [];
                 phraseWordQueues.forEach((queue) => {
                     if (queue.length != 0)
-                        middlePhrases.push(queue[0]);
+                        tokens[i].phrases.push(queue[0]);
                     else
                         phraseWordQueues.delete(queue);
                 });
-                tokenObjects.push(...tokens[i].split("").map(t => {
-                    return {
-                        text: t,
-                        isWord: isWord,
-                        phrases: middlePhrases
-                    };
-                }));
             }
-            isWord = !isWord;
         }
 
-        return tokenObjects;
-    }
-
-    combineTokens(words: string[]): string {
-        return words.join(" ");
+        return tokens;
     }
 }

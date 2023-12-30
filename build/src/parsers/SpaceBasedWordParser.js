@@ -1,82 +1,96 @@
 import { WordParser } from "../../src/parsers/WordParser.js";
 import { escapeRegExp } from "../../src/utils/utils.js";
 export class SpaceBasedWordParser extends WordParser {
-    constructor(wordChars = "", replaceCharsMap = {}, ignoreCase = true) {
+    constructor(wordChars = "", { ignoreCase = true } = {}) {
         super();
         this.notWordCharsRegex = new RegExp(`[^${escapeRegExp(wordChars)}]+`, "gmu");
-        this.replaceCharsMap = replaceCharsMap;
+        this.notWordCharsKeepDelimiterRegex = new RegExp(`(${this.notWordCharsRegex.source})`, this.notWordCharsRegex.flags);
         this.ignoreCase = ignoreCase;
     }
-    parseText(text, keepDuplicates = false) {
+    parseText(text, options) {
         //TODO investigate why - is being added as a vocab with sample data
         let parsedText = text;
-        //replace special characters
-        Object.keys(this.replaceCharsMap).forEach(c => parsedText = parsedText.replace(c, this.replaceCharsMap[c]));
         //replace all non-word characters with a space
         parsedText = parsedText.replace(this.notWordCharsRegex, " ");
-        //trim
-        parsedText = parsedText.trim();
-        if (this.ignoreCase)
-            //change all to lowercase
-            parsedText = parsedText.toLowerCase();
-        const wordArray = parsedText.split(" ").filter(w => w !== "");
-        if (keepDuplicates)
-            return [parsedText, wordArray];
-        else
-            return [parsedText, Array.from(new Set(wordArray))];
+        if (options.transform)
+            parsedText = this.transformWord(parsedText);
+        return parsedText;
     }
-    transformWords(wordsText) {
+    transformWord(wordText) {
+        wordText = wordText.trim();
         if (this.ignoreCase)
-            return wordsText.toLowerCase();
-        else
-            return wordsText;
+            wordText = wordText.toLowerCase();
+        return wordText;
     }
-    tokenizeText(text, phrases) {
-        const keepDelimiterRegex = new RegExp(`(${this.notWordCharsRegex.source})`, this.notWordCharsRegex.flags);
-        const tokens = text.split(keepDelimiterRegex).filter(t => t !== "");
+    tokenizeText(text) {
+        const tokens = text.split(this.notWordCharsKeepDelimiterRegex).filter(t => t !== "");
         if (tokens.length == 0)
             return [];
         const tokenObjects = [];
-        let isWord = !tokens[0].match(keepDelimiterRegex);
-        const phraseObjects = [];
-        for (const phrase of phrases)
-            phraseObjects.push({ text: phrase, words: phrase.split(" ") });
-        const phraseToWordInvIndex = {};
+        let isWord = !tokens[0].match(this.notWordCharsKeepDelimiterRegex);
         for (let i = 0; i < tokens.length; i++) {
-            const tokenObject = {
-                text: tokens[i],
-                parsedText: this.transformWords(tokens[i]),
-                isWord: isWord,
-                phrases: {}
-            };
-            tokenObjects.push(tokenObject);
-            if (tokenObject.isWord) {
-                for (const { text: phraseText, words: phraseWords } of phraseObjects) {
-                    let isTokenFirstInPhrase = true;
-                    for (let j = 0; j < phraseWords.length; j++) {
-                        if (phraseWords[j] !== this.transformWords(tokens[i + (j * 2)])) {
-                            isTokenFirstInPhrase = false;
-                            break;
-                        }
-                    }
-                    if (isTokenFirstInPhrase) {
-                        tokenObject.phrases[phraseText] = { indexInPhrase: 0 };
-                        phraseToWordInvIndex[phraseText] = phraseWords.length - 1;
-                    }
-                    else {
-                        if (phraseToWordInvIndex[phraseText] && phraseToWordInvIndex[phraseText] !== 0) {
-                            tokenObject.phrases[phraseText] = { indexInPhrase: phraseWords.length - phraseToWordInvIndex[phraseText], };
-                            phraseToWordInvIndex[phraseText]--;
-                        }
-                    }
-                }
+            if (isWord) {
+                tokenObjects.push({
+                    text: tokens[i],
+                    parsedText: this.transformWord(tokens[i]),
+                    isWord: isWord,
+                });
+            }
+            else {
+                tokenObjects.push(...tokens[i].split("").map(t => ({
+                    text: t,
+                    isWord: isWord,
+                })));
             }
             isWord = !isWord;
         }
         return tokenObjects;
     }
-    combineTokens(words) {
-        return words.join(" ");
+    detectPhrases(text, phrases) {
+        const tokens = this.tokenizeText(text); //well it's about to be anyway
+        const phraseObjects = {};
+        for (const phrase of phrases)
+            phraseObjects[phrase] = { words: phrase.split(" "), occurrencesCount: 0 };
+        const phraseWordQueues = new Set();
+        for (let i = 0; i < tokens.length; i++) {
+            tokens[i].phrases = [];
+            if (tokens[i].isWord) {
+                for (const phraseText of phrases) {
+                    let isTokenFirstInPhrase = true;
+                    const phraseWords = phraseObjects[phraseText].words;
+                    for (let j = 0; j < phraseWords.length; j++) {
+                        const futureToken = tokens[i + (j * 2)];
+                        if (!futureToken || phraseWords[j] !== futureToken.parsedText) {
+                            isTokenFirstInPhrase = false;
+                            break;
+                        }
+                    }
+                    if (isTokenFirstInPhrase) {
+                        phraseWordQueues.add([...Array(phraseWords.length).keys()].map(indexInPhrase => ({
+                            text: phraseText,
+                            // indexInPhrase: indexInPhrase,
+                            phraseOccurrenceIndex: phraseObjects[phraseText].occurrencesCount
+                        })));
+                        phraseObjects[phraseText].occurrencesCount++;
+                    }
+                }
+                phraseWordQueues.forEach((queue) => {
+                    if (queue.length != 0)
+                        tokens[i].phrases.push(queue.shift());
+                    else
+                        phraseWordQueues.delete(queue);
+                });
+            }
+            else {
+                phraseWordQueues.forEach((queue) => {
+                    if (queue.length != 0)
+                        tokens[i].phrases.push(queue[0]);
+                    else
+                        phraseWordQueues.delete(queue);
+                });
+            }
+        }
+        return tokens;
     }
 }
 //# sourceMappingURL=SpaceBasedWordParser.js.map

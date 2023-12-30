@@ -1,15 +1,15 @@
-import { TokenObject, WordParser } from "../../src/parsers/WordParser.js";
-type ReplaceCharsMap = {
-    [character: string]: string;
-};
+import { TokenObject, TokenWithPhrases, WordParser } from "../../src/parsers/WordParser.js";
 export declare class SpaceBasedWordParser extends WordParser {
     notWordCharsRegex: RegExp;
-    replaceCharsMap: ReplaceCharsMap;
+    notWordCharsKeepDelimiterRegex: RegExp;
     ignoreCase: boolean;
-    constructor(wordChars?: string, replaceCharsMap?: ReplaceCharsMap, ignoreCase?: boolean);
-    parseText(text: string, keepDuplicates?: boolean): [string, string[]];
-    transformWords(wordsText: string): string;
-    tokenizeText(text: string, phrases: string[]): TokenObject[];
-    combineTokens(words: string[]): string;
+    constructor(wordChars?: string, { ignoreCase }?: {
+        ignoreCase?: boolean;
+    });
+    parseText(text: string, options: {
+        transform: boolean;
+    }): string;
+    transformWord(wordText: string): string;
+    tokenizeText(text: string): TokenObject[];
+    detectPhrases(text: string, phrases: string[]): TokenWithPhrases[];
 }
-export {};
