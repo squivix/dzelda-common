@@ -11,9 +11,7 @@ export type TokenWithPhrases = TokenObject & {
     phrases: TokeObjectPhrases;
 };
 export declare abstract class WordParser {
-    abstract parseText(text: string, options: {
-        transform: boolean;
-    }): string;
+    abstract parseText(text: string): string;
     abstract transformWord(wordText: string): string;
     abstract tokenizeText(text: string): TokenObject[];
     abstract detectPhrases(text: string, phrases: string[]): TokenWithPhrases[];

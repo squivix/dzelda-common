@@ -8,7 +8,7 @@ export type TokenWithPhrases = TokenObject & { phrases: TokeObjectPhrases }
 
 
 export abstract class WordParser {
-    abstract parseText(text: string, options: { transform: boolean }): string
+    abstract parseText(text: string): string
 
     abstract transformWord(wordText: string): string;
 

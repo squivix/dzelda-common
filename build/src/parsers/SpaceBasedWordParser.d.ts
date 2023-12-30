@@ -6,9 +6,7 @@ export declare class SpaceBasedWordParser extends WordParser {
     constructor(wordChars?: string, { ignoreCase }?: {
         ignoreCase?: boolean;
     });
-    parseText(text: string, options: {
-        transform: boolean;
-    }): string;
+    parseText(text: string): string;
     transformWord(wordText: string): string;
     tokenizeText(text: string): TokenObject[];
     detectPhrases(text: string, phrases: string[]): TokenWithPhrases[];

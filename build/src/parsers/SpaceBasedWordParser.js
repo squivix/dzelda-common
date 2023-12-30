@@ -1,5 +1,6 @@
 import { WordParser } from "../../src/parsers/WordParser.js";
 import { escapeRegExp } from "../../src/utils/utils.js";
+//TODO investigate why - is being added as a vocab with sample data
 export class SpaceBasedWordParser extends WordParser {
     constructor(wordChars = "", { ignoreCase = true } = {}) {
         super();
@@ -7,13 +8,11 @@ export class SpaceBasedWordParser extends WordParser {
         this.notWordCharsKeepDelimiterRegex = new RegExp(`(${this.notWordCharsRegex.source})`, this.notWordCharsRegex.flags);
         this.ignoreCase = ignoreCase;
     }
-    parseText(text, options) {
-        //TODO investigate why - is being added as a vocab with sample data
+    parseText(text) {
         let parsedText = text;
         //replace all non-word characters with a space
         parsedText = parsedText.replace(this.notWordCharsRegex, " ");
-        if (options.transform)
-            parsedText = this.transformWord(parsedText);
+        parsedText = this.transformWord(parsedText);
         return parsedText;
     }
     transformWord(wordText) {

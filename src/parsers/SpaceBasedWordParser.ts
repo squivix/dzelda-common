@@ -2,6 +2,7 @@ import {TokenObject, TokenWithPhrases, TokeObjectPhrases, WordParser} from "@/sr
 import {escapeRegExp} from "@/src/utils/utils.js";
 
 
+//TODO investigate why - is being added as a vocab with sample data
 export class SpaceBasedWordParser extends WordParser {
     notWordCharsRegex: RegExp;
     notWordCharsKeepDelimiterRegex: RegExp;
@@ -14,14 +15,12 @@ export class SpaceBasedWordParser extends WordParser {
         this.ignoreCase = ignoreCase;
     }
 
-    parseText(text: string, options: { transform: boolean }): string {
-        //TODO investigate why - is being added as a vocab with sample data
+    parseText(text: string): string {
         let parsedText = text;
 
         //replace all non-word characters with a space
         parsedText = parsedText.replace(this.notWordCharsRegex, " ");
-        if (options.transform)
-            parsedText = this.transformWord(parsedText);
+        parsedText = this.transformWord(parsedText);
         return parsedText;
     }
 
