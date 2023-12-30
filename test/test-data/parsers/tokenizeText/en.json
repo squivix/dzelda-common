@@ -1,0 +1,154 @@
+[
+  {
+    "text": "All human beings are born free and equal in dignity and rights.",
+    "phrases": [
+      "human beings"
+    ],
+    "tokens": [
+      {
+        "text": "All",
+        "parsedText": "all",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "human",
+        "parsedText": "human",
+        "isWord": true,
+        "phrases": {
+          "human beings": {
+            "phraseOccurrenceIndex": 0
+          }
+        }
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {
+          "human beings": {
+            "phraseOccurrenceIndex": 0
+          }
+        }
+      },
+      {
+        "text": "beings",
+        "parsedText": "beings",
+        "isWord": true,
+        "phrases": {
+          "human beings": {
+            "phraseOccurrenceIndex": 0
+          }
+        }
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "are",
+        "parsedText": "are",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "born",
+        "parsedText": "born",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "free",
+        "parsedText": "free",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "and",
+        "parsedText": "and",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "equal",
+        "parsedText": "equal",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "in",
+        "parsedText": "in",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "dignity",
+        "parsedText": "dignity",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "and",
+        "parsedText": "and",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": {}
+      },
+      {
+        "text": "rights",
+        "parsedText": "rights",
+        "isWord": true,
+        "phrases": {}
+      },
+      {
+        "text": ".",
+        "isWord": false,
+        "phrases": {}
+      }
+    ]
+  }
+]

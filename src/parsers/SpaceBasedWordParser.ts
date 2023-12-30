@@ -61,12 +61,12 @@ export class SpaceBasedWordParser extends WordParser {
         for (let i = 0; i < tokens.length; i++) {
             const tokenObject: TokenObject = {
                 text: tokens[i],
-                parsedText: this.transformWords(tokens[i]),
                 isWord: isWord,
                 phrases: {}
             };
             tokenObjects.push(tokenObject);
             if (tokenObject.isWord) {
+                tokenObject.parsedText = this.transformWords(tokenObject.text);
                 for (const {text: phraseText, words: phraseWords} of phraseObjects) {
                     let isTokenFirstInPhrase = true;
                     for (let j = 0; j < phraseWords.length; j++) {

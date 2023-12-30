@@ -1,6 +1,6 @@
 export type TokenObject = {
     text: string,
-    parsedText: string | undefined,
+    parsedText?: string ,
     isWord: boolean,
     phrases: { [phraseText: string]: { indexInPhrase: number } }
 }
