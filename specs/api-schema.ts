@@ -90,6 +90,8 @@ export interface LessonSchema {
   addedOn: string;
   learnersCount: number;
   vocabsByLevel?: VocabsByLevelSchema;
+  parsedTitle: string | null;
+  parsedText: string | null;
 }
 
 export interface VocabSchema {

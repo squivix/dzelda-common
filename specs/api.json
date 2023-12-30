@@ -3042,6 +3042,18 @@
           },
           "vocabsByLevel": {
             "$ref": "#/components/schemas/VocabsByLevel"
+          },
+          "parsedTitle": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "parsedText": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [
@@ -3054,7 +3066,9 @@
           "orderInCourse",
           "isLastInCourse",
           "addedOn",
-          "learnersCount"
+          "learnersCount",
+          "parsedTitle",
+          "parsedText"
         ]
       },
       "Vocab": {
