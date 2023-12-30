@@ -11,6 +11,9 @@ describe("SpaceBasedWordParser", () => {
         /**{@link SpaceBasedWordParser#parseText}*/
         describe.todo("parseText", () => {
         });
+        /**{@link SpaceBasedWordParser#tokenizeText}*/
+        describe.todo("tokenizeText", () => {
+        });
         /**{@link SpaceBasedWordParser#detectPhrases}*/
         describe("detectPhrases", async () => {
             const dataPath = `test/test-data/parsers/tokenizeText/${languageCode}.json`;

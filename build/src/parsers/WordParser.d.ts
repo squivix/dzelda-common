@@ -17,5 +17,8 @@ export declare abstract class WordParser {
     abstract transformWord(wordText: string): string;
     abstract tokenizeText(text: string): TokenObject[];
     abstract detectPhrases(text: string, phrases: string[]): TokenWithPhrases[];
+    splitWords(words: string, { keepDuplicates }?: {
+        keepDuplicates?: boolean;
+    }): string[];
     combineWords(words: string[]): string;
 }

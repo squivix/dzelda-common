@@ -16,6 +16,14 @@ export abstract class WordParser {
 
     abstract detectPhrases(text: string, phrases: string[]): TokenWithPhrases[]
 
+    splitWords(words: string, {keepDuplicates = true}: { keepDuplicates?: boolean } = {}) {
+        const wordsArray = words.split(" ");
+        if (keepDuplicates)
+            return wordsArray;
+        else
+            return Array.from(new Set(wordsArray));
+    }
+
     combineWords(words: string[]) {
         return words.join(" ");
     }
