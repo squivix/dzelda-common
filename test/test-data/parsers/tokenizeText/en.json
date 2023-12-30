@@ -1,154 +1,99 @@
 [
   {
-    "text": "All human beings are born free and equal in dignity and rights.",
+    "text": "All human beings are born free and equal in dignity and rights. Human beings are endowed with reason and conscience and should act towards one another in a spirit of brotherhood.",
     "phrases": [
-      "human beings"
+      "human beings",
+      "endowed with"
     ],
     "tokens": [
-      {
-        "text": "All",
-        "parsedText": "all",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "human",
-        "parsedText": "human",
-        "isWord": true,
-        "phrases": {
-          "human beings": {
-            "phraseOccurrenceIndex": 0
-          }
-        }
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {
-          "human beings": {
-            "phraseOccurrenceIndex": 0
-          }
-        }
-      },
-      {
-        "text": "beings",
-        "parsedText": "beings",
-        "isWord": true,
-        "phrases": {
-          "human beings": {
-            "phraseOccurrenceIndex": 0
-          }
-        }
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "are",
-        "parsedText": "are",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "born",
-        "parsedText": "born",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "free",
-        "parsedText": "free",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "and",
-        "parsedText": "and",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "equal",
-        "parsedText": "equal",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "in",
-        "parsedText": "in",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "dignity",
-        "parsedText": "dignity",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "and",
-        "parsedText": "and",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": " ",
-        "isWord": false,
-        "phrases": {}
-      },
-      {
-        "text": "rights",
-        "parsedText": "rights",
-        "isWord": true,
-        "phrases": {}
-      },
-      {
-        "text": ".",
-        "isWord": false,
-        "phrases": {}
-      }
+      {"text": "All", "parsedText": "all", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "human", "parsedText": "human", "isWord": true, "phrases": [{"text":"human beings","phraseOccurrenceIndex": 0}]},
+      {"text": " ", "isWord": false, "phrases": [{"text":"human beings","phraseOccurrenceIndex": 0}]},
+      {"text": "beings", "parsedText": "beings", "isWord": true, "phrases": [{"text":"human beings","phraseOccurrenceIndex": 0}]},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "are", "parsedText": "are", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "born", "parsedText": "born", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "free", "parsedText": "free", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "and", "parsedText": "and", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "equal", "parsedText": "equal", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "in", "parsedText": "in", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "dignity", "parsedText": "dignity", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "and", "parsedText": "and", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "rights", "parsedText": "rights", "isWord": true, "phrases": []},
+      {"text": ".", "isWord": false, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "Human", "parsedText": "human", "isWord": true, "phrases": [{"text":"human beings","phraseOccurrenceIndex": 1}]},
+      {"text": " ", "isWord": false, "phrases": [{"text":"human beings","phraseOccurrenceIndex": 1}]},
+      {"text": "beings", "parsedText": "beings", "isWord": true, "phrases": [{"text":"human beings","phraseOccurrenceIndex": 1}]},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "are", "parsedText": "are", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "endowed", "parsedText": "endowed", "isWord": true, "phrases": [{"text":"endowed with","phraseOccurrenceIndex": 0}]},
+      {"text": " ", "isWord": false, "phrases": [{"text":"endowed with","phraseOccurrenceIndex": 0}]},
+      {"text": "with", "parsedText": "with", "isWord": true, "phrases": [{"text":"endowed with","phraseOccurrenceIndex": 0}]},
+      {"text": " ","isWord": false, "phrases": []},
+      {"text": "reason", "parsedText": "reason", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "and", "parsedText": "and", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "conscience", "parsedText": "conscience", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "and", "parsedText": "and", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "should", "parsedText": "should", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "act", "parsedText": "act", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "towards", "parsedText": "towards", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "one", "parsedText": "one", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "another", "parsedText": "another", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "in", "parsedText": "in", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "a", "parsedText": "a", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "spirit", "parsedText": "spirit", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "of", "parsedText": "of", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "brotherhood", "parsedText": "brotherhood", "isWord": true, "phrases": []},
+      {"text": ".", "isWord": false, "phrases": []}
+    ]
+  },
+  {
+    "text": "Police police, who police police police police police.",
+    "phrases": [
+      "police police"
+    ],
+    "tokens": [
+      {"text": "Police", "parsedText": "police", "isWord": true, "phrases": [{"text": "police police","phraseOccurrenceIndex": 0}]},
+      {"text": " ", "isWord": false, "phrases": [{"text": "police police","phraseOccurrenceIndex": 0}]},
+      {"text": "police", "parsedText": "police", "isWord": true, "phrases": [{"text": "police police","phraseOccurrenceIndex": 0}]},
+      {"text": ",", "isWord": false, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "who", "parsedText": "who", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "police", "parsedText": "police", "isWord": true, "phrases": [{"text": "police police","phraseOccurrenceIndex": 1}]},
+      {"text": " ", "isWord": false, "phrases": [{"text": "police police","phraseOccurrenceIndex": 1}]},
+      {"text": "police", "parsedText": "police", "isWord": true, "phrases": [{"text": "police police","phraseOccurrenceIndex": 1},{"text": "police police","phraseOccurrenceIndex": 2}]},
+      {"text": " ", "isWord": false, "phrases": [{"text": "police police","phraseOccurrenceIndex": 2}]},
+      {"text": "police", "parsedText": "police", "isWord": true, "phrases": [{"text": "police police","phraseOccurrenceIndex": 2},{"text": "police police","phraseOccurrenceIndex": 3}]},
+      {"text": " ", "isWord": false, "phrases": [{"text": "police police","phraseOccurrenceIndex": 3}]},
+      {"text": "police", "parsedText": "police", "isWord": true, "phrases": [{"text": "police police","phraseOccurrenceIndex": 3},{"text": "police police","phraseOccurrenceIndex": 4}]},
+      {"text": " ", "isWord": false, "phrases": [{"text": "police police","phraseOccurrenceIndex": 4}]},
+      {"text": "police", "parsedText": "police", "isWord": true, "phrases": [{"text": "police police","phraseOccurrenceIndex": 4}]},
+      {"text": ".", "isWord": false, "phrases": []}
     ]
   }
 ]

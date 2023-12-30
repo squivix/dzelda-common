@@ -1,5 +1,5 @@
-import {TokenObject, WordParser} from "@/src/parsers/WordParser.js";
-import {escapeRegExp} from "@/src/utils/utils.js";
+import {TokenObject, TokeObjectPhrases, WordParser} from "@/src/parsers/WordParser.js";
+import {cleanObject, escapeRegExp} from "@/src/utils/utils.js";
 
 type ReplaceCharsMap = { [character: string]: string }
 
@@ -54,37 +54,60 @@ export class SpaceBasedWordParser extends WordParser {
 
         const tokenObjects: TokenObject[] = [];
         let isWord = !tokens[0].match(keepDelimiterRegex);
-        const phraseObjects: { text: string, words: string[] } [] = [];
+        const phraseObjects: { [pt: string]: { occurrencesCount: number, words: string[] } } = {};
         for (const phrase of phrases)
-            phraseObjects.push({text: phrase, words: phrase.split(" ")});
-        const phraseToWordInvIndex: { [phraseKey: string]: number } = {};
+            phraseObjects[phrase] = {words: phrase.split(" "), occurrencesCount: 0};
+        const phraseWordQueues: Set<TokeObjectPhrases> = new Set();
         for (let i = 0; i < tokens.length; i++) {
-            const tokenObject: TokenObject = {
-                text: tokens[i],
-                isWord: isWord,
-                phrases: {}
-            };
-            tokenObjects.push(tokenObject);
-            if (tokenObject.isWord) {
-                tokenObject.parsedText = this.transformWords(tokenObject.text);
-                for (const {text: phraseText, words: phraseWords} of phraseObjects) {
+            if (isWord) {
+                const tokenObject: TokenObject = {
+                    text: tokens[i],
+                    parsedText: this.transformWords(tokens[i]),
+                    isWord: isWord,
+                    phrases: []
+                };
+                tokenObjects.push(tokenObject);
+
+                for (const phraseText of phrases) {
                     let isTokenFirstInPhrase = true;
+                    const phraseWords = phraseObjects[phraseText].words;
                     for (let j = 0; j < phraseWords.length; j++) {
-                        if (phraseWords[j] !== this.transformWords(tokens[i + (j * 2)])) {
+                        const futureTokens = tokens[i + (j * 2)];
+                        if (!futureTokens || phraseWords[j] !== this.transformWords(futureTokens)) {
                             isTokenFirstInPhrase = false;
                             break;
                         }
                     }
                     if (isTokenFirstInPhrase) {
-                        tokenObject.phrases[phraseText] = {indexInPhrase: 0};
-                        phraseToWordInvIndex[phraseText] = phraseWords.length - 1;
-                    } else {
-                        if (phraseToWordInvIndex[phraseText] && phraseToWordInvIndex[phraseText] !== 0) {
-                            tokenObject.phrases[phraseText] = {indexInPhrase: phraseWords.length - phraseToWordInvIndex[phraseText],};
-                            phraseToWordInvIndex[phraseText]--;
-                        }
+                        phraseWordQueues.add([...Array(phraseWords.length).keys()].map(indexInPhrase => ({
+                            text: phraseText,
+                            // indexInPhrase: indexInPhrase,
+                            phraseOccurrenceIndex: phraseObjects[phraseText].occurrencesCount
+                        })));
+                        phraseObjects[phraseText].occurrencesCount++;
                     }
                 }
+                phraseWordQueues.forEach((queue) => {
+                    if (queue.length != 0)
+                        tokenObject.phrases.push(queue.shift()!);
+                    else
+                        phraseWordQueues.delete(queue);
+                });
+            } else {
+                const middlePhrases: TokeObjectPhrases = [];
+                phraseWordQueues.forEach((queue) => {
+                    if (queue.length != 0)
+                        middlePhrases.push(queue[0]);
+                    else
+                        phraseWordQueues.delete(queue);
+                });
+                tokenObjects.push(...tokens[i].split("").map(t => {
+                    return {
+                        text: t,
+                        isWord: isWord,
+                        phrases: middlePhrases
+                    };
+                }));
             }
             isWord = !isWord;
         }
