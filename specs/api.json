@@ -2842,6 +2842,9 @@
             "type": "boolean",
             "readOnly": true
           },
+          "isPendingEmailChange": {
+            "type": "string"
+          },
           "profile": {
             "$ref": "#/components/schemas/Profile"
           }
