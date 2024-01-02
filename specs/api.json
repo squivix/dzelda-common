@@ -2928,6 +2928,12 @@
           },
           "learnersCount": {
             "type": "integer"
+          },
+          "color": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [
@@ -2940,7 +2946,8 @@
           "flagEmoji",
           "isSupported",
           "levelThresholds",
-          "learnersCount"
+          "learnersCount",
+          "color"
         ]
       },
       "Course": {
@@ -3319,6 +3326,12 @@
           "lastOpened": {
             "type": "string",
             "format": "date-time"
+          },
+          "color": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [
@@ -3333,9 +3346,9 @@
           "levelThresholds",
           "learnersCount",
           "addedOn",
-          "lastOpened"
-        ],
-        "description": ""
+          "lastOpened",
+          "color"
+        ]
       },
       "VocabLevel": {
         "title": "VocabLevel",

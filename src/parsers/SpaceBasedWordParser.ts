@@ -52,7 +52,6 @@ export class SpaceBasedWordParser extends WordParser {
                     isWord: isWord,
                 })));
             }
-
             isWord = !isWord;
         }
         return tokenObjects;

@@ -43,6 +43,7 @@ export interface LanguageSchema {
         advanced2: number;
     };
     learnersCount: number;
+    color: string | null;
 }
 export interface CourseSchema {
     id: number;
@@ -142,6 +143,7 @@ export interface LearnerLanguageSchema {
     addedOn: string;
     /** @format date-time */
     lastOpened: string;
+    color: string | null;
 }
 /** VocabLevel */
 export declare enum VocabLevelSchema {

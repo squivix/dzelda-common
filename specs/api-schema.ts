@@ -56,6 +56,7 @@ export interface LanguageSchema {
     advanced2: number;
   };
   learnersCount: number;
+  color: string | null;
 }
 
 export interface CourseSchema {
@@ -162,6 +163,7 @@ export interface LearnerLanguageSchema {
   addedOn: string;
   /** @format date-time */
   lastOpened: string;
+  color: string | null;
 }
 
 /** VocabLevel */
