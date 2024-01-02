@@ -140,7 +140,7 @@ export interface LearnerLanguageSchema {
     };
     learnersCount: number;
     /** @format date-time */
-    addedOn: string;
+    startedLearningOn: string;
     /** @format date-time */
     lastOpened: string;
     color: string | null;

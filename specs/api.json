@@ -3319,7 +3319,7 @@
           "learnersCount": {
             "type": "number"
           },
-          "addedOn": {
+          "startedLearningOn": {
             "type": "string",
             "format": "date-time"
           },
@@ -3345,7 +3345,7 @@
           "isSupported",
           "levelThresholds",
           "learnersCount",
-          "addedOn",
+          "startedLearningOn",
           "lastOpened",
           "color"
         ]
