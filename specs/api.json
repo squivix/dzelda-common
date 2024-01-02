@@ -1551,6 +1551,40 @@
         ]
       }
     },
+    "/users/me/languages/{languageCode}/progress/": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "languageCode",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Reset Language Progress",
+        "operationId": "delete-users-me-languages-languageCode-progress",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthenticated"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": ""
+      }
+    },
     "/users/me/courses/bookmarked/": {
       "parameters": [],
       "get": {

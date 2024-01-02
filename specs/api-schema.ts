@@ -917,6 +917,49 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
+     * No description
+     *
+     * @name DeleteUsersMeLanguagesLanguageCodeProgress
+     * @summary Reset Language Progress
+     * @request DELETE:/users/me/languages/{languageCode}/progress/
+     * @secure
+     */
+    deleteUsersMeLanguagesLanguageCodeProgress: (languageCode: string, params: RequestParams = {}) =>
+      this.request<
+        void,
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/users/me/languages/${languageCode}/progress/`,
+        method: "DELETE",
+        secure: true,
+        ...params,
+      }),
+
+    /**
      * @description Get the list of courses the user has bookmarked.
      *
      * @tags course

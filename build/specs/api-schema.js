@@ -282,6 +282,15 @@ export class ApiClient extends HttpClient {
              */
             deleteUsersMeLanguagesLanguageCode: (languageCode, params = {}) => this.request(Object.assign({ path: `/users/me/languages/${languageCode}/`, method: "DELETE", secure: true }, params)),
             /**
+             * No description
+             *
+             * @name DeleteUsersMeLanguagesLanguageCodeProgress
+             * @summary Reset Language Progress
+             * @request DELETE:/users/me/languages/{languageCode}/progress/
+             * @secure
+             */
+            deleteUsersMeLanguagesLanguageCodeProgress: (languageCode, params = {}) => this.request(Object.assign({ path: `/users/me/languages/${languageCode}/progress/`, method: "DELETE", secure: true }, params)),
+            /**
              * @description Get the list of courses the user has bookmarked.
              *
              * @tags course

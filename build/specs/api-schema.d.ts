@@ -556,6 +556,36 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
+         * No description
+         *
+         * @name DeleteUsersMeLanguagesLanguageCodeProgress
+         * @summary Reset Language Progress
+         * @request DELETE:/users/me/languages/{languageCode}/progress/
+         * @secure
+         */
+        deleteUsersMeLanguagesLanguageCodeProgress: (languageCode: string, params?: RequestParams) => Promise<HttpResponse<void, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+        } | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+        } | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
+        /**
          * @description Get the list of courses the user has bookmarked.
          *
          * @tags course
