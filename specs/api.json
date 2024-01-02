@@ -2843,7 +2843,7 @@
             "readOnly": true
           },
           "isPendingEmailChange": {
-            "type": "string"
+            "type": "boolean"
           },
           "profile": {
             "$ref": "#/components/schemas/Profile"

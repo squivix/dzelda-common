@@ -19,7 +19,7 @@ export interface UserSchema {
   /** @format email */
   email?: string;
   isEmailConfirmed?: boolean;
-  isPendingEmailChange?: string;
+  isPendingEmailChange?: boolean;
   profile: ProfileSchema;
 }
 
