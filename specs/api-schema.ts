@@ -2086,7 +2086,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       courseId: number,
       data: {
         /** @format binary */
-        image: File;
+        image?: File;
         data: {
           title: string;
           description: string;

@@ -791,7 +791,6 @@
                   }
                 },
                 "required": [
-                  "image",
                   "data"
                 ]
               }

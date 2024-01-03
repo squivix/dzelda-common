@@ -1363,7 +1363,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          */
         putCoursesCourseId: (courseId: number, data: {
             /** @format binary */
-            image: File;
+            image?: File | undefined;
             data: {
                 title: string;
                 description: string;
