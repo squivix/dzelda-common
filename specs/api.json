@@ -3475,6 +3475,86 @@
           "5",
           "-1"
         ]
+      },
+      "LessonHistoryEntry": {
+        "title": "LessonHistoryEntry",
+        "x-stoplight": {
+          "id": "vycx1ccagq02j"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "audio": {
+            "type": "string",
+            "format": "uri"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri"
+          },
+          "course": {
+            "$ref": "#/components/schemas/Course"
+          },
+          "orderInCourse": {
+            "type": "integer"
+          },
+          "isLastInCourse": {
+            "type": "boolean"
+          },
+          "addedOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "learnersCount": {
+            "type": "number"
+          },
+          "vocabsByLevel": {
+            "$ref": "#/components/schemas/VocabsByLevel"
+          },
+          "parsedTitle": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "parsedText": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "timeViewed": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pastViewer": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "text",
+          "audio",
+          "image",
+          "course",
+          "orderInCourse",
+          "isLastInCourse",
+          "addedOn",
+          "learnersCount",
+          "parsedTitle",
+          "parsedText",
+          "timeViewed",
+          "pastViewer"
+        ]
       }
     },
     "securitySchemes": {

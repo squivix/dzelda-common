@@ -176,6 +176,28 @@ export interface VocabsByLevelSchema {
     "5": number;
     "-1": number;
 }
+/** LessonHistoryEntry */
+export interface LessonHistoryEntrySchema {
+    id: number;
+    title: string;
+    text: string;
+    /** @format uri */
+    audio: string;
+    /** @format uri */
+    image: string;
+    course: CourseSchema;
+    orderInCourse: number;
+    isLastInCourse: boolean;
+    /** @format date-time */
+    addedOn: string;
+    learnersCount: number;
+    vocabsByLevel?: VocabsByLevelSchema;
+    parsedTitle: string | null;
+    parsedText: string | null;
+    /** @format date-time */
+    timeViewed: string;
+    pastViewer: string;
+}
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 export interface FullRequestParams extends Omit<RequestInit, "body"> {
