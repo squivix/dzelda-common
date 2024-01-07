@@ -69,13 +69,19 @@ export class SpaceBasedWordParser extends WordParser {
                 for (const phraseText of phrases) {
                     let isTokenFirstInPhrase = true;
                     const phraseWords = phraseObjects[phraseText].words;
-                    for (let j = 0; j < phraseWords.length; j++) {
-                        const futureToken = tokens[i + (j * 2)];
-                        if (!futureToken || phraseWords[j] !== futureToken.parsedText) {
-                            isTokenFirstInPhrase = false;
-                            break;
+                    let j = i, w = 0;
+                    while (w < phraseWords.length && j < tokens.length) {
+                        const futureToken = tokens[j];
+                        if (futureToken.isWord) {
+                            if (futureToken.parsedText !== phraseWords[w]) {
+                                isTokenFirstInPhrase = false;
+                                break;
+                            }
+                            w++;
                         }
+                        j++;
                     }
+                    isTokenFirstInPhrase = isTokenFirstInPhrase && w == phraseWords.length;
                     if (isTokenFirstInPhrase) {
                         phraseWordQueues.add([...Array(phraseWords.length).keys()].map(indexInPhrase => ({
                             text: phraseText,

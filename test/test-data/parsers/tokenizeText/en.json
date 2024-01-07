@@ -95,5 +95,130 @@
       {"text": "police", "parsedText": "police", "isWord": true, "phrases": [{"text": "police police","phraseOccurrenceIndex": 4}]},
       {"text": ".", "isWord": false, "phrases": []}
     ]
+  },
+  {
+    "text": "Episode 99: los gemelos bailarines the dancing twins duolingo",
+    "phrases": [
+      "episode los"
+    ],
+    "tokens": [
+      {
+        "text": "Episode",
+        "parsedText": "episode",
+        "isWord": true,
+        "phrases": [
+          {"text": "episode los","phraseOccurrenceIndex": 0}
+        ]
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": [
+          {"text": "episode los","phraseOccurrenceIndex": 0}
+        ]
+      },
+      {
+        "text": "9",
+        "isWord": false,
+        "phrases": [
+          {"text": "episode los","phraseOccurrenceIndex": 0}
+        ]
+      },
+      {
+        "text": "9",
+        "isWord": false,
+        "phrases": [
+          {"text": "episode los","phraseOccurrenceIndex": 0}
+        ]
+      },
+      {
+        "text": ":",
+        "isWord": false,
+        "phrases": [
+          {"text": "episode los","phraseOccurrenceIndex": 0}
+        ]
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": [
+          {"text": "episode los","phraseOccurrenceIndex": 0}
+        ]
+      },
+      {
+        "text": "los",
+        "parsedText": "los",
+        "isWord": true,
+        "phrases": [
+          {"text": "episode los","phraseOccurrenceIndex": 0}
+        ]
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": []
+      },
+      {
+        "text": "gemelos",
+        "parsedText": "gemelos",
+        "isWord": true,
+        "phrases": []
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": []
+      },
+      {
+        "text": "bailarines",
+        "parsedText": "bailarines",
+        "isWord": true,
+        "phrases": []
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": []
+      },
+      {
+        "text": "the",
+        "parsedText": "the",
+        "isWord": true,
+        "phrases": []
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": []
+      },
+      {
+        "text": "dancing",
+        "parsedText": "dancing",
+        "isWord": true,
+        "phrases": []
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": []
+      },
+      {
+        "text": "twins",
+        "parsedText": "twins",
+        "isWord": true,
+        "phrases": []
+      },
+      {
+        "text": " ",
+        "isWord": false,
+        "phrases": []
+      },
+      {
+        "text": "duolingo",
+        "parsedText": "duolingo",
+        "isWord": true,
+        "phrases": []
+      }
+    ]
   }
 ]
