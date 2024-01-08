@@ -1,5 +1,7 @@
 export class WordParser {
     splitWords(words, { keepDuplicates = true } = {}) {
+        if (words === "")
+            return [];
         const wordsArray = words.split(" ");
         if (keepDuplicates)
             return wordsArray;
