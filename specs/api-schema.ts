@@ -2006,15 +2006,13 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      */
     postCourses: (
       data: {
-        data?: {
-          languageCode: string;
-          title: string;
-          description?: string;
-          isPublic?: boolean;
-          level?: LanguageLevelSchema;
-        };
-        /** @format binary */
-        image?: File;
+        languageCode: string;
+        title: string;
+        description?: string;
+        isPublic?: boolean;
+        level?: LanguageLevelSchema;
+        /** @format uri */
+        image?: string;
       },
       params: RequestParams = {},
     ) =>
@@ -2033,26 +2031,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             message: string;
             details: string;
           }
-        | {
-            code: 413;
-            status: "Unsupported Media Type";
-            message: string;
-            details: string;
-            fields?: object;
-          }
-        | {
-            code: 415;
-            status: "Unsupported Media Type";
-            message: string;
-            details: string;
-            fields?: object;
-          }
       >({
         path: `/courses/`,
         method: "POST",
         body: data,
         secure: true,
-        type: ContentType.FormData,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
@@ -2767,18 +2751,19 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       params: RequestParams = {},
     ) =>
       this.request<
-        void,
         {
           /** @format uri */
           url: string;
           formFields: object;
-        }
+        },
+        any
       >({
         path: `/file-upload-requests/`,
         method: "POST",
         body: data,
         secure: true,
         type: ContentType.Json,
+        format: "json",
         ...params,
       }),
   };

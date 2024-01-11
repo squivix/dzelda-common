@@ -625,49 +625,38 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthenticated"
-          },
-          "413": {
-            "$ref": "#/components/responses/RequestTooLarge"
-          },
-          "415": {
-            "$ref": "#/components/responses/UnsupportedMediaType"
           }
         },
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "data": {
-                    "type": "object",
-                    "properties": {
-                      "languageCode": {
-                        "type": "string"
-                      },
-                      "title": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "isPublic": {
-                        "type": "boolean"
-                      },
-                      "level": {
-                        "$ref": "#/components/schemas/LanguageLevel"
-                      }
-                    },
-                    "required": [
-                      "languageCode",
-                      "title"
-                    ]
+                  "languageCode": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "isPublic": {
+                    "type": "boolean"
+                  },
+                  "level": {
+                    "$ref": "#/components/schemas/LanguageLevel"
                   },
                   "image": {
                     "type": "string",
-                    "format": "binary"
+                    "format": "uri"
                   }
-                }
+                },
+                "required": [
+                  "languageCode",
+                  "title"
+                ]
               }
             }
           },
@@ -2823,9 +2812,7 @@
         "operationId": "post-file-upload-request",
         "responses": {
           "200": {
-            "description": "OK"
-          },
-          "": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {

@@ -495,7 +495,7 @@ export class ApiClient extends HttpClient {
              * @request POST:/courses/
              * @secure
              */
-            postCourses: (data, params = {}) => this.request(Object.assign({ path: `/courses/`, method: "POST", body: data, secure: true, type: ContentType.FormData, format: "json" }, params)),
+            postCourses: (data, params = {}) => this.request(Object.assign({ path: `/courses/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * @description Get course details.
              *
@@ -661,7 +661,7 @@ export class ApiClient extends HttpClient {
              * @request POST:/file-upload-requests/
              * @secure
              */
-            postFileUploadRequest: (data, params = {}) => this.request(Object.assign({ path: `/file-upload-requests/`, method: "POST", body: data, secure: true, type: ContentType.Json }, params)),
+            postFileUploadRequest: (data, params = {}) => this.request(Object.assign({ path: `/file-upload-requests/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
         };
     }
 }

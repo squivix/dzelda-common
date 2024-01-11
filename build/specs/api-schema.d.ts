@@ -1315,15 +1315,13 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         postCourses: (data: {
-            data?: {
-                languageCode: string;
-                title: string;
-                description?: string | undefined;
-                isPublic?: boolean | undefined;
-                level?: LanguageLevelSchema | undefined;
-            } | undefined;
-            /** @format binary */
-            image?: File | undefined;
+            languageCode: string;
+            title: string;
+            description?: string;
+            isPublic?: boolean;
+            level?: LanguageLevelSchema;
+            /** @format uri */
+            image?: string;
         }, params?: RequestParams) => Promise<HttpResponse<CourseSchema, {
             code: 400;
             status: "Bad Request";
@@ -1335,18 +1333,6 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             status: "Unauthorized";
             message: string;
             details: string;
-        } | {
-            code: 413;
-            status: "Unsupported Media Type";
-            message: string;
-            details: string;
-            fields?: object | undefined;
-        } | {
-            code: 415;
-            status: "Unsupported Media Type";
-            message: string;
-            details: string;
-            fields?: object | undefined;
         }>>;
         /**
          * @description Get course details.
@@ -1828,11 +1814,11 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
              * @pattern ^[A-Fa-f0-9]{64}$
              */
             fileSha256Hash: string;
-        }, params?: RequestParams) => Promise<HttpResponse<void, {
+        }, params?: RequestParams) => Promise<HttpResponse<{
             /** @format uri */
             url: string;
             formFields: object;
-        }>>;
+        }, any>>;
     };
 }
 export {};
