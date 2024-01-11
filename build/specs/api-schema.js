@@ -652,6 +652,17 @@ export class ApiClient extends HttpClient {
              */
             postEmailConfirmTokens: (data, params = {}) => this.request(Object.assign({ path: `/email-confirm-tokens/`, method: "POST", body: data, secure: true, type: ContentType.Json }, params)),
         };
+        this.fileUploadRequests = {
+            /**
+             * No description
+             *
+             * @name PostFileUploadRequest
+             * @summary Request presigned file upload url
+             * @request POST:/file-upload-requests/
+             * @secure
+             */
+            postFileUploadRequest: (data, params = {}) => this.request(Object.assign({ path: `/file-upload-requests/`, method: "POST", body: data, secure: true, type: ContentType.Json }, params)),
+        };
     }
 }
 //# sourceMappingURL=api-schema.js.map

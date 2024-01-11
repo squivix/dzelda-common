@@ -1806,5 +1806,33 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
     };
+    fileUploadRequests: {
+        /**
+         * No description
+         *
+         * @name PostFileUploadRequest
+         * @summary Request presigned file upload url
+         * @request POST:/file-upload-requests/
+         * @secure
+         */
+        postFileUploadRequest: (data: {
+            fileField: string;
+            /**
+             * @minLength 1
+             * @maxLength 20
+             */
+            fileExtension: string;
+            /**
+             * @minLength 64
+             * @maxLength 64
+             * @pattern ^[A-Fa-f0-9]{64}$
+             */
+            fileSha256Hash: string;
+        }, params?: RequestParams) => Promise<HttpResponse<void, {
+            /** @format uri */
+            url: string;
+            formFields: object;
+        }>>;
+    };
 }
 export {};

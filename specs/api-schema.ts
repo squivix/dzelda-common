@@ -2740,4 +2740,46 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         ...params,
       }),
   };
+  fileUploadRequests = {
+    /**
+     * No description
+     *
+     * @name PostFileUploadRequest
+     * @summary Request presigned file upload url
+     * @request POST:/file-upload-requests/
+     * @secure
+     */
+    postFileUploadRequest: (
+      data: {
+        fileField: string;
+        /**
+         * @minLength 1
+         * @maxLength 20
+         */
+        fileExtension: string;
+        /**
+         * @minLength 64
+         * @maxLength 64
+         * @pattern ^[A-Fa-f0-9]{64}$
+         */
+        fileSha256Hash: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        void,
+        {
+          /** @format uri */
+          url: string;
+          formFields: object;
+        }
+      >({
+        path: `/file-upload-requests/`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        ...params,
+      }),
+  };
 }

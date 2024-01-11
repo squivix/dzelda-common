@@ -2816,6 +2816,71 @@
         "description": "Redirects to next lesson in course or 404 if not found",
         "parameters": []
       }
+    },
+    "/file-upload-requests/": {
+      "post": {
+        "summary": "Request presigned file upload url",
+        "operationId": "post-file-upload-request",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "formFields": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "url",
+                    "formFields"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileField": {
+                    "type": "string"
+                  },
+                  "fileExtension": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 20
+                  },
+                  "fileSha256Hash": {
+                    "type": "string",
+                    "minLength": 64,
+                    "maxLength": 64,
+                    "pattern": "^[A-Fa-f0-9]{64}$"
+                  }
+                },
+                "required": [
+                  "fileField",
+                  "fileExtension",
+                  "fileSha256Hash"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
     }
   },
   "components": {
