@@ -240,7 +240,7 @@ export class ApiClient extends HttpClient {
              * @request PUT:/users/me/profile/
              * @secure
              */
-            putUsersMeProfile: (data, params = {}) => this.request(Object.assign({ path: `/users/me/profile/`, method: "PUT", body: data, secure: true, type: ContentType.FormData, format: "json" }, params)),
+            putUsersMeProfile: (data, params = {}) => this.request(Object.assign({ path: `/users/me/profile/`, method: "PUT", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * @description Get a list of langauges the user is learning.
              *

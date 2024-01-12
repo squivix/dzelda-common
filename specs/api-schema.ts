@@ -701,8 +701,8 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       data: {
         /** @maxLength 255 */
         bio: string;
-        /** @format binary */
-        profilePicture?: File;
+        /** @format uri */
+        profilePicture?: string;
       },
       params: RequestParams = {},
     ) =>
@@ -740,7 +740,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         method: "PUT",
         body: data,
         secure: true,
-        type: ContentType.FormData,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),

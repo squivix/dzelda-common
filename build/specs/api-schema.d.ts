@@ -427,8 +427,8 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         putUsersMeProfile: (data: {
             /** @maxLength 255 */
             bio: string;
-            /** @format binary */
-            profilePicture?: File;
+            /** @format uri */
+            profilePicture?: string;
         }, params?: RequestParams) => Promise<HttpResponse<ProfileSchema, {
             code: 400;
             status: "Bad Request";
