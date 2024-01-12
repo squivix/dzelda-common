@@ -2818,17 +2818,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "url": {
+                    "uploadUrl": {
                       "type": "string",
                       "format": "uri"
                     },
-                    "formFields": {
+                    "uploadFormFields": {
                       "type": "object"
+                    },
+                    "objectKey": {
+                      "type": "string"
                     }
                   },
                   "required": [
-                    "url",
-                    "formFields"
+                    "uploadUrl",
+                    "uploadFormFields",
+                    "objectKey"
                   ]
                 }
               }
@@ -2849,18 +2853,11 @@
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 20
-                  },
-                  "fileSha256Hash": {
-                    "type": "string",
-                    "minLength": 64,
-                    "maxLength": 64,
-                    "pattern": "^[A-Fa-f0-9]{64}$"
                   }
                 },
                 "required": [
                   "fileField",
-                  "fileExtension",
-                  "fileSha256Hash"
+                  "fileExtension"
                 ]
               }
             }

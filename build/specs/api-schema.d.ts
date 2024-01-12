@@ -1808,16 +1808,11 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
              * @maxLength 20
              */
             fileExtension: string;
-            /**
-             * @minLength 64
-             * @maxLength 64
-             * @pattern ^[A-Fa-f0-9]{64}$
-             */
-            fileSha256Hash: string;
         }, params?: RequestParams) => Promise<HttpResponse<{
             /** @format uri */
-            url: string;
-            formFields: object;
+            uploadUrl: string;
+            uploadFormFields: object;
+            objectKey: string;
         }, any>>;
     };
 }
