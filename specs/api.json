@@ -425,17 +425,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "data": {
-                    "type": "object",
-                    "required": [
-                      "bio"
-                    ],
-                    "properties": {
-                      "bio": {
-                        "type": "string",
-                        "maxLength": 255
-                      }
-                    }
+                  "bio": {
+                    "type": "string",
+                    "maxLength": 255
                   },
                   "profilePicture": {
                     "type": "string",
@@ -443,7 +435,8 @@
                   }
                 },
                 "required": [
-                  "data"
+                  "data",
+                  "bio"
                 ]
               }
             }
@@ -744,43 +737,35 @@
         "description": "Update course details.",
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "image": {
                     "type": "string",
-                    "format": "binary"
+                    "format": "uri"
                   },
-                  "data": {
-                    "type": "object",
-                    "required": [
-                      "title",
-                      "description",
-                      "isPublic",
-                      "lessonsOrder"
-                    ],
-                    "properties": {
-                      "title": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "isPublic": {
-                        "type": "boolean"
-                      },
-                      "lessonsOrder": {
-                        "type": "array",
-                        "items": {
-                          "type": "integer"
-                        }
-                      }
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "isPublic": {
+                    "type": "boolean"
+                  },
+                  "lessonsOrder": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
                     }
                   }
                 },
                 "required": [
-                  "data"
+                  "title",
+                  "description",
+                  "isPublic",
+                  "lessonsOrder"
                 ]
               }
             }
@@ -929,40 +914,32 @@
         "description": "Create a new lesson.",
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "image": {
                     "type": "string",
-                    "format": "binary"
+                    "format": "uri"
                   },
                   "audio": {
                     "type": "string",
-                    "format": "binary"
+                    "format": "uri"
                   },
-                  "data": {
-                    "type": "object",
-                    "required": [
-                      "title",
-                      "text",
-                      "courseId"
-                    ],
-                    "properties": {
-                      "title": {
-                        "type": "string"
-                      },
-                      "text": {
-                        "type": "string"
-                      },
-                      "courseId": {
-                        "type": "integer"
-                      }
-                    }
+                  "title": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "courseId": {
+                    "type": "integer"
                   }
                 },
                 "required": [
-                  "data"
+                  "title",
+                  "text",
+                  "courseId"
                 ]
               }
             }
@@ -1042,45 +1019,37 @@
         },
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "x-examples": {},
                 "properties": {
                   "image": {
                     "type": "string",
-                    "format": "binary"
+                    "format": "uri"
                   },
                   "audio": {
                     "type": "string",
-                    "format": "binary"
+                    "format": "uri"
                   },
-                  "data": {
-                    "type": "object",
-                    "required": [
-                      "courseId",
-                      "title",
-                      "text"
-                    ],
-                    "properties": {
-                      "courseId": {
-                        "type": "integer",
-                        "minimum": 0
-                      },
-                      "title": {
-                        "type": "string"
-                      },
-                      "text": {
-                        "type": "string"
-                      },
-                      "level": {
-                        "$ref": "#/components/schemas/LanguageLevel"
-                      }
-                    }
+                  "courseId": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "level": {
+                    "$ref": "#/components/schemas/LanguageLevel"
                   }
                 },
                 "required": [
-                  "data"
+                  "courseId",
+                  "title",
+                  "text"
                 ]
               }
             }

@@ -515,7 +515,7 @@ export class ApiClient extends HttpClient {
              * @request PUT:/courses/{courseId}/
              * @secure
              */
-            putCoursesCourseId: (courseId, data, params = {}) => this.request(Object.assign({ path: `/courses/${courseId}/`, method: "PUT", body: data, secure: true, type: ContentType.FormData, format: "json" }, params)),
+            putCoursesCourseId: (courseId, data, params = {}) => this.request(Object.assign({ path: `/courses/${courseId}/`, method: "PUT", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * @description Redirects to next lesson in course or 404 if not found
              *
@@ -546,7 +546,7 @@ export class ApiClient extends HttpClient {
              * @request POST:/lessons/
              * @secure
              */
-            postLessons: (data, params = {}) => this.request(Object.assign({ path: `/lessons/`, method: "POST", body: data, secure: true, type: ContentType.FormData, format: "json" }, params)),
+            postLessons: (data, params = {}) => this.request(Object.assign({ path: `/lessons/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * @description Get lesson details.
              *
@@ -566,7 +566,7 @@ export class ApiClient extends HttpClient {
              * @request PUT:/lessons/{lessonId}/
              * @secure
              */
-            putLessonsLessonId: (lessonId, data, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/`, method: "PUT", body: data, secure: true, type: ContentType.FormData, format: "json" }, params)),
+            putLessonsLessonId: (lessonId, data, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/`, method: "PUT", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * @description Get a list of vocabs in a lesson.
              *

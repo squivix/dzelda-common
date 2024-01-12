@@ -425,12 +425,10 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         putUsersMeProfile: (data: {
-            data: {
-                /** @maxLength 255 */
-                bio: string;
-            };
+            /** @maxLength 255 */
+            bio: string;
             /** @format binary */
-            profilePicture?: File | undefined;
+            profilePicture?: File;
         }, params?: RequestParams) => Promise<HttpResponse<ProfileSchema, {
             code: 400;
             status: "Bad Request";
@@ -1370,14 +1368,12 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         putCoursesCourseId: (courseId: number, data: {
-            /** @format binary */
-            image?: File | undefined;
-            data: {
-                title: string;
-                description: string;
-                isPublic: boolean;
-                lessonsOrder: number[];
-            };
+            /** @format uri */
+            image?: string;
+            title: string;
+            description: string;
+            isPublic: boolean;
+            lessonsOrder: number[];
         }, params?: RequestParams) => Promise<HttpResponse<CourseSchema, {
             code: 400;
             status: "Bad Request";
@@ -1495,15 +1491,13 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         postLessons: (data: {
-            /** @format binary */
-            image?: File | undefined;
-            /** @format binary */
-            audio?: File | undefined;
-            data: {
-                title: string;
-                text: string;
-                courseId: number;
-            };
+            /** @format uri */
+            image?: string;
+            /** @format uri */
+            audio?: string;
+            title: string;
+            text: string;
+            courseId: number;
         }, params?: RequestParams) => Promise<HttpResponse<LessonSchema, {
             code: 400;
             status: "Bad Request";
@@ -1564,17 +1558,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         putLessonsLessonId: (lessonId: number, data: {
-            /** @format binary */
-            image?: File | undefined;
-            /** @format binary */
-            audio?: File | undefined;
-            data: {
-                /** @min 0 */
-                courseId: number;
-                title: string;
-                text: string;
-                level?: LanguageLevelSchema;
-            };
+            /** @format uri */
+            image?: string;
+            /** @format uri */
+            audio?: string;
+            /** @min 0 */
+            courseId: number;
+            title: string;
+            text: string;
+            level?: LanguageLevelSchema;
         }, params?: RequestParams) => Promise<HttpResponse<LessonSchema, {
             code: 400;
             status: "Bad Request";

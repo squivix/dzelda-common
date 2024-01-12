@@ -699,10 +699,8 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      */
     putUsersMeProfile: (
       data: {
-        data: {
-          /** @maxLength 255 */
-          bio: string;
-        };
+        /** @maxLength 255 */
+        bio: string;
         /** @format binary */
         profilePicture?: File;
       },
@@ -2092,14 +2090,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     putCoursesCourseId: (
       courseId: number,
       data: {
-        /** @format binary */
-        image?: File;
-        data: {
-          title: string;
-          description: string;
-          isPublic: boolean;
-          lessonsOrder: number[];
-        };
+        /** @format uri */
+        image?: string;
+        title: string;
+        description: string;
+        isPublic: boolean;
+        lessonsOrder: number[];
       },
       params: RequestParams = {},
     ) =>
@@ -2149,7 +2145,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         method: "PUT",
         body: data,
         secure: true,
-        type: ContentType.FormData,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
@@ -2264,15 +2260,13 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      */
     postLessons: (
       data: {
-        /** @format binary */
-        image?: File;
-        /** @format binary */
-        audio?: File;
-        data: {
-          title: string;
-          text: string;
-          courseId: number;
-        };
+        /** @format uri */
+        image?: string;
+        /** @format uri */
+        audio?: string;
+        title: string;
+        text: string;
+        courseId: number;
       },
       params: RequestParams = {},
     ) =>
@@ -2310,7 +2304,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         method: "POST",
         body: data,
         secure: true,
-        type: ContentType.FormData,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
@@ -2366,17 +2360,15 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     putLessonsLessonId: (
       lessonId: number,
       data: {
-        /** @format binary */
-        image?: File;
-        /** @format binary */
-        audio?: File;
-        data: {
-          /** @min 0 */
-          courseId: number;
-          title: string;
-          text: string;
-          level?: LanguageLevelSchema;
-        };
+        /** @format uri */
+        image?: string;
+        /** @format uri */
+        audio?: string;
+        /** @min 0 */
+        courseId: number;
+        title: string;
+        text: string;
+        level?: LanguageLevelSchema;
       },
       params: RequestParams = {},
     ) =>
@@ -2412,7 +2404,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         method: "PUT",
         body: data,
         secure: true,
-        type: ContentType.FormData,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
