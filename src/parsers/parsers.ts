@@ -1,15 +1,19 @@
 import {SpaceBasedWordParser} from "@/src/parsers/SpaceBasedWordParser.js";
 import {WordParser} from "@/src/parsers/WordParser.js";
 
+//All letters from: Basic Latin+Latin-1 Supplement, plus hyphen and apostrophe
+const latinParser = new SpaceBasedWordParser(`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ'-`);
 export const parsers: { [languageCode: string]: WordParser } = {
-    //temporary naive parsers
-    "en": new SpaceBasedWordParser("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'-"),
-    "es": new SpaceBasedWordParser("abcdefghijklmnopqrstuvwxyzáéíñóúüABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÑÓÚÜ-"),
-    "it": new SpaceBasedWordParser("abcdefghilmnopqrstuvzABCDEFGHILMNOPQRSTUVZ'"),
-    "de": new SpaceBasedWordParser("abcdefghijklmnopqrstuvwxyzäöüABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ"),
-    "pt": new SpaceBasedWordParser("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáàâãéèêíìîóòôõúùûÁÀÂÃÉÈÊÍÌÎÓÒÔÕÚÙÛ'"),
-    "fr": new SpaceBasedWordParser("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZéèàâêîôûçëïüœ'"),
-    "la": new SpaceBasedWordParser("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),
+    "en": latinParser,
+    "es": latinParser,
+    "fr": latinParser,
+    "de": latinParser,
+    "it": latinParser,
+    "nl": latinParser,
+    "se": latinParser,
+    "no": latinParser,
+    "dk": latinParser,
+    "pt": latinParser,
 };
 
 export function getParser(languageCode: string) {
