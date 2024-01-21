@@ -2983,10 +2983,7 @@
             "type": "integer"
           },
           "color": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           }
         },
         "required": [

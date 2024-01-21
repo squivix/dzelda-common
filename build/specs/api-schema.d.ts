@@ -44,7 +44,7 @@ export interface LanguageSchema {
         advanced2: number;
     };
     learnersCount: number;
-    color: string | null;
+    color: string;
 }
 export interface CourseSchema {
     id: number;
