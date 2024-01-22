@@ -517,6 +517,15 @@ export class ApiClient extends HttpClient {
              */
             putCoursesCourseId: (courseId, data, params = {}) => this.request(Object.assign({ path: `/courses/${courseId}/`, method: "PUT", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
+             * No description
+             *
+             * @name DeleteCoursesCourseId
+             * @summary Delete Course
+             * @request DELETE:/courses/{courseId}/
+             * @secure
+             */
+            deleteCoursesCourseId: (courseId, params = {}) => this.request(Object.assign({ path: `/courses/${courseId}/`, method: "DELETE", secure: true }, params)),
+            /**
              * @description Redirects to next lesson in course or 404 if not found
              *
              * @name GetCoursesCourseIdLessonsLessonIdNext

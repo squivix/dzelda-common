@@ -1410,6 +1410,31 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             fields?: object | undefined;
         }>>;
         /**
+         * No description
+         *
+         * @name DeleteCoursesCourseId
+         * @summary Delete Course
+         * @request DELETE:/courses/{courseId}/
+         * @secure
+         */
+        deleteCoursesCourseId: (courseId: number, params?: RequestParams) => Promise<HttpResponse<void, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+        } | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+        }>>;
+        /**
          * @description Redirects to next lesson in course or 404 if not found
          *
          * @name GetCoursesCourseIdLessonsLessonIdNext

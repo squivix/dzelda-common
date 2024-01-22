@@ -2152,6 +2152,43 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
+     * No description
+     *
+     * @name DeleteCoursesCourseId
+     * @summary Delete Course
+     * @request DELETE:/courses/{courseId}/
+     * @secure
+     */
+    deleteCoursesCourseId: (courseId: number, params: RequestParams = {}) =>
+      this.request<
+        void,
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/courses/${courseId}/`,
+        method: "DELETE",
+        secure: true,
+        ...params,
+      }),
+
+    /**
      * @description Redirects to next lesson in course or 404 if not found
      *
      * @name GetCoursesCourseIdLessonsLessonIdNext
