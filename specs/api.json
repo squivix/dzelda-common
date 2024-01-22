@@ -3075,7 +3075,22 @@
             "format": "uri"
           },
           "course": {
-            "$ref": "#/components/schemas/Course"
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Course",
+                "x-stoplight": {
+                  "id": "03rfridv70yml"
+                }
+              },
+              {
+                "x-stoplight": {
+                  "id": "and8la5qpn5q5"
+                },
+                "type": [
+                  "null"
+                ]
+              }
+            ]
           },
           "orderInCourse": {
             "type": "integer"
@@ -3122,8 +3137,6 @@
           "audio",
           "image",
           "course",
-          "orderInCourse",
-          "isLastInCourse",
           "addedOn",
           "learnersCount",
           "parsedTitle",

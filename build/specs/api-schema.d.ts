@@ -68,9 +68,9 @@ export interface LessonSchema {
     audio: string;
     /** @format uri */
     image: string;
-    course: CourseSchema;
-    orderInCourse: number;
-    isLastInCourse: boolean;
+    course: CourseSchema | null;
+    orderInCourse?: number;
+    isLastInCourse?: boolean;
     /** @format date-time */
     addedOn: string;
     learnersCount: number;
