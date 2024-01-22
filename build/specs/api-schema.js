@@ -577,6 +577,15 @@ export class ApiClient extends HttpClient {
              */
             putLessonsLessonId: (lessonId, data, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/`, method: "PUT", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
+             * No description
+             *
+             * @name DeleteLessonsLessonId
+             * @summary Delete Lesson
+             * @request DELETE:/lessons/{lessonId}/
+             * @secure
+             */
+            deleteLessonsLessonId: (lessonId, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/`, method: "DELETE", secure: true }, params)),
+            /**
              * @description Get a list of vocabs in a lesson.
              *
              * @tags vocab

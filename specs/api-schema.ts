@@ -2181,6 +2181,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             message: string;
             details: string;
           }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
       >({
         path: `/courses/${courseId}/`,
         method: "DELETE",
@@ -2444,6 +2450,49 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         secure: true,
         type: ContentType.Json,
         format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteLessonsLessonId
+     * @summary Delete Lesson
+     * @request DELETE:/lessons/{lessonId}/
+     * @secure
+     */
+    deleteLessonsLessonId: (lessonId: number, params: RequestParams = {}) =>
+      this.request<
+        void,
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/lessons/${lessonId}/`,
+        method: "DELETE",
+        secure: true,
         ...params,
       }),
 

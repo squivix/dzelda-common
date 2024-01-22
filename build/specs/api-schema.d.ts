@@ -1433,6 +1433,11 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             status: string;
             message: string;
             details: string;
+        } | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
         }>>;
         /**
          * @description Redirects to next lesson in course or 404 if not found
@@ -1594,6 +1599,36 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             text: string;
             level?: LanguageLevelSchema;
         }, params?: RequestParams) => Promise<HttpResponse<LessonSchema, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+        } | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+        } | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
+        /**
+         * No description
+         *
+         * @name DeleteLessonsLessonId
+         * @summary Delete Lesson
+         * @request DELETE:/lessons/{lessonId}/
+         * @secure
+         */
+        deleteLessonsLessonId: (lessonId: number, params?: RequestParams) => Promise<HttpResponse<void, {
             code: 400;
             status: "Bad Request";
             message: string;
