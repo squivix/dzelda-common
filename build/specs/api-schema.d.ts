@@ -1584,12 +1584,12 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @description Update lesson details.
          *
          * @tags lesson
-         * @name PutLessonsLessonId
+         * @name PatchLessonsLessonId
          * @summary Update Lesson
-         * @request PUT:/lessons/{lessonId}/
+         * @request PATCH:/lessons/{lessonId}/
          * @secure
          */
-        putLessonsLessonId: (lessonId: number, data: {
+        patchLessonsLessonId: (lessonId: number, data: {
             /** @format uri */
             image?: string;
             /** @format uri */

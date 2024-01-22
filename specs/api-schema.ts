@@ -2397,12 +2397,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      * @description Update lesson details.
      *
      * @tags lesson
-     * @name PutLessonsLessonId
+     * @name PatchLessonsLessonId
      * @summary Update Lesson
-     * @request PUT:/lessons/{lessonId}/
+     * @request PATCH:/lessons/{lessonId}/
      * @secure
      */
-    putLessonsLessonId: (
+    patchLessonsLessonId: (
       lessonId: number,
       data: {
         /** @format uri */
@@ -2446,7 +2446,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
           }
       >({
         path: `/lessons/${lessonId}/`,
-        method: "PUT",
+        method: "PATCH",
         body: data,
         secure: true,
         type: ContentType.Json,

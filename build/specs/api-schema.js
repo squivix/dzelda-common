@@ -570,12 +570,12 @@ export class ApiClient extends HttpClient {
              * @description Update lesson details.
              *
              * @tags lesson
-             * @name PutLessonsLessonId
+             * @name PatchLessonsLessonId
              * @summary Update Lesson
-             * @request PUT:/lessons/{lessonId}/
+             * @request PATCH:/lessons/{lessonId}/
              * @secure
              */
-            putLessonsLessonId: (lessonId, data, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/`, method: "PUT", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
+            patchLessonsLessonId: (lessonId, data, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/`, method: "PATCH", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * No description
              *
