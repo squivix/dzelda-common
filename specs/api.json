@@ -938,6 +938,24 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "languageCode": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "v2gz6y60qop7w"
+                    }
+                  },
+                  "courseId": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
                   "image": {
                     "type": "string",
                     "format": "uri"
@@ -945,21 +963,12 @@
                   "audio": {
                     "type": "string",
                     "format": "uri"
-                  },
-                  "title": {
-                    "type": "string"
-                  },
-                  "text": {
-                    "type": "string"
-                  },
-                  "courseId": {
-                    "type": "integer"
                   }
                 },
                 "required": [
                   "title",
                   "text",
-                  "courseId"
+                  "languageCode"
                 ]
               }
             }

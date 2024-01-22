@@ -2305,13 +2305,14 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      */
     postLessons: (
       data: {
+        title: string;
+        text: string;
+        languageCode: string;
+        courseId?: number | null;
         /** @format uri */
         image?: string;
         /** @format uri */
         audio?: string;
-        title: string;
-        text: string;
-        courseId: number;
       },
       params: RequestParams = {},
     ) =>

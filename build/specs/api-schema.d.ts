@@ -1523,13 +1523,14 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         postLessons: (data: {
+            title: string;
+            text: string;
+            languageCode: string;
+            courseId?: number | null;
             /** @format uri */
             image?: string;
             /** @format uri */
             audio?: string;
-            title: string;
-            text: string;
-            courseId: number;
         }, params?: RequestParams) => Promise<HttpResponse<LessonSchema, {
             code: 400;
             status: "Bad Request";
