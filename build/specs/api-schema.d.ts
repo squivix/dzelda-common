@@ -52,7 +52,6 @@ export interface CourseSchema {
     description: string;
     /** @format uri */
     image: string;
-    isPublic: boolean;
     language: string;
     addedBy: string;
     /** @format date-time */
@@ -60,7 +59,6 @@ export interface CourseSchema {
     lessons: LessonSchema[];
     vocabsByLevel?: VocabsByLevelSchema;
     isBookmarked?: boolean;
-    level?: LanguageLevelSchema;
 }
 export interface LessonSchema {
     id: number;
@@ -79,6 +77,9 @@ export interface LessonSchema {
     vocabsByLevel?: VocabsByLevelSchema;
     parsedTitle: string | null;
     parsedText: string | null;
+    isPublic: boolean;
+    addedBy: string;
+    language: string;
 }
 export interface VocabSchema {
     id: number;

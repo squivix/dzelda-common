@@ -3017,9 +3017,6 @@
             "type": "string",
             "format": "uri"
           },
-          "isPublic": {
-            "type": "boolean"
-          },
           "language": {
             "type": "string"
           },
@@ -3041,9 +3038,6 @@
           },
           "isBookmarked": {
             "type": "boolean"
-          },
-          "level": {
-            "$ref": "#/components/schemas/LanguageLevel"
           }
         },
         "required": [
@@ -3051,7 +3045,6 @@
           "title",
           "description",
           "image",
-          "isPublic",
           "language",
           "addedBy",
           "addedOn",
@@ -3111,6 +3104,15 @@
               "string",
               "null"
             ]
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "addedBy": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
           }
         },
         "required": [
@@ -3125,7 +3127,10 @@
           "addedOn",
           "learnersCount",
           "parsedTitle",
-          "parsedText"
+          "parsedText",
+          "isPublic",
+          "addedBy",
+          "language"
         ]
       },
       "Vocab": {
