@@ -2309,6 +2309,8 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         text: string;
         languageCode: string;
         courseId?: number | null;
+        isPublic?: boolean;
+        level?: LanguageLevelSchema;
         /** @format uri */
         image?: string;
         /** @format uri */

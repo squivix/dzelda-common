@@ -956,6 +956,18 @@
                       "null"
                     ]
                   },
+                  "isPublic": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "5p6xks3m4p6vi"
+                    }
+                  },
+                  "level": {
+                    "$ref": "#/components/schemas/LanguageLevel",
+                    "x-stoplight": {
+                      "id": "96yjpr3ju95f1"
+                    }
+                  },
                   "image": {
                     "type": "string",
                     "format": "uri"
