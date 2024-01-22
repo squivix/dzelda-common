@@ -95,6 +95,7 @@ export interface LessonSchema {
   isPublic: boolean;
   addedBy: string;
   language: string;
+  level?: LanguageLevelSchema;
 }
 
 export interface VocabSchema {

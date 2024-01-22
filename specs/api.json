@@ -3170,6 +3170,12 @@
           },
           "language": {
             "type": "string"
+          },
+          "level": {
+            "$ref": "#/components/schemas/LanguageLevel",
+            "x-stoplight": {
+              "id": "5aub6402pomvv"
+            }
           }
         },
         "required": [
@@ -3186,7 +3192,8 @@
           "isPublic",
           "addedBy",
           "language"
-        ]
+        ],
+        "title": ""
       },
       "Vocab": {
         "type": "object",
