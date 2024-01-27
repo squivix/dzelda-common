@@ -10,10 +10,10 @@ export const parsers: { [languageCode: string]: WordParser } = {
     "de": latinParser,
     "it": latinParser,
     "nl": latinParser,
-    "se": latinParser,
-    "no": latinParser,
-    "dk": latinParser,
-    "pt": latinParser,
+    "sv": latinParser,
+    "nb": latinParser,
+    "da": latinParser,
+    "pt": latinParser
 };
 
 export function getParser(languageCode: string) {
