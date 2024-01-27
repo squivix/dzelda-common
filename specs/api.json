@@ -3314,7 +3314,10 @@
           "name": {
             "type": "string"
           },
-          "link": {
+          "lookupLink": {
+            "type": "string"
+          },
+          "dictionaryLink": {
             "type": "string"
           },
           "language": {
@@ -3324,7 +3327,8 @@
         "required": [
           "id",
           "name",
-          "link",
+          "lookupLink",
+          "dictionaryLink",
           "language"
         ]
       },
