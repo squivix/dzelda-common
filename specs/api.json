@@ -3361,18 +3361,28 @@
           "name": {
             "type": "string"
           },
-          "link": {
-            "type": "string"
+          "lookupLink": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "3mhybrdbj60um"
+            }
           },
           "language": {
             "type": "string"
+          },
+          "dictionaryLink": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "z787dsliu1c0t"
+            }
           }
         },
         "required": [
           "id",
           "name",
-          "link",
-          "language"
+          "lookupLink",
+          "language",
+          "dictionaryLink"
         ]
       },
       "LearnerVocab": {

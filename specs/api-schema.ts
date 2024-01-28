@@ -124,8 +124,9 @@ export interface MeaningSchema {
 export interface DictionarySchema {
   id: number;
   name: string;
-  link: string;
+  lookupLink: string;
   language: string;
+  dictionaryLink: string;
 }
 
 /** LearnerVocab */
