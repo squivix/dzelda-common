@@ -2896,6 +2896,53 @@
         }
       },
       "parameters": []
+    },
+    "/users/me/languages/:languageCode/dictionaries/": {
+      "put": {
+        "summary": "Update user language dictionaries",
+        "operationId": "put-users-me-languages-:languageCode-dictionaries",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthenticated"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dictionaryIds": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "rsdbcnorm0cxv"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "cv8g6ec57jcta"
+                      },
+                      "type": "integer"
+                    }
+                  }
+                },
+                "required": [
+                  "dictionaryIds"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3314,10 +3361,7 @@
           "name": {
             "type": "string"
           },
-          "lookupLink": {
-            "type": "string"
-          },
-          "dictionaryLink": {
+          "link": {
             "type": "string"
           },
           "language": {
@@ -3327,8 +3371,7 @@
         "required": [
           "id",
           "name",
-          "lookupLink",
-          "dictionaryLink",
+          "link",
           "language"
         ]
       },

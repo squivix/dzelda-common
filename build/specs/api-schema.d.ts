@@ -106,8 +106,7 @@ export interface MeaningSchema {
 export interface DictionarySchema {
     id: number;
     name: string;
-    lookupLink: string;
-    dictionaryLink: string;
+    link: string;
     language: string;
 }
 /** LearnerVocab */
@@ -1182,6 +1181,33 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         } | {
             code: 404;
             status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
+        /**
+         * No description
+         *
+         * @name PutUsersMeLanguagesLanguageCodeDictionaries
+         * @summary Update user language dictionaries
+         * @request PUT:/users/me/languages/:languageCode/dictionaries/
+         * @secure
+         */
+        putUsersMeLanguagesLanguageCodeDictionaries: (languageCode: string, data: {
+            dictionaryIds: number[];
+        }, params?: RequestParams) => Promise<HttpResponse<void, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+        } | {
+            code: 403;
+            status: string;
             message: string;
             details: string;
         }>>;

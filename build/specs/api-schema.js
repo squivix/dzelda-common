@@ -444,6 +444,15 @@ export class ApiClient extends HttpClient {
              * @secure
              */
             getUsersUsernameVocabsSavedCountTimeSeries: (username, query, params = {}) => this.request(Object.assign({ path: `/users/${username}/vocabs/saved/count/time-series/`, method: "GET", query: query, secure: true, format: "json" }, params)),
+            /**
+             * No description
+             *
+             * @name PutUsersMeLanguagesLanguageCodeDictionaries
+             * @summary Update user language dictionaries
+             * @request PUT:/users/me/languages/:languageCode/dictionaries/
+             * @secure
+             */
+            putUsersMeLanguagesLanguageCodeDictionaries: (languageCode, data, params = {}) => this.request(Object.assign({ path: `/users/me/languages/${languageCode}/dictionaries/`, method: "PUT", body: data, secure: true, type: ContentType.Json }, params)),
         };
         this.sessions = {
             /**

@@ -124,8 +124,7 @@ export interface MeaningSchema {
 export interface DictionarySchema {
   id: number;
   name: string;
-  lookupLink: string;
-  dictionaryLink: string;
+  link: string;
   language: string;
 }
 
@@ -1823,6 +1822,51 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         query: query,
         secure: true,
         format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name PutUsersMeLanguagesLanguageCodeDictionaries
+     * @summary Update user language dictionaries
+     * @request PUT:/users/me/languages/:languageCode/dictionaries/
+     * @secure
+     */
+    putUsersMeLanguagesLanguageCodeDictionaries: (
+      languageCode: string,
+      data: {
+        dictionaryIds: number[];
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        void,
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/users/me/languages/${languageCode}/dictionaries/`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
         ...params,
       }),
   };
