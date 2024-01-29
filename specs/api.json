@@ -3332,6 +3332,33 @@
           "addedOn": {
             "type": "string",
             "format": "date-time"
+          },
+          "attributionText": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "x-stoplight": {
+              "id": "yd094d36h4ppq"
+            }
+          },
+          "attributionUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "x-stoplight": {
+              "id": "btn7t3255s7zc"
+            }
+          },
+          "attributionLogo": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "x-stoplight": {
+              "id": "xjsrucnyhcbe1"
+            }
           }
         },
         "required": [
@@ -3341,7 +3368,9 @@
           "learnersCount",
           "addedBy",
           "language",
-          "addedOn"
+          "addedOn",
+          "attributionText",
+          "attributionUrl"
         ]
       },
       "Dictionary": {
