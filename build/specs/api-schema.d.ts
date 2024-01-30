@@ -151,6 +151,7 @@ export interface LearnerLanguageSchema {
     /** @format date-time */
     lastOpened: string;
     color: string | null;
+    preferredTtsVoice: null | TTSVoiceSchema;
 }
 /** VocabLevel */
 export declare enum VocabLevelSchema {

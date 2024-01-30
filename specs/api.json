@@ -3560,6 +3560,27 @@
               "string",
               "null"
             ]
+          },
+          "preferredTtsVoice": {
+            "x-stoplight": {
+              "id": "0v6c01vi8feio"
+            },
+            "anyOf": [
+              {
+                "x-stoplight": {
+                  "id": "7b0qvfdipjzwp"
+                },
+                "type": [
+                  "null"
+                ]
+              },
+              {
+                "$ref": "#/components/schemas/TTSVoice",
+                "x-stoplight": {
+                  "id": "kagrhvf1t3wpk"
+                }
+              }
+            ]
           }
         },
         "required": [
@@ -3575,7 +3596,8 @@
           "learnersCount",
           "startedLearningOn",
           "lastOpened",
-          "color"
+          "color",
+          "preferredTtsVoice"
         ]
       },
       "VocabLevel": {
