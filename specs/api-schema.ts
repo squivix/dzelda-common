@@ -141,7 +141,7 @@ export interface LearnerVocabSchema {
   language: string;
   meanings: MeaningSchema[];
   learnerMeanings: MeaningSchema[];
-  ttsPronunciation?: null;
+  ttsPronunciation?: null | TTSPronunciationSchema;
 }
 
 /** LearnerLanguage */
@@ -229,13 +229,24 @@ export interface LessonHistoryEntrySchema {
   pastViewer: string;
 }
 
-/** TTSPronunciatiom */
+/** TTSPronunciation */
 export interface TTSPronunciationSchema {
-  id: number;
+  id: string;
   url: string;
-  addedOn: string;
-  voice: string;
-  vocab?: string;
+  /** @format date-time */
+  addedOn?: string;
+  voice?: TTSVoiceSchema;
+  vocab?: VocabSchema;
+}
+
+/** TTSVoice */
+export interface TTSVoiceSchema {
+  id: number;
+  code: string;
+  name: string;
+  provider: string;
+  accent: string;
+  language: string;
 }
 
 export type QueryParamsType = Record<string | number, any>;
