@@ -3444,6 +3444,27 @@
             "items": {
               "$ref": "#/components/schemas/Meaning"
             }
+          },
+          "ttsPronunciation": {
+            "x-stoplight": {
+              "id": "mljcd7kjl8ha7"
+            },
+            "anyOf": [
+              {
+                "x-stoplight": {
+                  "id": "flm1xzi1nsjxe"
+                },
+                "type": [
+                  "null"
+                ]
+              },
+              {
+                "$ref": "#/components/schemas/TTSPronunciatiom",
+                "x-stoplight": {
+                  "id": "wfmp6un1hhlt1"
+                }
+              }
+            ]
           }
         },
         "required": [
@@ -3733,6 +3754,48 @@
           "parsedText",
           "timeViewed",
           "pastViewer"
+        ]
+      },
+      "TTSPronunciatiom": {
+        "title": "TTSPronunciatiom",
+        "x-stoplight": {
+          "id": "jczbt8ur0ef6t"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "p4xxqrr07v1bg"
+            }
+          },
+          "addedOn": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "elm3mzktnekas"
+            }
+          },
+          "voice": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "zmwp9bn0xlx5r"
+            }
+          },
+          "vocab": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "1m4pte5fh0wa1"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "addedOn",
+          "voice"
         ]
       }
     },
