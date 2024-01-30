@@ -122,7 +122,7 @@ export interface LearnerVocabSchema {
     language: string;
     meanings: MeaningSchema[];
     learnerMeanings: MeaningSchema[];
-    ttsPronunciation?: null | TTSPronunciatiomSchema;
+    ttsPronunciation?: null;
 }
 /** LearnerLanguage */
 export interface LearnerLanguageSchema {
@@ -205,7 +205,7 @@ export interface LessonHistoryEntrySchema {
     pastViewer: string;
 }
 /** TTSPronunciatiom */
-export interface TTSPronunciatiomSchema {
+export interface TTSPronunciationSchema {
     id: number;
     url: string;
     addedOn: string;

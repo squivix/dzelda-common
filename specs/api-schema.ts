@@ -141,7 +141,7 @@ export interface LearnerVocabSchema {
   language: string;
   meanings: MeaningSchema[];
   learnerMeanings: MeaningSchema[];
-  ttsPronunciation?: null | TTSPronunciatiomSchema;
+  ttsPronunciation?: null;
 }
 
 /** LearnerLanguage */
@@ -230,7 +230,7 @@ export interface LessonHistoryEntrySchema {
 }
 
 /** TTSPronunciatiom */
-export interface TTSPronunciatiomSchema {
+export interface TTSPronunciationSchema {
   id: number;
   url: string;
   addedOn: string;
