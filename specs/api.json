@@ -3445,26 +3445,17 @@
               "$ref": "#/components/schemas/Meaning"
             }
           },
-          "ttsPronunciation": {
+          "ttsPronunciations": {
             "x-stoplight": {
-              "id": "jfqhnswt2wm7q"
+              "id": "47va0auz6h8e9"
             },
-            "anyOf": [
-              {
-                "x-stoplight": {
-                  "id": "6rh24z7wtbnr2"
-                },
-                "type": [
-                  "null"
-                ]
-              },
-              {
-                "$ref": "#/components/schemas/TTSPronunciation",
-                "x-stoplight": {
-                  "id": "hocv72r0k0bzh"
-                }
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TTSPronunciation",
+              "x-stoplight": {
+                "id": "az7og1pjb5ps6"
               }
-            ]
+            }
           }
         },
         "required": [
@@ -3475,7 +3466,8 @@
           "notes",
           "language",
           "meanings",
-          "learnerMeanings"
+          "learnerMeanings",
+          "ttsPronunciations"
         ]
       },
       "LearnerLanguage": {

@@ -141,7 +141,7 @@ export interface LearnerVocabSchema {
   language: string;
   meanings: MeaningSchema[];
   learnerMeanings: MeaningSchema[];
-  ttsPronunciation?: null | TTSPronunciationSchema;
+  ttsPronunciations: TTSPronunciationSchema[];
 }
 
 /** LearnerLanguage */
