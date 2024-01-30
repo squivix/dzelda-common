@@ -3820,6 +3820,12 @@
               "id": "ikht1ij5cipk0"
             }
           },
+          "gender": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "toeeymo9hslrq"
+            }
+          },
           "provider": {
             "type": "string",
             "x-stoplight": {
@@ -3843,6 +3849,7 @@
           "id",
           "code",
           "name",
+          "gender",
           "provider",
           "accent",
           "language"

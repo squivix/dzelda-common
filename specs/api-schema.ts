@@ -244,6 +244,7 @@ export interface TTSVoiceSchema {
   id: number;
   code: string;
   name: string;
+  gender: string;
   provider: string;
   accent: string;
   language: string;
