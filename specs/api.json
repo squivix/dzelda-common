@@ -3333,22 +3333,13 @@
             "type": "string",
             "format": "date-time"
           },
-          "attributionText": {
+          "attributionMarkdownText": {
             "type": [
               "string",
               "null"
             ],
             "x-stoplight": {
               "id": "yd094d36h4ppq"
-            }
-          },
-          "attributionUrl": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "x-stoplight": {
-              "id": "btn7t3255s7zc"
             }
           },
           "attributionLogo": {
@@ -3369,8 +3360,8 @@
           "addedBy",
           "language",
           "addedOn",
-          "attributionText",
-          "attributionUrl"
+          "attributionMarkdownText",
+          "attributionLogo"
         ]
       },
       "Dictionary": {

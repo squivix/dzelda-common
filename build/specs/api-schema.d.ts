@@ -102,9 +102,8 @@ export interface MeaningSchema {
     language: string;
     /** @format date-time */
     addedOn: string;
-    attributionText: string | null;
-    attributionUrl: string | null;
-    attributionLogo?: string | null;
+    attributionMarkdownText: string | null;
+    attributionLogo: string | null;
 }
 export interface DictionarySchema {
     id: number;
