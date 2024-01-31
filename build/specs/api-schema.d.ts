@@ -238,7 +238,7 @@ export interface HumanPronunciationSchema {
     /** @format uri */
     attributionLogo: string | null;
     attributionMarkdownText: string;
-    ""?: VocabSchema;
+    vocab?: VocabSchema;
 }
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;

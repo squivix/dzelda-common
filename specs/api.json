@@ -3897,6 +3897,7 @@
           "id": "ndwlduqajifw4"
         },
         "type": "object",
+        "examples": [],
         "properties": {
           "id": {
             "type": "integer"
@@ -3939,7 +3940,7 @@
               "id": "5fa6xql6rbyw4"
             }
           },
-          "": {
+          "vocab": {
             "$ref": "#/components/schemas/Vocab",
             "x-stoplight": {
               "id": "m84w972ecbkqd"
