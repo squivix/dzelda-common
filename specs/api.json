@@ -3857,6 +3857,12 @@
             "x-stoplight": {
               "id": "t4p6mypc707dl"
             }
+          },
+          "isDefault": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "jqcdjz8befefw"
+            }
           }
         },
         "required": [
@@ -3866,7 +3872,8 @@
           "gender",
           "provider",
           "accent",
-          "language"
+          "language",
+          "isDefault"
         ]
       }
     },

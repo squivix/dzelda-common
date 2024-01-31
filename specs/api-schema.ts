@@ -249,6 +249,7 @@ export interface TTSVoiceSchema {
   provider: string;
   accent: string;
   language: string;
+  isDefault: boolean;
 }
 
 export type QueryParamsType = Record<string | number, any>;
