@@ -120,6 +120,7 @@ export interface MeaningSchema {
   /** @format date-time */
   addedOn: string;
   attributionMarkdownText: string | null;
+  /** @format uri */
   attributionLogo: string | null;
 }
 
@@ -142,6 +143,7 @@ export interface LearnerVocabSchema {
   meanings: MeaningSchema[];
   learnerMeanings: MeaningSchema[];
   ttsPronunciations: TTSPronunciationSchema[];
+  humanPronunciations: HumanPronunciationSchema[];
 }
 
 /** LearnerLanguage */
@@ -233,6 +235,7 @@ export interface LessonHistoryEntrySchema {
 /** TTSPronunciation */
 export interface TTSPronunciationSchema {
   id: number;
+  /** @format uri */
   url: string;
   /** @format date-time */
   addedOn: string;
@@ -250,6 +253,19 @@ export interface TTSVoiceSchema {
   accent: string;
   language: string;
   isDefault: boolean;
+}
+
+/** HumanPronunciation */
+export interface HumanPronunciationSchema {
+  id: number;
+  /** @format uri */
+  url: string;
+  accent: string | null;
+  source: string;
+  /** @format uri */
+  attributionLogo: string | null;
+  attributionMarkdownText: string;
+  ""?: VocabSchema;
 }
 
 export type QueryParamsType = Record<string | number, any>;

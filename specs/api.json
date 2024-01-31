@@ -3349,7 +3349,8 @@
             ],
             "x-stoplight": {
               "id": "f3w6wpngy3jv3"
-            }
+            },
+            "format": "uri"
           }
         },
         "required": [
@@ -3456,6 +3457,18 @@
                 "id": "az7og1pjb5ps6"
               }
             }
+          },
+          "humanPronunciations": {
+            "x-stoplight": {
+              "id": "6vyo09t67o0kr"
+            },
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HumanPronunciation",
+              "x-stoplight": {
+                "id": "rhv8s57wf419d"
+              }
+            }
           }
         },
         "required": [
@@ -3467,7 +3480,8 @@
           "language",
           "meanings",
           "learnerMeanings",
-          "ttsPronunciations"
+          "ttsPronunciations",
+          "humanPronunciations"
         ]
       },
       "LearnerLanguage": {
@@ -3784,7 +3798,8 @@
             "type": "string",
             "x-stoplight": {
               "id": "aomijbouwx402"
-            }
+            },
+            "format": "uri"
           },
           "addedOn": {
             "type": "string",
@@ -3874,6 +3889,70 @@
           "accent",
           "language",
           "isDefault"
+        ]
+      },
+      "HumanPronunciation": {
+        "title": "HumanPronunciation",
+        "x-stoplight": {
+          "id": "ndwlduqajifw4"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "izudv0i2l2bzx"
+            },
+            "format": "uri"
+          },
+          "accent": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "x-stoplight": {
+              "id": "zh91uqu4c68pj"
+            }
+          },
+          "source": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "semugwwymvy7l"
+            }
+          },
+          "attributionLogo": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "x-stoplight": {
+              "id": "269ixkyju2lg9"
+            },
+            "format": "uri"
+          },
+          "attributionMarkdownText": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "5fa6xql6rbyw4"
+            }
+          },
+          "": {
+            "$ref": "#/components/schemas/Vocab",
+            "x-stoplight": {
+              "id": "m84w972ecbkqd"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "accent",
+          "source",
+          "attributionLogo",
+          "attributionMarkdownText"
         ]
       }
     },
