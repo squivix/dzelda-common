@@ -3953,6 +3953,12 @@
               "id": "schsh3nz0pxrd"
             }
           },
+          "language": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "rbbtceohkhe90"
+            }
+          },
           "attributionLogo": {
             "type": [
               "string",
@@ -3976,6 +3982,7 @@
           "text",
           "accent",
           "source",
+          "language",
           "attributionLogo",
           "attributionMarkdownText"
         ]

@@ -262,6 +262,7 @@ export interface HumanPronunciationSchema {
   text: string;
   accent: string | null;
   source: string;
+  language: string;
   /** @format uri */
   attributionLogo: string | null;
   attributionMarkdownText: string;
