@@ -124,7 +124,6 @@ export interface LearnerVocabSchema {
     meanings: MeaningSchema[];
     learnerMeanings: MeaningSchema[];
     ttsPronunciations: TTSPronunciationSchema[];
-    humanPronunciations: HumanPronunciationSchema[];
 }
 /** LearnerLanguage */
 export interface LearnerLanguageSchema {
@@ -233,12 +232,12 @@ export interface HumanPronunciationSchema {
     id: number;
     /** @format uri */
     url: string;
+    text: string;
     accent: string | null;
     source: string;
     /** @format uri */
     attributionLogo: string | null;
     attributionMarkdownText: string;
-    vocab?: VocabSchema;
 }
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
@@ -1816,6 +1815,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
             fields?: object | undefined;
         }>>;
+        /**
+         * No description
+         *
+         * @name GetVocabsVocabIdHumanPronunciations
+         * @summary Get Vocab Human Pronunciations
+         * @request GET:/vocabs/{vocabId}/human-pronunciations/
+         * @secure
+         */
+        getVocabsVocabIdHumanPronunciations: (vocabId: string, params?: RequestParams) => Promise<HttpResponse<HumanPronunciationSchema[], any>>;
     };
     meanings: {
         /**
