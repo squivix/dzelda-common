@@ -2972,7 +2972,7 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "integer"
           },
           "name": "vocabId",
           "in": "path",

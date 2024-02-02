@@ -2735,7 +2735,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      * @request GET:/vocabs/{vocabId}/human-pronunciations/
      * @secure
      */
-    getVocabsVocabIdHumanPronunciations: (vocabId: string, params: RequestParams = {}) =>
+    getVocabsVocabIdHumanPronunciations: (vocabId: number, params: RequestParams = {}) =>
       this.request<HumanPronunciationSchema[], any>({
         path: `/vocabs/${vocabId}/human-pronunciations/`,
         method: "GET",

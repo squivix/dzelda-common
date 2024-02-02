@@ -1824,7 +1824,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @request GET:/vocabs/{vocabId}/human-pronunciations/
          * @secure
          */
-        getVocabsVocabIdHumanPronunciations: (vocabId: string, params?: RequestParams) => Promise<HttpResponse<HumanPronunciationSchema[], any>>;
+        getVocabsVocabIdHumanPronunciations: (vocabId: number, params?: RequestParams) => Promise<HttpResponse<HumanPronunciationSchema[], any>>;
     };
     meanings: {
         /**
