@@ -1363,6 +1363,13 @@
             },
             "in": "query",
             "name": "languageCode"
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "isPronunciation"
           }
         ]
       }
@@ -2495,6 +2502,13 @@
             },
             "in": "query",
             "name": "languageCode"
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "isPronunciation"
           }
         ]
       }
@@ -3502,6 +3516,12 @@
             "x-stoplight": {
               "id": "z9t6ncndn4ezb"
             }
+          },
+          "isPronunciation": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "szufctdlkcn1i"
+            }
           }
         },
         "required": [
@@ -3509,7 +3529,8 @@
           "name",
           "lookupLink",
           "language",
-          "dictionaryLink"
+          "dictionaryLink",
+          "isPronunciation"
         ]
       },
       "LearnerVocab": {

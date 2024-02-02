@@ -112,6 +112,7 @@ export interface DictionarySchema {
     lookupLink: string;
     language: string;
     dictionaryLink: string;
+    isPronunciation: boolean;
 }
 /** LearnerVocab */
 export interface LearnerVocabSchema {
@@ -1124,6 +1125,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          */
         getUsersMeDictionaries: (query?: {
             languageCode?: string;
+            isPronunciation?: boolean;
         }, params?: RequestParams) => Promise<HttpResponse<DictionarySchema[], {
             code: 400;
             status: "Bad Request";
@@ -1864,6 +1866,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          */
         getDictionaries: (query?: {
             languageCode?: string;
+            isPronunciation?: boolean;
         }, params?: RequestParams) => Promise<HttpResponse<DictionarySchema[], any>>;
     };
     passwordResetTokens: {

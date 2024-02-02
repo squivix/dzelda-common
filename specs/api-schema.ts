@@ -130,6 +130,7 @@ export interface DictionarySchema {
   lookupLink: string;
   language: string;
   dictionaryLink: string;
+  isPronunciation: boolean;
 }
 
 /** LearnerVocab */
@@ -1715,6 +1716,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     getUsersMeDictionaries: (
       query?: {
         languageCode?: string;
+        isPronunciation?: boolean;
       },
       params: RequestParams = {},
     ) =>
@@ -2800,6 +2802,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     getDictionaries: (
       query?: {
         languageCode?: string;
+        isPronunciation?: boolean;
       },
       params: RequestParams = {},
     ) =>
