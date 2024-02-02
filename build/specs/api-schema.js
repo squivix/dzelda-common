@@ -699,6 +699,17 @@ export class ApiClient extends HttpClient {
              */
             postFileUploadRequest: (data, params = {}) => this.request(Object.assign({ path: `/file-upload-requests/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
         };
+        this.humanPronunciations = {
+            /**
+             * No description
+             *
+             * @name GetHumanPronunciations
+             * @summary Get human pronunciations
+             * @request GET:/human-pronunciations/
+             * @secure
+             */
+            getHumanPronunciations: (query, params = {}) => this.request(Object.assign({ path: `/human-pronunciations/`, method: "GET", query: query, secure: true, format: "json" }, params)),
+        };
     }
 }
 //# sourceMappingURL=api-schema.js.map

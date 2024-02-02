@@ -2950,4 +2950,37 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         ...params,
       }),
   };
+  humanPronunciations = {
+    /**
+     * No description
+     *
+     * @name GetHumanPronunciations
+     * @summary Get human pronunciations
+     * @request GET:/human-pronunciations/
+     * @secure
+     */
+    getHumanPronunciations: (
+      query?: {
+        languageCode?: string;
+        text?: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        {
+          page: number;
+          pageSize: number;
+          pageCount: number;
+          data: HumanPronunciationSchema[];
+        },
+        any
+      >({
+        path: `/human-pronunciations/`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+  };
 }

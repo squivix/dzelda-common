@@ -1948,5 +1948,24 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             objectKey: string;
         }, any>>;
     };
+    humanPronunciations: {
+        /**
+         * No description
+         *
+         * @name GetHumanPronunciations
+         * @summary Get human pronunciations
+         * @request GET:/human-pronunciations/
+         * @secure
+         */
+        getHumanPronunciations: (query?: {
+            languageCode?: string;
+            text?: string;
+        }, params?: RequestParams) => Promise<HttpResponse<{
+            page: number;
+            pageSize: number;
+            pageCount: number;
+            data: HumanPronunciationSchema[];
+        }, any>>;
+    };
 }
 export {};

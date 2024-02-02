@@ -523,7 +523,8 @@
                     "pageCount",
                     "data"
                   ]
-                }
+                },
+                "examples": {}
               }
             }
           },
@@ -2979,6 +2980,75 @@
           "required": true
         }
       ]
+    },
+    "/human-pronunciations/": {
+      "get": {
+        "summary": "Get human pronunciations",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "page": 1,
+                      "pageSize": 1,
+                      "pageCount": 0,
+                      "data": [
+                        {}
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "type": "integer"
+                    },
+                    "pageCount": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/HumanPronunciation"
+                      }
+                    }
+                  },
+                  "required": [
+                    "page",
+                    "pageSize",
+                    "pageCount",
+                    "data"
+                  ]
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "operationId": "get-human-pronunciations",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "languageCode"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "text"
+          }
+        ]
+      }
     }
   },
   "components": {
