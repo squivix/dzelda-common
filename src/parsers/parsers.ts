@@ -1,8 +1,9 @@
 import {SpaceBasedWordParser} from "@/src/parsers/SpaceBasedWordParser.js";
 import {WordParser} from "@/src/parsers/WordParser.js";
 
-//All letters from: Basic Latin+Latin-1 Supplement, plus hyphen and apostrophe
-const latinParser = new SpaceBasedWordParser(`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ'-`);
+//All letters from: Basic Latin+Latin-1 Supplement+Latin Extended-A, plus hyphen and apostrophe
+const latinParser = new SpaceBasedWordParser(`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇāăąćĉċčďđēĕėęěĝğġģĥħĩīĭįıĳĵķĺļľŀłńņňĸ'-`);
+
 export const parsers: { [languageCode: string]: WordParser } = {
     "en": latinParser,
     "es": latinParser,
