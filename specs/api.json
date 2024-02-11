@@ -4029,7 +4029,7 @@
               "id": "obshzp5l7nl6j"
             }
           },
-          "accent": {
+          "speakerCountryCode": {
             "type": [
               "string",
               "null"
@@ -4038,10 +4038,13 @@
               "id": "1ikw0lvsc5g1r"
             }
           },
-          "source": {
-            "type": "string",
+          "speakerRegion": {
+            "type": [
+              "string",
+              "null"
+            ],
             "x-stoplight": {
-              "id": "schsh3nz0pxrd"
+              "id": "9geghxz856rum"
             }
           },
           "language": {
@@ -4050,20 +4053,87 @@
               "id": "rbbtceohkhe90"
             }
           },
-          "attributionLogo": {
+          "attribution": {
             "type": [
-              "string",
+              "object",
               "null"
             ],
             "x-stoplight": {
-              "id": "bsciagq3fapea"
+              "id": "ib7v7yw8qze32"
             },
-            "format": "uri"
-          },
-          "attributionMarkdownText": {
-            "type": "string",
-            "x-stoplight": {
-              "id": "t2fcho82yfv6r"
+            "required": [
+              "sourceRootName",
+              "licenseShortName",
+              "licenseLongName",
+              "attributionMarkdown"
+            ],
+            "properties": {
+              "sourceRootName": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "ps7kd5pc6lghz"
+                }
+              },
+              "sourceRootUrl": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "vk9uhburgywbt"
+                }
+              },
+              "sourceRootLogoUrl": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "h3elxuhmfazz3"
+                }
+              },
+              "sourcePageTitle": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "tnkluavw1frwz"
+                }
+              },
+              "sourcePageUrl": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "wmuyio30pj7fo"
+                }
+              },
+              "authorName": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "jpuybhp9ikz7i"
+                }
+              },
+              "authorUrl": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "1qoxoso4eg7ao"
+                }
+              },
+              "licenseShortName": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "mw2q8aa2fr49e"
+                }
+              },
+              "licenseLongName": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "sug9y1nn8xvs0"
+                }
+              },
+              "licenseUrl": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "wrg618l9jxx8z"
+                }
+              },
+              "attributionMarkdown": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "flj7m2427eu7s"
+                }
+              }
             }
           }
         },
@@ -4071,11 +4141,10 @@
           "id",
           "url",
           "text",
-          "accent",
-          "source",
+          "speakerCountryCode",
+          "speakerRegion",
           "language",
-          "attributionLogo",
-          "attributionMarkdownText"
+          "attribution"
         ]
       }
     },

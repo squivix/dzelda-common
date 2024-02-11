@@ -261,12 +261,22 @@ export interface HumanPronunciationSchema {
   /** @format uri */
   url: string;
   text: string;
-  accent: string | null;
-  source: string;
+  speakerCountryCode: string | null;
+  speakerRegion: string | null;
   language: string;
-  /** @format uri */
-  attributionLogo: string | null;
-  attributionMarkdownText: string;
+  attribution: {
+    sourceRootName: string;
+    sourceRootUrl?: string;
+    sourceRootLogoUrl?: string;
+    sourcePageTitle?: string;
+    sourcePageUrl?: string;
+    authorName?: string;
+    authorUrl?: string;
+    licenseShortName: string;
+    licenseLongName: string;
+    licenseUrl?: string;
+    attributionMarkdown: string;
+  };
 }
 
 export type QueryParamsType = Record<string | number, any>;
