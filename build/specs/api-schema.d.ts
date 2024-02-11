@@ -240,19 +240,17 @@ export interface HumanPronunciationSchema {
 }
 /** Attribution */
 export interface AttributionSchema {
-    attribution?: {
-        sourceRootName: string;
-        sourceRootUrl?: string;
-        sourceRootLogoUrl?: string;
-        sourcePageTitle?: string;
-        sourcePageUrl?: string;
-        authorName?: string;
-        authorUrl?: string;
-        licenseShortName: string;
-        licenseLongName: string;
-        licenseUrl?: string;
-        attributionMarkdown: string;
-    };
+    sourceRootName: string;
+    sourceRootUrl?: string;
+    sourceRootLogoUrl?: string;
+    sourcePageTitle?: string;
+    sourcePageUrl?: string;
+    authorName?: string;
+    authorUrl?: string;
+    licenseShortName: string;
+    licenseLongName: string;
+    licenseUrl?: string;
+    attributionMarkdown: string;
 }
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
