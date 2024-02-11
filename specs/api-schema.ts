@@ -119,9 +119,7 @@ export interface MeaningSchema {
   language: string;
   /** @format date-time */
   addedOn: string;
-  attributionMarkdownText: string | null;
-  /** @format uri */
-  attributionLogo: string | null;
+  attribution?: null | AttributionSchema;
 }
 
 export interface DictionarySchema {
@@ -265,7 +263,12 @@ export interface HumanPronunciationSchema {
   speakerCountryCode: string | null;
   speakerRegion: string | null;
   language: string;
-  attribution: {
+  attribution?: null | AttributionSchema;
+}
+
+/** Attribution */
+export interface AttributionSchema {
+  attribution?: {
     sourceRootName: string;
     sourceRootUrl?: string;
     sourceRootLogoUrl?: string;
