@@ -261,6 +261,7 @@ export interface HumanPronunciationSchema {
   /** @format uri */
   url: string;
   text: string;
+  parsedText: string;
   speakerCountryCode: string | null;
   speakerRegion: string | null;
   language: string;

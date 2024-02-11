@@ -4029,6 +4029,12 @@
               "id": "obshzp5l7nl6j"
             }
           },
+          "parsedText": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "xv3nr10wzsu7p"
+            }
+          },
           "speakerCountryCode": {
             "type": [
               "string",
@@ -4141,6 +4147,7 @@
           "id",
           "url",
           "text",
+          "parsedText",
           "speakerCountryCode",
           "speakerRegion",
           "language",
