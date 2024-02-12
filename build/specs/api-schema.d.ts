@@ -102,7 +102,7 @@ export interface MeaningSchema {
     language: string;
     /** @format date-time */
     addedOn: string;
-    attribution?: null | AttributionSchema;
+    attribution: null | AttributionSchema;
 }
 export interface DictionarySchema {
     id: number;
@@ -236,7 +236,7 @@ export interface HumanPronunciationSchema {
     speakerCountryCode: string | null;
     speakerRegion: string | null;
     language: string;
-    attribution?: null | AttributionSchema;
+    attribution: null | AttributionSchema;
 }
 /** Attribution */
 export interface AttributionSchema {

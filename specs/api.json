@@ -3482,7 +3482,8 @@
           "learnersCount",
           "addedBy",
           "language",
-          "addedOn"
+          "addedOn",
+          "attribution"
         ]
       },
       "Dictionary": {
@@ -4088,7 +4089,8 @@
           "parsedText",
           "speakerCountryCode",
           "speakerRegion",
-          "language"
+          "language",
+          "attribution"
         ]
       },
       "Attribution": {
