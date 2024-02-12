@@ -222,7 +222,7 @@ export interface TTSVoiceSchema {
     name: string;
     gender: string;
     provider: string;
-    accent: string;
+    accentCountryCode: string;
     language: string;
     isDefault: boolean;
 }

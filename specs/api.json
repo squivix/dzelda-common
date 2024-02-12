@@ -3976,7 +3976,7 @@
               "id": "4msi2xr79f90o"
             }
           },
-          "accent": {
+          "accentCountryCode": {
             "type": "string",
             "x-stoplight": {
               "id": "0nodtgy65m90w"
@@ -4001,7 +4001,7 @@
           "name",
           "gender",
           "provider",
-          "accent",
+          "accentCountryCode",
           "language",
           "isDefault"
         ]
