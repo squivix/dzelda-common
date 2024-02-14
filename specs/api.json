@@ -3063,6 +3063,43 @@
           }
         ]
       }
+    },
+    "/tts-pronunciations/": {
+      "post": {
+        "summary": "Generate TTS Pronunciation",
+        "operationId": "post-tts-pronunciations",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "vocabId": {
+                    "type": "integer",
+                    "x-stoplight": {
+                      "id": "rcrl7nxwkajgy"
+                    }
+                  },
+                  "voiceCode": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "77yqjhz61nxq4"
+                    }
+                  }
+                },
+                "required": [
+                  "vocabId"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

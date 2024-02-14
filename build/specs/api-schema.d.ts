@@ -1981,5 +1981,19 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             data: HumanPronunciationSchema[];
         }, any>>;
     };
+    ttsPronunciations: {
+        /**
+         * No description
+         *
+         * @name PostTtsPronunciations
+         * @summary Generate TTS Pronunciation
+         * @request POST:/tts-pronunciations/
+         * @secure
+         */
+        postTtsPronunciations: (data: {
+            vocabId: number;
+            voiceCode?: string;
+        }, params?: RequestParams) => Promise<HttpResponse<void, any>>;
+    };
 }
 export {};

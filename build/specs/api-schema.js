@@ -710,6 +710,17 @@ export class ApiClient extends HttpClient {
              */
             getHumanPronunciations: (query, params = {}) => this.request(Object.assign({ path: `/human-pronunciations/`, method: "GET", query: query, secure: true, format: "json" }, params)),
         };
+        this.ttsPronunciations = {
+            /**
+             * No description
+             *
+             * @name PostTtsPronunciations
+             * @summary Generate TTS Pronunciation
+             * @request POST:/tts-pronunciations/
+             * @secure
+             */
+            postTtsPronunciations: (data, params = {}) => this.request(Object.assign({ path: `/tts-pronunciations/`, method: "POST", body: data, secure: true, type: ContentType.Json }, params)),
+        };
     }
 }
 //# sourceMappingURL=api-schema.js.map

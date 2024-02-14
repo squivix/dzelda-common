@@ -2998,4 +2998,29 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         ...params,
       }),
   };
+  ttsPronunciations = {
+    /**
+     * No description
+     *
+     * @name PostTtsPronunciations
+     * @summary Generate TTS Pronunciation
+     * @request POST:/tts-pronunciations/
+     * @secure
+     */
+    postTtsPronunciations: (
+      data: {
+        vocabId: number;
+        voiceCode?: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<void, any>({
+        path: `/tts-pronunciations/`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        ...params,
+      }),
+  };
 }
