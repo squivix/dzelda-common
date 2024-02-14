@@ -3014,12 +3014,41 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       },
       params: RequestParams = {},
     ) =>
-      this.request<void, any>({
+      this.request<
+        TTSPronunciationSchema,
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+        | void
+      >({
         path: `/tts-pronunciations/`,
         method: "POST",
         body: data,
         secure: true,
         type: ContentType.Json,
+        format: "json",
         ...params,
       }),
   };

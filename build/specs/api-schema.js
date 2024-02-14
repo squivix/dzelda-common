@@ -719,7 +719,7 @@ export class ApiClient extends HttpClient {
              * @request POST:/tts-pronunciations/
              * @secure
              */
-            postTtsPronunciations: (data, params = {}) => this.request(Object.assign({ path: `/tts-pronunciations/`, method: "POST", body: data, secure: true, type: ContentType.Json }, params)),
+            postTtsPronunciations: (data, params = {}) => this.request(Object.assign({ path: `/tts-pronunciations/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
         };
     }
 }
