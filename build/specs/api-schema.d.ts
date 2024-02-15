@@ -46,7 +46,7 @@ export interface LanguageSchema {
     learnersCount: number;
     color: string;
 }
-export interface CourseSchema {
+export interface CollectionSchema {
     id: number;
     title: string;
     description: string;
@@ -68,9 +68,9 @@ export interface LessonSchema {
     audio: string;
     /** @format uri */
     image: string;
-    course: CourseSchema | null;
-    orderInCourse?: number;
-    isLastInCourse?: boolean;
+    collection: CollectionSchema | null;
+    orderInCollection?: number;
+    isLastInCollection?: boolean;
     /** @format date-time */
     addedOn: string;
     learnersCount: number;
@@ -192,9 +192,9 @@ export interface LessonHistoryEntrySchema {
     audio: string;
     /** @format uri */
     image: string;
-    course: CourseSchema;
-    orderInCourse: number;
-    isLastInCourse: boolean;
+    collection: CollectionSchema;
+    orderInCollection: number;
+    isLastInCollection: boolean;
     /** @format date-time */
     addedOn: string;
     learnersCount: number;
@@ -661,15 +661,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Get the list of courses the user has bookmarked.
+         * @description Get the list of collections the user has bookmarked.
          *
-         * @tags course
-         * @name GetUsersMeCoursesBookmarked
-         * @summary Get User Courses Bookmarked
-         * @request GET:/users/me/courses/bookmarked/
+         * @tags collection
+         * @name GetUsersMeCollectionsBookmarked
+         * @summary Get User collections Bookmarked
+         * @request GET:/users/me/collections/bookmarked/
          * @secure
          */
-        getUsersMeCoursesBookmarked: (query?: {
+        getUsersMeCollectionsBookmarked: (query?: {
             /**
              * @minLength 2
              * @maxLength 4
@@ -700,7 +700,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             pageSize: number;
             /** @min 0 */
             pageCount: number;
-            data: CourseSchema[];
+            data: CollectionSchema[];
         }, {
             code: 400;
             status: "Bad Request";
@@ -726,15 +726,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         /**
          * No description
          *
-         * @name PostUsersMeCoursesBookmarked
-         * @summary Add Courses to User Bookmarks
-         * @request POST:/users/me/courses/bookmarked/
+         * @name PostUsersMeCollectionsBookmarked
+         * @summary Add collections to User Bookmarks
+         * @request POST:/users/me/collections/bookmarked/
          * @secure
          */
-        postUsersMeCoursesBookmarked: (data: {
+        postUsersMeCollectionsBookmarked: (data: {
             /** @min 0 */
-            courseId: number;
-        }, params?: RequestParams) => Promise<HttpResponse<CourseSchema, {
+            collectionId: number;
+        }, params?: RequestParams) => Promise<HttpResponse<CollectionSchema, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -749,12 +749,12 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         /**
          * No description
          *
-         * @name DeleteUsersMeCoursesBookmarkedCourseId
-         * @summary Remove Course from User Bookmarks
-         * @request DELETE:/users/me/courses/bookmarked/{courseId}/
+         * @name DeleteUsersMeCollectionsBookmarkedCollectionId
+         * @summary Remove collection from User Bookmarks
+         * @request DELETE:/users/me/collections/bookmarked/{collectionId}/
          * @secure
          */
-        deleteUsersMeCoursesBookmarkedCourseId: (courseId: number, params?: RequestParams) => Promise<HttpResponse<void, {
+        deleteUsersMeCollectionsBookmarkedCollectionId: (collectionId: number, params?: RequestParams) => Promise<HttpResponse<void, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1329,16 +1329,16 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             fields?: object | undefined;
         }>>;
     };
-    courses: {
+    collections: {
         /**
-         * @description Get list of courses
+         * @description Get list of collections
          *
-         * @tags course
-         * @name GetCourses
-         * @summary Get Courses
-         * @request GET:/courses/
+         * @tags collections
+         * @name GetCollections
+         * @summary Get collections
+         * @request GET:/collections/
          */
-        getCourses: (query?: {
+        getCollections: (query?: {
             /**
              * @minLength 2
              * @maxLength 4
@@ -1372,7 +1372,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             pageSize: number;
             /** @min 0 */
             pageCount: number;
-            data: CourseSchema[];
+            data: CollectionSchema[];
         }, {
             code: 400;
             status: "Bad Request";
@@ -1386,15 +1386,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Create a new course.
+         * @description Create a new collection.
          *
-         * @tags course
-         * @name PostCourses
-         * @summary Create Course
-         * @request POST:/courses/
+         * @tags collection
+         * @name PostCollections
+         * @summary Create collection
+         * @request POST:/collections/
          * @secure
          */
-        postCourses: (data: {
+        postCollections: (data: {
             languageCode: string;
             title: string;
             description?: string;
@@ -1402,7 +1402,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             level?: LanguageLevelSchema;
             /** @format uri */
             image?: string;
-        }, params?: RequestParams) => Promise<HttpResponse<CourseSchema, {
+        }, params?: RequestParams) => Promise<HttpResponse<CollectionSchema, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1415,15 +1415,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Get course details.
+         * @description Get collection details.
          *
-         * @tags course
-         * @name GetCoursesCourseId
-         * @summary Get Course
-         * @request GET:/courses/{courseId}/
+         * @tags collection
+         * @name GetCollectionsCollectionId
+         * @summary Get collection
+         * @request GET:/collections/{collectionId}/
          * @secure
          */
-        getCoursesCourseId: (courseId: number, params?: RequestParams) => Promise<HttpResponse<CourseSchema, {
+        getCollectionsCollectionId: (collectionId: number, params?: RequestParams) => Promise<HttpResponse<CollectionSchema, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1441,22 +1441,22 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Update course details.
+         * @description Update collection details.
          *
-         * @tags course
-         * @name PutCoursesCourseId
-         * @summary Update Course
-         * @request PUT:/courses/{courseId}/
+         * @tags collection
+         * @name PutCollectionsCollectionId
+         * @summary Update collection
+         * @request PUT:/collections/{collectionId}/
          * @secure
          */
-        putCoursesCourseId: (courseId: number, data: {
+        putCollectionsCollectionId: (collectionId: number, data: {
             /** @format uri */
             image?: string;
             title: string;
             description: string;
             isPublic: boolean;
             lessonsOrder: number[];
-        }, params?: RequestParams) => Promise<HttpResponse<CourseSchema, {
+        }, params?: RequestParams) => Promise<HttpResponse<CollectionSchema, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1493,12 +1493,12 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         /**
          * No description
          *
-         * @name DeleteCoursesCourseId
-         * @summary Delete Course
-         * @request DELETE:/courses/{courseId}/
+         * @name DeleteCollectionsCollectionId
+         * @summary Delete collection
+         * @request DELETE:/collections/{collectionId}/
          * @secure
          */
-        deleteCoursesCourseId: (courseId: number, params?: RequestParams) => Promise<HttpResponse<void, {
+        deleteCollectionsCollectionId: (collectionId: number, params?: RequestParams) => Promise<HttpResponse<void, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1521,14 +1521,14 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Redirects to next lesson in course or 404 if not found
+         * @description Redirects to next lesson in collection or 404 if not found
          *
-         * @name GetCoursesCourseIdLessonsLessonIdNext
-         * @summary Get Next Lesson In Course
-         * @request GET:/courses/{courseId}/lessons/{lessonId}/next/
+         * @name GetCollectionsCollectionIdLessonsLessonIdNext
+         * @summary Get Next Lesson In collection
+         * @request GET:/collections/{collectionId}/lessons/{lessonId}/next/
          * @secure
          */
-        getCoursesCourseIdLessonsLessonIdNext: (courseId: number, lessonId: number, params?: RequestParams) => Promise<HttpResponse<any, void | {
+        getCollectionsCollectionIdLessonsLessonIdNext: (collectionId: number, lessonId: number, params?: RequestParams) => Promise<HttpResponse<any, void | {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1606,7 +1606,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             title: string;
             text: string;
             languageCode: string;
-            courseId?: number | null;
+            collectionId?: number | null;
             isPublic?: boolean;
             level?: LanguageLevelSchema;
             /** @format uri */
@@ -1678,7 +1678,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             /** @format uri */
             audio?: string;
             /** @min 0 */
-            courseId: number;
+            collectionId: number;
             title: string;
             text: string;
             level?: LanguageLevelSchema;

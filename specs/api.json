@@ -28,8 +28,8 @@
       "description": "Related to the language resource."
     },
     {
-      "name": "course",
-      "description": "Related to the course resource."
+      "name": "collection",
+      "description": "Related to the collection resource."
     },
     {
       "name": "lesson",
@@ -483,15 +483,15 @@
         "security": []
       }
     },
-    "/courses/": {
+    "/collections/": {
       "get": {
-        "summary": "Get Courses",
+        "summary": "Get collections",
         "tags": [
-          "course"
+          "collections"
         ],
         "responses": {
           "200": {
-            "description": "OK\n\nReturns a list of courses that match query. If the user is logged in `vocabLevels` are appended to eaech of them to show how many vocabs of each level the course has.",
+            "description": "OK\n\nReturns a list of collections that match query. If the user is logged in `vocabLevels` are appended to eaech of them to show how many vocabs of each level the collection has.",
             "content": {
               "application/json": {
                 "schema": {
@@ -513,7 +513,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Course"
+                        "$ref": "#/components/schemas/Collection"
                       }
                     }
                   },
@@ -535,8 +535,8 @@
             "$ref": "#/components/responses/Unauthenticated"
           }
         },
-        "operationId": "get-courses",
-        "description": "Get list of courses",
+        "operationId": "get-collections",
+        "description": "Get list of collections",
         "parameters": [
           {
             "schema": {
@@ -599,15 +599,15 @@
         "security": []
       },
       "post": {
-        "summary": "Create Course",
-        "operationId": "post-courses",
+        "summary": "Create collection",
+        "operationId": "post-collections",
         "responses": {
           "201": {
-            "description": "Created\n\nA new course is created and returned.",
+            "description": "Created\n\nA new collection is created and returned.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Course",
+                  "$ref": "#/components/schemas/Collection",
                   "x-examples": {}
                 }
               }
@@ -655,35 +655,35 @@
           },
           "description": ""
         },
-        "description": "Create a new course.",
+        "description": "Create a new collection.",
         "tags": [
-          "course"
+          "collection"
         ]
       }
     },
-    "/courses/{courseId}/": {
+    "/collections/{collectionId}/": {
       "parameters": [
         {
           "schema": {
             "type": "number"
           },
-          "name": "courseId",
+          "name": "collectionId",
           "in": "path",
           "required": true
         }
       ],
       "get": {
-        "summary": "Get Course",
+        "summary": "Get collection",
         "tags": [
-          "course"
+          "collection"
         ],
         "responses": {
           "200": {
-            "description": "OK\n\nReturns the course with `courseId`.",
+            "description": "OK\n\nReturns the collection with `collectionId`.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Course"
+                  "$ref": "#/components/schemas/Collection"
                 }
               }
             }
@@ -698,19 +698,19 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "operationId": "get-courses-courseId",
-        "description": "Get course details."
+        "operationId": "get-collections-collectionId",
+        "description": "Get collection details."
       },
       "put": {
-        "summary": "Update Course",
-        "operationId": "put-courses-courseId",
+        "summary": "Update collection",
+        "operationId": "put-collections-collectionId",
         "responses": {
           "200": {
-            "description": "OK\n\nUpdates the course and returns it.",
+            "description": "OK\n\nUpdates the collection and returns it.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Course"
+                  "$ref": "#/components/schemas/Collection"
                 }
               }
             }
@@ -734,7 +734,7 @@
             "$ref": "#/components/responses/UnsupportedMediaType"
           }
         },
-        "description": "Update course details.",
+        "description": "Update collection details.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -772,12 +772,12 @@
           }
         },
         "tags": [
-          "course"
+          "collection"
         ]
       },
       "delete": {
-        "summary": "Delete Course",
-        "operationId": "delete-courses-courseId",
+        "summary": "Delete collection",
+        "operationId": "delete-collections-collectionId",
         "responses": {
           "204": {
             "description": "No Content"
@@ -951,7 +951,7 @@
                       "id": "yw2chl8z814vr"
                     }
                   },
-                  "courseId": {
+                  "collectionId": {
                     "type": [
                       "integer",
                       "null"
@@ -1074,7 +1074,7 @@
                     "type": "string",
                     "format": "uri"
                   },
-                  "courseId": {
+                  "collectionId": {
                     "type": "integer",
                     "minimum": 0
                   },
@@ -1089,7 +1089,7 @@
                   }
                 },
                 "required": [
-                  "courseId",
+                  "collectionId",
                   "title",
                   "text"
                 ]
@@ -1612,12 +1612,12 @@
         "description": ""
       }
     },
-    "/users/me/courses/bookmarked/": {
+    "/users/me/collections/bookmarked/": {
       "parameters": [],
       "get": {
-        "summary": "Get User Courses Bookmarked",
+        "summary": "Get User collections Bookmarked",
         "tags": [
-          "course"
+          "collection"
         ],
         "responses": {
           "200": {
@@ -1642,7 +1642,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Course"
+                        "$ref": "#/components/schemas/Collection"
                       }
                     }
                   },
@@ -1669,8 +1669,8 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "operationId": "get-users-me-courses-bookmarked",
-        "description": "Get the list of courses the user has bookmarked.",
+        "operationId": "get-users-me-collections-bookmarked",
+        "description": "Get the list of collections the user has bookmarked.",
         "parameters": [
           {
             "schema": {
@@ -1732,15 +1732,15 @@
         ]
       },
       "post": {
-        "summary": "Add Courses to User Bookmarks",
-        "operationId": "post-users-me-courses-bookmarked",
+        "summary": "Add collections to User Bookmarks",
+        "operationId": "post-users-me-collections-bookmarked",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Course"
+                  "$ref": "#/components/schemas/Collection"
                 }
               }
             }
@@ -1750,7 +1750,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Course"
+                  "$ref": "#/components/schemas/Collection"
                 }
               }
             }
@@ -1769,13 +1769,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "courseId": {
+                  "collectionId": {
                     "type": "integer",
                     "minimum": 0
                   }
                 },
                 "required": [
-                  "courseId"
+                  "collectionId"
                 ]
               }
             }
@@ -1783,21 +1783,21 @@
         }
       }
     },
-    "/users/me/courses/bookmarked/{courseId}/": {
+    "/users/me/collections/bookmarked/{collectionId}/": {
       "parameters": [
         {
           "schema": {
             "type": "number",
             "minimum": 0
           },
-          "name": "courseId",
+          "name": "collectionId",
           "in": "path",
           "required": true
         }
       ],
       "delete": {
-        "summary": "Remove Course from User Bookmarks",
-        "operationId": "delete-users-me-courses-bookmarked-courseId",
+        "summary": "Remove collection from User Bookmarks",
+        "operationId": "delete-users-me-collections-bookmarked-collectionId",
         "responses": {
           "204": {
             "description": "No Content"
@@ -2806,13 +2806,13 @@
         "description": "Get a count of vocabs saved by a user every `savedOnInterval` between `savedOnFrom` and `savedOnTo`, optionally grouped by language"
       }
     },
-    "/courses/{courseId}/lessons/{lessonId}/next/": {
+    "/collections/{collectionId}/lessons/{lessonId}/next/": {
       "parameters": [
         {
           "schema": {
             "type": "number"
           },
-          "name": "courseId",
+          "name": "collectionId",
           "in": "path",
           "required": true
         },
@@ -2826,7 +2826,7 @@
         }
       ],
       "get": {
-        "summary": "Get Next Lesson In Course",
+        "summary": "Get Next Lesson In collection",
         "tags": [],
         "responses": {
           "303": {
@@ -2847,8 +2847,8 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "operationId": "get-courses-courseId-lessons-lessonId-next",
-        "description": "Redirects to next lesson in course or 404 if not found",
+        "operationId": "get-collections-collectionId-lessons-lessonId-next",
+        "description": "Redirects to next lesson in collection or 404 if not found",
         "parameters": []
       }
     },
@@ -3289,7 +3289,7 @@
           "color"
         ]
       },
-      "Course": {
+      "Collection": {
         "type": "object",
         "x-examples": {},
         "properties": {
@@ -3363,10 +3363,10 @@
             "type": "string",
             "format": "uri"
           },
-          "course": {
+          "collection": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/Course",
+                "$ref": "#/components/schemas/Collection",
                 "x-stoplight": {
                   "id": "l69du4y7e8gb5"
                 }
@@ -3381,10 +3381,10 @@
               }
             ]
           },
-          "orderInCourse": {
+          "orderInCollection": {
             "type": "integer"
           },
-          "isLastInCourse": {
+          "isLastInCollection": {
             "type": "boolean"
           },
           "addedOn": {
@@ -3431,7 +3431,7 @@
           "text",
           "audio",
           "image",
-          "course",
+          "collection",
           "addedOn",
           "learnersCount",
           "parsedTitle",
@@ -3902,13 +3902,13 @@
             "type": "string",
             "format": "uri"
           },
-          "course": {
-            "$ref": "#/components/schemas/Course"
+          "collection": {
+            "$ref": "#/components/schemas/Collection"
           },
-          "orderInCourse": {
+          "orderInCollection": {
             "type": "integer"
           },
-          "isLastInCourse": {
+          "isLastInCollection": {
             "type": "boolean"
           },
           "addedOn": {
@@ -3947,9 +3947,9 @@
           "text",
           "audio",
           "image",
-          "course",
-          "orderInCourse",
-          "isLastInCourse",
+          "collection",
+          "orderInCollection",
+          "isLastInCollection",
           "addedOn",
           "learnersCount",
           "parsedTitle",

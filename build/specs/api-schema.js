@@ -291,33 +291,33 @@ export class ApiClient extends HttpClient {
              */
             deleteUsersMeLanguagesLanguageCodeProgress: (languageCode, params = {}) => this.request(Object.assign({ path: `/users/me/languages/${languageCode}/progress/`, method: "DELETE", secure: true }, params)),
             /**
-             * @description Get the list of courses the user has bookmarked.
+             * @description Get the list of collections the user has bookmarked.
              *
-             * @tags course
-             * @name GetUsersMeCoursesBookmarked
-             * @summary Get User Courses Bookmarked
-             * @request GET:/users/me/courses/bookmarked/
+             * @tags collection
+             * @name GetUsersMeCollectionsBookmarked
+             * @summary Get User collections Bookmarked
+             * @request GET:/users/me/collections/bookmarked/
              * @secure
              */
-            getUsersMeCoursesBookmarked: (query, params = {}) => this.request(Object.assign({ path: `/users/me/courses/bookmarked/`, method: "GET", query: query, secure: true, format: "json" }, params)),
+            getUsersMeCollectionsBookmarked: (query, params = {}) => this.request(Object.assign({ path: `/users/me/collections/bookmarked/`, method: "GET", query: query, secure: true, format: "json" }, params)),
             /**
              * No description
              *
-             * @name PostUsersMeCoursesBookmarked
-             * @summary Add Courses to User Bookmarks
-             * @request POST:/users/me/courses/bookmarked/
+             * @name PostUsersMeCollectionsBookmarked
+             * @summary Add collections to User Bookmarks
+             * @request POST:/users/me/collections/bookmarked/
              * @secure
              */
-            postUsersMeCoursesBookmarked: (data, params = {}) => this.request(Object.assign({ path: `/users/me/courses/bookmarked/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
+            postUsersMeCollectionsBookmarked: (data, params = {}) => this.request(Object.assign({ path: `/users/me/collections/bookmarked/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * No description
              *
-             * @name DeleteUsersMeCoursesBookmarkedCourseId
-             * @summary Remove Course from User Bookmarks
-             * @request DELETE:/users/me/courses/bookmarked/{courseId}/
+             * @name DeleteUsersMeCollectionsBookmarkedCollectionId
+             * @summary Remove collection from User Bookmarks
+             * @request DELETE:/users/me/collections/bookmarked/{collectionId}/
              * @secure
              */
-            deleteUsersMeCoursesBookmarkedCourseId: (courseId, params = {}) => this.request(Object.assign({ path: `/users/me/courses/bookmarked/${courseId}/`, method: "DELETE", secure: true }, params)),
+            deleteUsersMeCollectionsBookmarkedCollectionId: (collectionId, params = {}) => this.request(Object.assign({ path: `/users/me/collections/bookmarked/${collectionId}/`, method: "DELETE", secure: true }, params)),
             /**
              * @description Get the list of lessons the user has viewed.
              *
@@ -485,64 +485,64 @@ export class ApiClient extends HttpClient {
              */
             getLanguages: (query, params = {}) => this.request(Object.assign({ path: `/languages/`, method: "GET", query: query, format: "json" }, params)),
         };
-        this.courses = {
+        this.collections = {
             /**
-             * @description Get list of courses
+             * @description Get list of collections
              *
-             * @tags course
-             * @name GetCourses
-             * @summary Get Courses
-             * @request GET:/courses/
+             * @tags collections
+             * @name GetCollections
+             * @summary Get collections
+             * @request GET:/collections/
              */
-            getCourses: (query, params = {}) => this.request(Object.assign({ path: `/courses/`, method: "GET", query: query, format: "json" }, params)),
+            getCollections: (query, params = {}) => this.request(Object.assign({ path: `/collections/`, method: "GET", query: query, format: "json" }, params)),
             /**
-             * @description Create a new course.
+             * @description Create a new collection.
              *
-             * @tags course
-             * @name PostCourses
-             * @summary Create Course
-             * @request POST:/courses/
+             * @tags collection
+             * @name PostCollections
+             * @summary Create collection
+             * @request POST:/collections/
              * @secure
              */
-            postCourses: (data, params = {}) => this.request(Object.assign({ path: `/courses/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
+            postCollections: (data, params = {}) => this.request(Object.assign({ path: `/collections/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
-             * @description Get course details.
+             * @description Get collection details.
              *
-             * @tags course
-             * @name GetCoursesCourseId
-             * @summary Get Course
-             * @request GET:/courses/{courseId}/
+             * @tags collection
+             * @name GetCollectionsCollectionId
+             * @summary Get collection
+             * @request GET:/collections/{collectionId}/
              * @secure
              */
-            getCoursesCourseId: (courseId, params = {}) => this.request(Object.assign({ path: `/courses/${courseId}/`, method: "GET", secure: true, format: "json" }, params)),
+            getCollectionsCollectionId: (collectionId, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/`, method: "GET", secure: true, format: "json" }, params)),
             /**
-             * @description Update course details.
+             * @description Update collection details.
              *
-             * @tags course
-             * @name PutCoursesCourseId
-             * @summary Update Course
-             * @request PUT:/courses/{courseId}/
+             * @tags collection
+             * @name PutCollectionsCollectionId
+             * @summary Update collection
+             * @request PUT:/collections/{collectionId}/
              * @secure
              */
-            putCoursesCourseId: (courseId, data, params = {}) => this.request(Object.assign({ path: `/courses/${courseId}/`, method: "PUT", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
+            putCollectionsCollectionId: (collectionId, data, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/`, method: "PUT", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * No description
              *
-             * @name DeleteCoursesCourseId
-             * @summary Delete Course
-             * @request DELETE:/courses/{courseId}/
+             * @name DeleteCollectionsCollectionId
+             * @summary Delete collection
+             * @request DELETE:/collections/{collectionId}/
              * @secure
              */
-            deleteCoursesCourseId: (courseId, params = {}) => this.request(Object.assign({ path: `/courses/${courseId}/`, method: "DELETE", secure: true }, params)),
+            deleteCollectionsCollectionId: (collectionId, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/`, method: "DELETE", secure: true }, params)),
             /**
-             * @description Redirects to next lesson in course or 404 if not found
+             * @description Redirects to next lesson in collection or 404 if not found
              *
-             * @name GetCoursesCourseIdLessonsLessonIdNext
-             * @summary Get Next Lesson In Course
-             * @request GET:/courses/{courseId}/lessons/{lessonId}/next/
+             * @name GetCollectionsCollectionIdLessonsLessonIdNext
+             * @summary Get Next Lesson In collection
+             * @request GET:/collections/{collectionId}/lessons/{lessonId}/next/
              * @secure
              */
-            getCoursesCourseIdLessonsLessonIdNext: (courseId, lessonId, params = {}) => this.request(Object.assign({ path: `/courses/${courseId}/lessons/${lessonId}/next/`, method: "GET", secure: true }, params)),
+            getCollectionsCollectionIdLessonsLessonIdNext: (collectionId, lessonId, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/lessons/${lessonId}/next/`, method: "GET", secure: true }, params)),
         };
         this.lessons = {
             /**

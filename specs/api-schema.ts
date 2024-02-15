@@ -60,7 +60,7 @@ export interface LanguageSchema {
   color: string;
 }
 
-export interface CourseSchema {
+export interface CollectionSchema {
   id: number;
   title: string;
   description: string;
@@ -83,9 +83,9 @@ export interface LessonSchema {
   audio: string;
   /** @format uri */
   image: string;
-  course: CourseSchema | null;
-  orderInCourse?: number;
-  isLastInCourse?: boolean;
+  collection: CollectionSchema | null;
+  orderInCollection?: number;
+  isLastInCollection?: boolean;
   /** @format date-time */
   addedOn: string;
   learnersCount: number;
@@ -216,9 +216,9 @@ export interface LessonHistoryEntrySchema {
   audio: string;
   /** @format uri */
   image: string;
-  course: CourseSchema;
-  orderInCourse: number;
-  isLastInCourse: boolean;
+  collection: CollectionSchema;
+  orderInCollection: number;
+  isLastInCollection: boolean;
   /** @format date-time */
   addedOn: string;
   learnersCount: number;
@@ -1040,15 +1040,15 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Get the list of courses the user has bookmarked.
+     * @description Get the list of collections the user has bookmarked.
      *
-     * @tags course
-     * @name GetUsersMeCoursesBookmarked
-     * @summary Get User Courses Bookmarked
-     * @request GET:/users/me/courses/bookmarked/
+     * @tags collection
+     * @name GetUsersMeCollectionsBookmarked
+     * @summary Get User collections Bookmarked
+     * @request GET:/users/me/collections/bookmarked/
      * @secure
      */
-    getUsersMeCoursesBookmarked: (
+    getUsersMeCollectionsBookmarked: (
       query?: {
         /**
          * @minLength 2
@@ -1084,7 +1084,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
           pageSize: number;
           /** @min 0 */
           pageCount: number;
-          data: CourseSchema[];
+          data: CollectionSchema[];
         },
         | {
             code: 400;
@@ -1112,7 +1112,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/users/me/courses/bookmarked/`,
+        path: `/users/me/collections/bookmarked/`,
         method: "GET",
         query: query,
         secure: true,
@@ -1123,20 +1123,20 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     /**
      * No description
      *
-     * @name PostUsersMeCoursesBookmarked
-     * @summary Add Courses to User Bookmarks
-     * @request POST:/users/me/courses/bookmarked/
+     * @name PostUsersMeCollectionsBookmarked
+     * @summary Add collections to User Bookmarks
+     * @request POST:/users/me/collections/bookmarked/
      * @secure
      */
-    postUsersMeCoursesBookmarked: (
+    postUsersMeCollectionsBookmarked: (
       data: {
         /** @min 0 */
-        courseId: number;
+        collectionId: number;
       },
       params: RequestParams = {},
     ) =>
       this.request<
-        CourseSchema,
+        CollectionSchema,
         | {
             code: 400;
             status: "Bad Request";
@@ -1151,7 +1151,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/users/me/courses/bookmarked/`,
+        path: `/users/me/collections/bookmarked/`,
         method: "POST",
         body: data,
         secure: true,
@@ -1163,12 +1163,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     /**
      * No description
      *
-     * @name DeleteUsersMeCoursesBookmarkedCourseId
-     * @summary Remove Course from User Bookmarks
-     * @request DELETE:/users/me/courses/bookmarked/{courseId}/
+     * @name DeleteUsersMeCollectionsBookmarkedCollectionId
+     * @summary Remove collection from User Bookmarks
+     * @request DELETE:/users/me/collections/bookmarked/{collectionId}/
      * @secure
      */
-    deleteUsersMeCoursesBookmarkedCourseId: (courseId: number, params: RequestParams = {}) =>
+    deleteUsersMeCollectionsBookmarkedCollectionId: (collectionId: number, params: RequestParams = {}) =>
       this.request<
         void,
         | {
@@ -1197,7 +1197,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/users/me/courses/bookmarked/${courseId}/`,
+        path: `/users/me/collections/bookmarked/${collectionId}/`,
         method: "DELETE",
         secure: true,
         ...params,
@@ -2026,16 +2026,16 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         ...params,
       }),
   };
-  courses = {
+  collections = {
     /**
-     * @description Get list of courses
+     * @description Get list of collections
      *
-     * @tags course
-     * @name GetCourses
-     * @summary Get Courses
-     * @request GET:/courses/
+     * @tags collections
+     * @name GetCollections
+     * @summary Get collections
+     * @request GET:/collections/
      */
-    getCourses: (
+    getCollections: (
       query?: {
         /**
          * @minLength 2
@@ -2074,7 +2074,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
           pageSize: number;
           /** @min 0 */
           pageCount: number;
-          data: CourseSchema[];
+          data: CollectionSchema[];
         },
         | {
             code: 400;
@@ -2090,7 +2090,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/courses/`,
+        path: `/collections/`,
         method: "GET",
         query: query,
         format: "json",
@@ -2098,15 +2098,15 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Create a new course.
+     * @description Create a new collection.
      *
-     * @tags course
-     * @name PostCourses
-     * @summary Create Course
-     * @request POST:/courses/
+     * @tags collection
+     * @name PostCollections
+     * @summary Create collection
+     * @request POST:/collections/
      * @secure
      */
-    postCourses: (
+    postCollections: (
       data: {
         languageCode: string;
         title: string;
@@ -2119,7 +2119,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       params: RequestParams = {},
     ) =>
       this.request<
-        CourseSchema,
+        CollectionSchema,
         | {
             code: 400;
             status: "Bad Request";
@@ -2134,7 +2134,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/courses/`,
+        path: `/collections/`,
         method: "POST",
         body: data,
         secure: true,
@@ -2144,17 +2144,17 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Get course details.
+     * @description Get collection details.
      *
-     * @tags course
-     * @name GetCoursesCourseId
-     * @summary Get Course
-     * @request GET:/courses/{courseId}/
+     * @tags collection
+     * @name GetCollectionsCollectionId
+     * @summary Get collection
+     * @request GET:/collections/{collectionId}/
      * @secure
      */
-    getCoursesCourseId: (courseId: number, params: RequestParams = {}) =>
+    getCollectionsCollectionId: (collectionId: number, params: RequestParams = {}) =>
       this.request<
-        CourseSchema,
+        CollectionSchema,
         | {
             code: 400;
             status: "Bad Request";
@@ -2175,7 +2175,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/courses/${courseId}/`,
+        path: `/collections/${collectionId}/`,
         method: "GET",
         secure: true,
         format: "json",
@@ -2183,16 +2183,16 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Update course details.
+     * @description Update collection details.
      *
-     * @tags course
-     * @name PutCoursesCourseId
-     * @summary Update Course
-     * @request PUT:/courses/{courseId}/
+     * @tags collection
+     * @name PutCollectionsCollectionId
+     * @summary Update collection
+     * @request PUT:/collections/{collectionId}/
      * @secure
      */
-    putCoursesCourseId: (
-      courseId: number,
+    putCollectionsCollectionId: (
+      collectionId: number,
       data: {
         /** @format uri */
         image?: string;
@@ -2204,7 +2204,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       params: RequestParams = {},
     ) =>
       this.request<
-        CourseSchema,
+        CollectionSchema,
         | {
             code: 400;
             status: "Bad Request";
@@ -2245,7 +2245,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             fields?: object;
           }
       >({
-        path: `/courses/${courseId}/`,
+        path: `/collections/${collectionId}/`,
         method: "PUT",
         body: data,
         secure: true,
@@ -2257,12 +2257,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     /**
      * No description
      *
-     * @name DeleteCoursesCourseId
-     * @summary Delete Course
-     * @request DELETE:/courses/{courseId}/
+     * @name DeleteCollectionsCollectionId
+     * @summary Delete collection
+     * @request DELETE:/collections/{collectionId}/
      * @secure
      */
-    deleteCoursesCourseId: (courseId: number, params: RequestParams = {}) =>
+    deleteCollectionsCollectionId: (collectionId: number, params: RequestParams = {}) =>
       this.request<
         void,
         | {
@@ -2291,21 +2291,25 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/courses/${courseId}/`,
+        path: `/collections/${collectionId}/`,
         method: "DELETE",
         secure: true,
         ...params,
       }),
 
     /**
-     * @description Redirects to next lesson in course or 404 if not found
+     * @description Redirects to next lesson in collection or 404 if not found
      *
-     * @name GetCoursesCourseIdLessonsLessonIdNext
-     * @summary Get Next Lesson In Course
-     * @request GET:/courses/{courseId}/lessons/{lessonId}/next/
+     * @name GetCollectionsCollectionIdLessonsLessonIdNext
+     * @summary Get Next Lesson In collection
+     * @request GET:/collections/{collectionId}/lessons/{lessonId}/next/
      * @secure
      */
-    getCoursesCourseIdLessonsLessonIdNext: (courseId: number, lessonId: number, params: RequestParams = {}) =>
+    getCollectionsCollectionIdLessonsLessonIdNext: (
+      collectionId: number,
+      lessonId: number,
+      params: RequestParams = {},
+    ) =>
       this.request<
         any,
         | void
@@ -2323,7 +2327,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/courses/${courseId}/lessons/${lessonId}/next/`,
+        path: `/collections/${collectionId}/lessons/${lessonId}/next/`,
         method: "GET",
         secure: true,
         ...params,
@@ -2410,7 +2414,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         title: string;
         text: string;
         languageCode: string;
-        courseId?: number | null;
+        collectionId?: number | null;
         isPublic?: boolean;
         level?: LanguageLevelSchema;
         /** @format uri */
@@ -2515,7 +2519,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         /** @format uri */
         audio?: string;
         /** @min 0 */
-        courseId: number;
+        collectionId: number;
         title: string;
         text: string;
         level?: LanguageLevelSchema;
