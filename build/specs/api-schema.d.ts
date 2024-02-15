@@ -1398,7 +1398,6 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             languageCode: string;
             title: string;
             description?: string;
-            isPublic?: boolean;
             level?: LanguageLevelSchema;
             /** @format uri */
             image?: string;
@@ -1454,7 +1453,6 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             image?: string;
             title: string;
             description: string;
-            isPublic: boolean;
             lessonsOrder: number[];
         }, params?: RequestParams) => Promise<HttpResponse<CollectionSchema, {
             code: 400;

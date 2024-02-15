@@ -2111,7 +2111,6 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         languageCode: string;
         title: string;
         description?: string;
-        isPublic?: boolean;
         level?: LanguageLevelSchema;
         /** @format uri */
         image?: string;
@@ -2198,7 +2197,6 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         image?: string;
         title: string;
         description: string;
-        isPublic: boolean;
         lessonsOrder: number[];
       },
       params: RequestParams = {},
