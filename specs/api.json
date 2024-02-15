@@ -1068,8 +1068,10 @@
                     "format": "uri"
                   },
                   "collectionId": {
-                    "type": "integer",
-                    "minimum": 0
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "title": {
                     "type": "string"
@@ -1082,7 +1084,6 @@
                   }
                 },
                 "required": [
-                  "collectionId",
                   "title",
                   "text"
                 ]

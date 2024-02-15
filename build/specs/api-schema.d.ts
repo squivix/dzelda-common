@@ -1675,8 +1675,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             image?: string;
             /** @format uri */
             audio?: string;
-            /** @min 0 */
-            collectionId: number;
+            collectionId?: number | null;
             title: string;
             text: string;
             level?: LanguageLevelSchema;
