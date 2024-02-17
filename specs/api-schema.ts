@@ -1432,6 +1432,22 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
+     * No description
+     *
+     * @name DeleteUsersMeTextsBookmarkedTextId
+     * @summary Remove text from user bookmarks
+     * @request DELETE:/users/me/texts/bookmarked/{textId}/
+     * @secure
+     */
+    deleteUsersMeTextsBookmarkedTextId: (textId: number, params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/users/me/texts/bookmarked/${textId}/`,
+        method: "DELETE",
+        secure: true,
+        ...params,
+      }),
+
+    /**
      * @description Get list of saved user vocabs.
      *
      * @tags vocab
@@ -1913,6 +1929,62 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
           }
       >({
         path: `/users/${username}/vocabs/saved/count/`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Get a count of vocabs saved by a user, optionally grouped by language
+     *
+     * @name GetUsersUsernameVocabsSavedCount2
+     * @summary Get User Saved Vocabs Count
+     * @request GET:/users/{username}/vocabs/saved/count/ - copy
+     * @originalName getUsersUsernameVocabsSavedCount
+     * @duplicate
+     * @secure
+     */
+    getUsersUsernameVocabsSavedCount2: (
+      username: string,
+      query?: {
+        /** @format date */
+        savedOnFrom?: string;
+        /** @format date */
+        savedOnTo?: string;
+        level?: VocabLevelSchema[];
+        isPhrase?: boolean;
+        groupBy?: "language";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        {
+          vocabsCount: number;
+          language?: string;
+        }[],
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/users/${username}/vocabs/saved/count/ - copy`,
         method: "GET",
         query: query,
         secure: true,

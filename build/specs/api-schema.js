@@ -357,6 +357,15 @@ export class ApiClient extends HttpClient {
              */
             postUsersMeTextsBookmarked: (data, params = {}) => this.request(Object.assign({ path: `/users/me/texts/bookmarked/`, method: "POST", body: data, secure: true, type: ContentType.Json }, params)),
             /**
+             * No description
+             *
+             * @name DeleteUsersMeTextsBookmarkedTextId
+             * @summary Remove text from user bookmarks
+             * @request DELETE:/users/me/texts/bookmarked/{textId}/
+             * @secure
+             */
+            deleteUsersMeTextsBookmarkedTextId: (textId, params = {}) => this.request(Object.assign({ path: `/users/me/texts/bookmarked/${textId}/`, method: "DELETE", secure: true }, params)),
+            /**
              * @description Get list of saved user vocabs.
              *
              * @tags vocab
@@ -453,6 +462,17 @@ export class ApiClient extends HttpClient {
              * @secure
              */
             getUsersUsernameVocabsSavedCount: (username, query, params = {}) => this.request(Object.assign({ path: `/users/${username}/vocabs/saved/count/`, method: "GET", query: query, secure: true, format: "json" }, params)),
+            /**
+             * @description Get a count of vocabs saved by a user, optionally grouped by language
+             *
+             * @name GetUsersUsernameVocabsSavedCount2
+             * @summary Get User Saved Vocabs Count
+             * @request GET:/users/{username}/vocabs/saved/count/ - copy
+             * @originalName getUsersUsernameVocabsSavedCount
+             * @duplicate
+             * @secure
+             */
+            getUsersUsernameVocabsSavedCount2: (username, query, params = {}) => this.request(Object.assign({ path: `/users/${username}/vocabs/saved/count/ - copy`, method: "GET", query: query, secure: true, format: "json" }, params)),
             /**
              * @description Get a count of vocabs saved by a user every `savedOnInterval` between `savedOnFrom` and `savedOnTo`, optionally grouped by language
              *

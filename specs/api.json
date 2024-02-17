@@ -2154,6 +2154,27 @@
         "description": ""
       }
     },
+    "/users/me/texts/bookmarked/{textId}/": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "textId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Remove text from user bookmarks",
+        "operationId": "delete-users-me-texts-bookmarked-textId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/users/me/vocabs/": {
       "parameters": [],
       "get": {
@@ -2706,75 +2727,6 @@
         }
       }
     },
-    "/password-reset-tokens/verify/": {
-      "post": {
-        "summary": "Validate Password Reset Token",
-        "operationId": "post-password-reset-tokens-verify",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthenticated"
-          }
-        },
-        "description": "Validates password reset token, returns 204 if it's valid, 401 otherwise.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "token"
-                ]
-              }
-            }
-          },
-          "description": ""
-        }
-      },
-      "parameters": []
-    },
-    "/email-confirm-tokens/": {
-      "post": {
-        "summary": "Request Email Confirm Token",
-        "operationId": "post-email-confirm-tokens",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthenticated"
-          }
-        },
-        "description": "Requests an email reset token to be sent to user email. Used for resending confirmation email. Can optionally change email from sign up.\n\nIf user email is already confirmed return 400.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "format": "email"
-                  }
-                }
-              }
-            }
-          },
-          "description": ""
-        }
-      },
-      "parameters": []
-    },
     "/users/{username}/vocabs/saved/count/": {
       "get": {
         "summary": "Get User Saved Vocabs Count",
@@ -2860,6 +2812,161 @@
           "$ref": "#/components/parameters/username"
         }
       ]
+    },
+    "/users/{username}/vocabs/saved/count/ - copy": {
+      "get": {
+        "summary": "Get User Saved Vocabs Count",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "vocabsCount": {
+                        "type": "integer"
+                      },
+                      "language": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "vocabsCount"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthenticated"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-users-username-vocabs-saved-count",
+        "description": "Get a count of vocabs saved by a user, optionally grouped by language",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "in": "query",
+            "name": "savedOnFrom"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "in": "query",
+            "name": "savedOnTo"
+          },
+          {
+            "$ref": "#/components/parameters/vocabLevel"
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "isPhrase"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "language"
+              ]
+            },
+            "in": "query",
+            "name": "groupBy"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/username"
+        }
+      ]
+    },
+    "/password-reset-tokens/verify/": {
+      "post": {
+        "summary": "Validate Password Reset Token",
+        "operationId": "post-password-reset-tokens-verify",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthenticated"
+          }
+        },
+        "description": "Validates password reset token, returns 204 if it's valid, 401 otherwise.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "token"
+                ]
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": []
+    },
+    "/email-confirm-tokens/": {
+      "post": {
+        "summary": "Request Email Confirm Token",
+        "operationId": "post-email-confirm-tokens",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthenticated"
+          }
+        },
+        "description": "Requests an email reset token to be sent to user email. Used for resending confirmation email. Can optionally change email from sign up.\n\nIf user email is already confirmed return 400.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": []
     },
     "/users/{username}/vocabs/saved/count/time-series/": {
       "parameters": [
