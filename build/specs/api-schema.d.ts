@@ -81,6 +81,7 @@ export interface TextSchema {
     addedBy: string;
     language: string;
     level?: LanguageLevelSchema;
+    isBookmarked?: boolean;
 }
 export interface VocabSchema {
     id: number;
@@ -872,6 +873,72 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             message: string;
             details: string;
         }>>;
+        /**
+         * No description
+         *
+         * @name GetUsersMeTextsBookmarked
+         * @summary Get user bookmarked texts
+         * @request GET:/users/me/texts/bookmarked/
+         * @secure
+         */
+        getUsersMeTextsBookmarked: (query?: {
+            /**
+             * @minLength 2
+             * @maxLength 4
+             */
+            languageCode?: string;
+            searchQuery?: string;
+            /**
+             * @minLength 4
+             * @maxLength 20
+             */
+            addedBy?: string;
+            hasAudio?: boolean;
+            /** @default "title" */
+            sortBy?: "title" | "createdDate" | "pastViewersCount";
+            /** @default "asc" */
+            sortOrder?: "asc" | "desc";
+            page?: number;
+            /**
+             * @min 1
+             * @max 100
+             * @default 10
+             */
+            pageSize?: number;
+        }, params?: RequestParams) => Promise<HttpResponse<{
+            /** @min 1 */
+            page: number;
+            /**
+             * @min 1
+             * @max 100
+             */
+            pageSize: number;
+            /** @min 0 */
+            pageCount: number;
+            data: TextSchema[];
+        }, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+        }>>;
+        /**
+         * No description
+         *
+         * @name PostUsersMeTextsBookmarked
+         * @summary Add text to user bookmarks
+         * @request POST:/users/me/texts/bookmarked/
+         * @secure
+         */
+        postUsersMeTextsBookmarked: (data: {
+            textId: number;
+        }, params?: RequestParams) => Promise<HttpResponse<void, TextSchema>>;
         /**
          * @description Get list of saved user vocabs.
          *

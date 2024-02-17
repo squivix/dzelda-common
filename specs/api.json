@@ -1997,6 +1997,163 @@
         "description": "Add a text to user text history"
       }
     },
+    "/users/me/texts/bookmarked/": {
+      "get": {
+        "summary": "Get user bookmarked texts",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100
+                    },
+                    "pageCount": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Text"
+                      }
+                    }
+                  },
+                  "required": [
+                    "page",
+                    "pageSize",
+                    "pageCount",
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthenticated"
+          }
+        },
+        "operationId": "get-users-me-texts-bookmarked",
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 4
+            },
+            "in": "query",
+            "name": "languageCode"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "searchQuery"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 20
+            },
+            "in": "query",
+            "name": "addedBy"
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "hasAudio"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "title",
+                "createdDate",
+                "pastViewersCount"
+              ],
+              "default": "title"
+            },
+            "in": "query",
+            "name": "sortBy"
+          },
+          {
+            "$ref": "#/components/parameters/sortOrder"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            },
+            "in": "query",
+            "name": "pageSize"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Add text to user bookmarks",
+        "operationId": "post-users-me-texts-bookmarked",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Text"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "textId": {
+                    "type": "integer",
+                    "x-stoplight": {
+                      "id": "tw1sjl9qadmit"
+                    }
+                  }
+                },
+                "required": [
+                  "textId"
+                ]
+              }
+            }
+          }
+        },
+        "description": ""
+      }
+    },
     "/users/me/vocabs/": {
       "parameters": [],
       "get": {
@@ -3430,6 +3587,12 @@
             "x-stoplight": {
               "id": "yrz8wh941ek73"
             }
+          },
+          "isBookmarked": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "16dltewswm5fa"
+            }
           }
         },
         "required": [
@@ -3446,7 +3609,8 @@
           "isPublic",
           "addedBy",
           "language"
-        ]
+        ],
+        "title": ""
       },
       "Vocab": {
         "type": "object",

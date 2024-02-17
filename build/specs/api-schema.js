@@ -339,6 +339,24 @@ export class ApiClient extends HttpClient {
              */
             postUsersMeTextsHistory: (data, params = {}) => this.request(Object.assign({ path: `/users/me/texts/history/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
+             * No description
+             *
+             * @name GetUsersMeTextsBookmarked
+             * @summary Get user bookmarked texts
+             * @request GET:/users/me/texts/bookmarked/
+             * @secure
+             */
+            getUsersMeTextsBookmarked: (query, params = {}) => this.request(Object.assign({ path: `/users/me/texts/bookmarked/`, method: "GET", query: query, secure: true, format: "json" }, params)),
+            /**
+             * No description
+             *
+             * @name PostUsersMeTextsBookmarked
+             * @summary Add text to user bookmarks
+             * @request POST:/users/me/texts/bookmarked/
+             * @secure
+             */
+            postUsersMeTextsBookmarked: (data, params = {}) => this.request(Object.assign({ path: `/users/me/texts/bookmarked/`, method: "POST", body: data, secure: true, type: ContentType.Json }, params)),
+            /**
              * @description Get list of saved user vocabs.
              *
              * @tags vocab
