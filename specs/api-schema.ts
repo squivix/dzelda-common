@@ -78,7 +78,7 @@ export interface CollectionSchema {
 export interface TextSchema {
   id: number;
   title: string;
-  text: string;
+  content: string;
   /** @format uri */
   audio: string;
   /** @format uri */
@@ -91,7 +91,7 @@ export interface TextSchema {
   learnersCount: number;
   vocabsByLevel?: VocabsByLevelSchema;
   parsedTitle: string | null;
-  parsedText: string | null;
+  parsedContent: string | null;
   isPublic: boolean;
   addedBy: string;
   language: string;
@@ -211,7 +211,7 @@ export interface VocabsByLevelSchema {
 export interface TextHistoryEntrySchema {
   id: number;
   title: string;
-  text: string;
+  content: string;
   /** @format uri */
   audio: string;
   /** @format uri */
@@ -224,7 +224,7 @@ export interface TextHistoryEntrySchema {
   learnersCount: number;
   vocabsByLevel?: VocabsByLevelSchema;
   parsedTitle: string | null;
-  parsedText: string | null;
+  parsedContent: string | null;
   /** @format date-time */
   timeViewed: string;
   pastViewer: string;
@@ -2406,7 +2406,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     postTexts: (
       data: {
         title: string;
-        text: string;
+        content: string;
         languageCode: string;
         collectionId?: number | null;
         isPublic?: boolean;
@@ -2514,7 +2514,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         audio?: string;
         collectionId?: number | null;
         title: string;
-        text: string;
+        content: string;
         level?: LanguageLevelSchema;
       },
       params: RequestParams = {},
