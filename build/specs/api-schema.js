@@ -319,25 +319,25 @@ export class ApiClient extends HttpClient {
              */
             deleteUsersMeCollectionsBookmarkedCollectionId: (collectionId, params = {}) => this.request(Object.assign({ path: `/users/me/collections/bookmarked/${collectionId}/`, method: "DELETE", secure: true }, params)),
             /**
-             * @description Get the list of lessons the user has viewed.
+             * @description Get the list of texts the user has viewed.
              *
-             * @tags lesson
-             * @name GetUsersMeLessonsHistory
-             * @summary Get User Lessons History
-             * @request GET:/users/me/lessons/history/
+             * @tags text
+             * @name GetUsersMeTextsHistory
+             * @summary Get User Texts History
+             * @request GET:/users/me/texts/history/
              * @secure
              */
-            getUsersMeLessonsHistory: (query, params = {}) => this.request(Object.assign({ path: `/users/me/lessons/history/`, method: "GET", query: query, secure: true, format: "json" }, params)),
+            getUsersMeTextsHistory: (query, params = {}) => this.request(Object.assign({ path: `/users/me/texts/history/`, method: "GET", query: query, secure: true, format: "json" }, params)),
             /**
-             * @description Add a lesson to user lesson history
+             * @description Add a text to user text history
              *
-             * @tags lesson
-             * @name PostUsersMeLessonsHistory
-             * @summary Add Lesson To User History
-             * @request POST:/users/me/lessons/history/
+             * @tags text
+             * @name PostUsersMeTextsHistory
+             * @summary Add Text To User History
+             * @request POST:/users/me/texts/history/
              * @secure
              */
-            postUsersMeLessonsHistory: (data, params = {}) => this.request(Object.assign({ path: `/users/me/lessons/history/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
+            postUsersMeTextsHistory: (data, params = {}) => this.request(Object.assign({ path: `/users/me/texts/history/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * @description Get list of saved user vocabs.
              *
@@ -535,75 +535,75 @@ export class ApiClient extends HttpClient {
              */
             deleteCollectionsCollectionId: (collectionId, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/`, method: "DELETE", secure: true }, params)),
             /**
-             * @description Redirects to next lesson in collection or 404 if not found
+             * @description Redirects to next text in collection or 404 if not found
              *
-             * @name GetCollectionsCollectionIdLessonsLessonIdNext
-             * @summary Get Next Lesson In collection
-             * @request GET:/collections/{collectionId}/lessons/{lessonId}/next/
+             * @name GetCollectionsCollectionIdTextsTextIdNext
+             * @summary Get Next Text In collection
+             * @request GET:/collections/{collectionId}/texts/{textId}/next/
              * @secure
              */
-            getCollectionsCollectionIdLessonsLessonIdNext: (collectionId, lessonId, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/lessons/${lessonId}/next/`, method: "GET", secure: true }, params)),
+            getCollectionsCollectionIdTextsTextIdNext: (collectionId, textId, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/texts/${textId}/next/`, method: "GET", secure: true }, params)),
         };
-        this.lessons = {
+        this.texts = {
             /**
-             * @description Get a list of lessons
+             * @description Get a list of texts
              *
-             * @tags lesson
-             * @name GetLessons
-             * @summary Get Lessons
-             * @request GET:/lessons/
+             * @tags text
+             * @name GetTexts
+             * @summary Get Texts
+             * @request GET:/texts/
              * @secure
              */
-            getLessons: (query, params = {}) => this.request(Object.assign({ path: `/lessons/`, method: "GET", query: query, secure: true, format: "json" }, params)),
+            getTexts: (query, params = {}) => this.request(Object.assign({ path: `/texts/`, method: "GET", query: query, secure: true, format: "json" }, params)),
             /**
-             * @description Create a new lesson.
+             * @description Create a new text.
              *
-             * @tags lesson
-             * @name PostLessons
-             * @summary Create Lesson
-             * @request POST:/lessons/
+             * @tags text
+             * @name PostTexts
+             * @summary Create Text
+             * @request POST:/texts/
              * @secure
              */
-            postLessons: (data, params = {}) => this.request(Object.assign({ path: `/lessons/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
+            postTexts: (data, params = {}) => this.request(Object.assign({ path: `/texts/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
-             * @description Get lesson details.
+             * @description Get text details.
              *
-             * @tags lesson
-             * @name GetLessonsLessonId
-             * @summary Get Lesson
-             * @request GET:/lessons/{lessonId}/
+             * @tags text
+             * @name GetTextsTextId
+             * @summary Get Text
+             * @request GET:/texts/{textId}/
              * @secure
              */
-            getLessonsLessonId: (lessonId, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/`, method: "GET", secure: true, format: "json" }, params)),
+            getTextsTextId: (textId, params = {}) => this.request(Object.assign({ path: `/texts/${textId}/`, method: "GET", secure: true, format: "json" }, params)),
             /**
-             * @description Update lesson details.
+             * @description Update text details.
              *
-             * @tags lesson
-             * @name PatchLessonsLessonId
-             * @summary Update Lesson
-             * @request PATCH:/lessons/{lessonId}/
+             * @tags text
+             * @name PatchTextsTextId
+             * @summary Update Text
+             * @request PATCH:/texts/{textId}/
              * @secure
              */
-            patchLessonsLessonId: (lessonId, data, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/`, method: "PATCH", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
+            patchTextsTextId: (textId, data, params = {}) => this.request(Object.assign({ path: `/texts/${textId}/`, method: "PATCH", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
              * No description
              *
-             * @name DeleteLessonsLessonId
-             * @summary Delete Lesson
-             * @request DELETE:/lessons/{lessonId}/
+             * @name DeleteTextsTextId
+             * @summary Delete Text
+             * @request DELETE:/texts/{textId}/
              * @secure
              */
-            deleteLessonsLessonId: (lessonId, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/`, method: "DELETE", secure: true }, params)),
+            deleteTextsTextId: (textId, params = {}) => this.request(Object.assign({ path: `/texts/${textId}/`, method: "DELETE", secure: true }, params)),
             /**
-             * @description Get a list of vocabs in a lesson.
+             * @description Get a list of vocabs in a text.
              *
              * @tags vocab
-             * @name GetLessonsLessonIdVocabs
-             * @summary Get Lesson Vocabs
-             * @request GET:/lessons/{lessonId}/vocabs/
+             * @name GetTextsTextIdVocabs
+             * @summary Get Text Vocabs
+             * @request GET:/texts/{textId}/vocabs/
              * @secure
              */
-            getLessonsLessonIdVocabs: (lessonId, params = {}) => this.request(Object.assign({ path: `/lessons/${lessonId}/vocabs/`, method: "GET", secure: true, format: "json" }, params)),
+            getTextsTextIdVocabs: (textId, params = {}) => this.request(Object.assign({ path: `/texts/${textId}/vocabs/`, method: "GET", secure: true, format: "json" }, params)),
         };
         this.vocabs = {
             /**

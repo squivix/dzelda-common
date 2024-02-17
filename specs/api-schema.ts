@@ -70,12 +70,12 @@ export interface CollectionSchema {
   addedBy: string;
   /** @format date-time */
   addedOn: string;
-  lessons: LessonSchema[];
+  texts: TextSchema[];
   vocabsByLevel?: VocabsByLevelSchema;
   isBookmarked?: boolean;
 }
 
-export interface LessonSchema {
+export interface TextSchema {
   id: number;
   title: string;
   text: string;
@@ -107,7 +107,7 @@ export interface VocabSchema {
   /** @min 0 */
   learnersCount: number;
   /** @min 0 */
-  lessonsCount: number;
+  textsCount: number;
 }
 
 export interface MeaningSchema {
@@ -207,8 +207,8 @@ export interface VocabsByLevelSchema {
   "-1": number;
 }
 
-/** LessonHistoryEntry */
-export interface LessonHistoryEntrySchema {
+/** TextHistoryEntry */
+export interface TextHistoryEntrySchema {
   id: number;
   title: string;
   text: string;
@@ -1069,7 +1069,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
          */
         pageSize?: number;
         /** @default "title" */
-        sortBy?: "title" | "createdDate" | "avgPastViewersCountPerLesson";
+        sortBy?: "title" | "createdDate" | "avgPastViewersCountPerText";
         /** @default "asc" */
         sortOrder?: "asc" | "desc";
         level?: LanguageLevelSchema[];
@@ -1204,15 +1204,15 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Get the list of lessons the user has viewed.
+     * @description Get the list of texts the user has viewed.
      *
-     * @tags lesson
-     * @name GetUsersMeLessonsHistory
-     * @summary Get User Lessons History
-     * @request GET:/users/me/lessons/history/
+     * @tags text
+     * @name GetUsersMeTextsHistory
+     * @summary Get User Texts History
+     * @request GET:/users/me/texts/history/
      * @secure
      */
-    getUsersMeLessonsHistory: (
+    getUsersMeTextsHistory: (
       query?: {
         /**
          * @minLength 2
@@ -1251,7 +1251,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
           pageSize: number;
           /** @min 0 */
           pageCount: number;
-          data: LessonSchema[];
+          data: TextSchema[];
         },
         | {
             code: 400;
@@ -1279,7 +1279,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/users/me/lessons/history/`,
+        path: `/users/me/texts/history/`,
         method: "GET",
         query: query,
         secure: true,
@@ -1288,22 +1288,22 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Add a lesson to user lesson history
+     * @description Add a text to user text history
      *
-     * @tags lesson
-     * @name PostUsersMeLessonsHistory
-     * @summary Add Lesson To User History
-     * @request POST:/users/me/lessons/history/
+     * @tags text
+     * @name PostUsersMeTextsHistory
+     * @summary Add Text To User History
+     * @request POST:/users/me/texts/history/
      * @secure
      */
-    postUsersMeLessonsHistory: (
+    postUsersMeTextsHistory: (
       data: {
-        lessonId?: number;
+        textId?: number;
       },
       params: RequestParams = {},
     ) =>
       this.request<
-        LessonSchema,
+        TextSchema,
         | {
             code: 400;
             status: "Bad Request";
@@ -1324,7 +1324,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/users/me/lessons/history/`,
+        path: `/users/me/texts/history/`,
         method: "POST",
         body: data,
         secure: true,
@@ -1355,7 +1355,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
          */
         pageSize?: number;
         /** @default "text" */
-        sortBy?: "text" | "lessonsCount" | "learnersCount";
+        sortBy?: "text" | "textsCount" | "learnersCount";
         /** @default "asc" */
         sortOrder?: "asc" | "desc";
       },
@@ -2049,7 +2049,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         addedBy?: string;
         searchQuery?: string;
         /** @default "title" */
-        sortBy?: "title" | "createdDate" | "avgPastViewersCountPerLesson";
+        sortBy?: "title" | "createdDate" | "avgPastViewersCountPerText";
         /** @default "asc" */
         sortOrder?: "asc" | "desc";
         page?: number;
@@ -2197,7 +2197,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         image?: string;
         title: string;
         description: string;
-        lessonsOrder: number[];
+        textsOrder: number[];
       },
       params: RequestParams = {},
     ) =>
@@ -2296,18 +2296,14 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Redirects to next lesson in collection or 404 if not found
+     * @description Redirects to next text in collection or 404 if not found
      *
-     * @name GetCollectionsCollectionIdLessonsLessonIdNext
-     * @summary Get Next Lesson In collection
-     * @request GET:/collections/{collectionId}/lessons/{lessonId}/next/
+     * @name GetCollectionsCollectionIdTextsTextIdNext
+     * @summary Get Next Text In collection
+     * @request GET:/collections/{collectionId}/texts/{textId}/next/
      * @secure
      */
-    getCollectionsCollectionIdLessonsLessonIdNext: (
-      collectionId: number,
-      lessonId: number,
-      params: RequestParams = {},
-    ) =>
+    getCollectionsCollectionIdTextsTextIdNext: (collectionId: number, textId: number, params: RequestParams = {}) =>
       this.request<
         any,
         | void
@@ -2325,23 +2321,23 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/collections/${collectionId}/lessons/${lessonId}/next/`,
+        path: `/collections/${collectionId}/texts/${textId}/next/`,
         method: "GET",
         secure: true,
         ...params,
       }),
   };
-  lessons = {
+  texts = {
     /**
-     * @description Get a list of lessons
+     * @description Get a list of texts
      *
-     * @tags lesson
-     * @name GetLessons
-     * @summary Get Lessons
-     * @request GET:/lessons/
+     * @tags text
+     * @name GetTexts
+     * @summary Get Texts
+     * @request GET:/texts/
      * @secure
      */
-    getLessons: (
+    getTexts: (
       query?: {
         /**
          * @minLength 2
@@ -2380,7 +2376,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
           pageSize?: number;
           /** @min 0 */
           pageCount?: number;
-          data?: LessonSchema[];
+          data?: TextSchema[];
         },
         {
           code: 400;
@@ -2390,7 +2386,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
           fields?: object;
         }
       >({
-        path: `/lessons/`,
+        path: `/texts/`,
         method: "GET",
         query: query,
         secure: true,
@@ -2399,15 +2395,15 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Create a new lesson.
+     * @description Create a new text.
      *
-     * @tags lesson
-     * @name PostLessons
-     * @summary Create Lesson
-     * @request POST:/lessons/
+     * @tags text
+     * @name PostTexts
+     * @summary Create Text
+     * @request POST:/texts/
      * @secure
      */
-    postLessons: (
+    postTexts: (
       data: {
         title: string;
         text: string;
@@ -2423,7 +2419,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       params: RequestParams = {},
     ) =>
       this.request<
-        LessonSchema,
+        TextSchema,
         | {
             code: 400;
             status: "Bad Request";
@@ -2452,7 +2448,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             fields?: object;
           }
       >({
-        path: `/lessons/`,
+        path: `/texts/`,
         method: "POST",
         body: data,
         secure: true,
@@ -2462,17 +2458,17 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Get lesson details.
+     * @description Get text details.
      *
-     * @tags lesson
-     * @name GetLessonsLessonId
-     * @summary Get Lesson
-     * @request GET:/lessons/{lessonId}/
+     * @tags text
+     * @name GetTextsTextId
+     * @summary Get Text
+     * @request GET:/texts/{textId}/
      * @secure
      */
-    getLessonsLessonId: (lessonId: number, params: RequestParams = {}) =>
+    getTextsTextId: (textId: number, params: RequestParams = {}) =>
       this.request<
-        LessonSchema,
+        TextSchema,
         | {
             code: 400;
             status: "Bad Request";
@@ -2493,7 +2489,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/lessons/${lessonId}/`,
+        path: `/texts/${textId}/`,
         method: "GET",
         secure: true,
         format: "json",
@@ -2501,16 +2497,16 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Update lesson details.
+     * @description Update text details.
      *
-     * @tags lesson
-     * @name PatchLessonsLessonId
-     * @summary Update Lesson
-     * @request PATCH:/lessons/{lessonId}/
+     * @tags text
+     * @name PatchTextsTextId
+     * @summary Update Text
+     * @request PATCH:/texts/{textId}/
      * @secure
      */
-    patchLessonsLessonId: (
-      lessonId: number,
+    patchTextsTextId: (
+      textId: number,
       data: {
         /** @format uri */
         image?: string;
@@ -2524,7 +2520,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       params: RequestParams = {},
     ) =>
       this.request<
-        LessonSchema,
+        TextSchema,
         | {
             code: 400;
             status: "Bad Request";
@@ -2551,7 +2547,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/lessons/${lessonId}/`,
+        path: `/texts/${textId}/`,
         method: "PATCH",
         body: data,
         secure: true,
@@ -2563,12 +2559,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     /**
      * No description
      *
-     * @name DeleteLessonsLessonId
-     * @summary Delete Lesson
-     * @request DELETE:/lessons/{lessonId}/
+     * @name DeleteTextsTextId
+     * @summary Delete Text
+     * @request DELETE:/texts/{textId}/
      * @secure
      */
-    deleteLessonsLessonId: (lessonId: number, params: RequestParams = {}) =>
+    deleteTextsTextId: (textId: number, params: RequestParams = {}) =>
       this.request<
         void,
         | {
@@ -2597,22 +2593,22 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/lessons/${lessonId}/`,
+        path: `/texts/${textId}/`,
         method: "DELETE",
         secure: true,
         ...params,
       }),
 
     /**
-     * @description Get a list of vocabs in a lesson.
+     * @description Get a list of vocabs in a text.
      *
      * @tags vocab
-     * @name GetLessonsLessonIdVocabs
-     * @summary Get Lesson Vocabs
-     * @request GET:/lessons/{lessonId}/vocabs/
+     * @name GetTextsTextIdVocabs
+     * @summary Get Text Vocabs
+     * @request GET:/texts/{textId}/vocabs/
      * @secure
      */
-    getLessonsLessonIdVocabs: (lessonId: number, params: RequestParams = {}) =>
+    getTextsTextIdVocabs: (textId: number, params: RequestParams = {}) =>
       this.request<
         LearnerVocabSchema[],
         | {
@@ -2635,7 +2631,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/lessons/${lessonId}/vocabs/`,
+        path: `/texts/${textId}/vocabs/`,
         method: "GET",
         secure: true,
         format: "json",
@@ -2704,7 +2700,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         level?: VocabLevelSchema[];
         searchQuery?: string;
         /** @default "text" */
-        sortBy?: "text" | "lessonsCount" | "learnersCount";
+        sortBy?: "text" | "textsCount" | "learnersCount";
         /** @default "asc" */
         sortOrder?: "asc" | "desc";
         page?: number;

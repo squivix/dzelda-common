@@ -32,8 +32,8 @@
       "description": "Related to the collection resource."
     },
     {
-      "name": "lesson",
-      "description": "Related to the lesson resource."
+      "name": "text",
+      "description": "Related to the text resource."
     },
     {
       "name": "vocab",
@@ -569,7 +569,7 @@
               "enum": [
                 "title",
                 "createdDate",
-                "avgPastViewersCountPerLesson"
+                "avgPastViewersCountPerText"
               ],
               "default": "title"
             },
@@ -748,7 +748,7 @@
                   "description": {
                     "type": "string"
                   },
-                  "lessonsOrder": {
+                  "textsOrder": {
                     "type": "array",
                     "items": {
                       "type": "integer"
@@ -758,7 +758,7 @@
                 "required": [
                   "title",
                   "description",
-                  "lessonsOrder"
+                  "textsOrder"
                 ]
               }
             }
@@ -790,11 +790,11 @@
         }
       }
     },
-    "/lessons/": {
+    "/texts/": {
       "get": {
-        "summary": "Get Lessons",
+        "summary": "Get Texts",
         "tags": [
-          "lesson"
+          "text"
         ],
         "responses": {
           "200": {
@@ -820,7 +820,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Lesson"
+                        "$ref": "#/components/schemas/Text"
                       }
                     }
                   }
@@ -832,8 +832,8 @@
             "$ref": "#/components/responses/BadRequest"
           }
         },
-        "operationId": "get-lessons",
-        "description": "Get a list of lessons",
+        "operationId": "get-texts",
+        "description": "Get a list of texts",
         "parameters": [
           {
             "schema": {
@@ -899,15 +899,15 @@
         ]
       },
       "post": {
-        "summary": "Create Lesson",
-        "operationId": "post-lessons",
+        "summary": "Create Text",
+        "operationId": "post-texts",
         "responses": {
           "201": {
             "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Lesson"
+                  "$ref": "#/components/schemas/Text"
                 }
               }
             }
@@ -925,7 +925,7 @@
             "$ref": "#/components/responses/UnsupportedMediaType"
           }
         },
-        "description": "Create a new lesson.",
+        "description": "Create a new text.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -981,25 +981,25 @@
           }
         },
         "tags": [
-          "lesson"
+          "text"
         ]
       }
     },
-    "/lessons/{lessonId}/": {
+    "/texts/{textId}/": {
       "parameters": [
         {
           "schema": {
             "type": "integer"
           },
-          "name": "lessonId",
+          "name": "textId",
           "in": "path",
           "required": true
         }
       ],
       "get": {
-        "summary": "Get Lesson",
+        "summary": "Get Text",
         "tags": [
-          "lesson"
+          "text"
         ],
         "responses": {
           "200": {
@@ -1007,7 +1007,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Lesson"
+                  "$ref": "#/components/schemas/Text"
                 }
               }
             }
@@ -1022,19 +1022,19 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "operationId": "get-lessons-lessonId",
-        "description": "Get lesson details."
+        "operationId": "get-texts-textId",
+        "description": "Get text details."
       },
       "patch": {
-        "summary": "Update Lesson",
-        "operationId": "patch-lessons-lessonId",
+        "summary": "Update Text",
+        "operationId": "patch-texts-textId",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Lesson"
+                  "$ref": "#/components/schemas/Text"
                 }
               }
             }
@@ -1093,13 +1093,13 @@
           "description": ""
         },
         "tags": [
-          "lesson"
+          "text"
         ],
-        "description": "Update lesson details."
+        "description": "Update text details."
       },
       "delete": {
-        "summary": "Delete Lesson",
-        "operationId": "delete-lessons-lessonId",
+        "summary": "Delete Text",
+        "operationId": "delete-texts-textId",
         "responses": {
           "204": {
             "description": "No Content"
@@ -1206,7 +1206,7 @@
               "type": "string",
               "enum": [
                 "text",
-                "lessonsCount",
+                "textsCount",
                 "learnersCount"
               ],
               "default": "text"
@@ -1710,7 +1710,7 @@
               "enum": [
                 "title",
                 "createdDate",
-                "avgPastViewersCountPerLesson"
+                "avgPastViewersCountPerText"
               ],
               "default": "title"
             },
@@ -1812,12 +1812,12 @@
         "description": ""
       }
     },
-    "/users/me/lessons/history/": {
+    "/users/me/texts/history/": {
       "parameters": [],
       "get": {
-        "summary": "Get User Lessons History",
+        "summary": "Get User Texts History",
         "tags": [
-          "lesson"
+          "text"
         ],
         "responses": {
           "200": {
@@ -1843,7 +1843,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Lesson"
+                        "$ref": "#/components/schemas/Text"
                       }
                     }
                   },
@@ -1870,7 +1870,7 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "operationId": "get-users-me-lessons-history",
+        "operationId": "get-users-me-texts-history",
         "parameters": [
           {
             "schema": {
@@ -1934,18 +1934,18 @@
             "$ref": "#/components/parameters/sortOrder"
           }
         ],
-        "description": "Get the list of lessons the user has viewed."
+        "description": "Get the list of texts the user has viewed."
       },
       "post": {
-        "summary": "Add Lesson To User History",
-        "operationId": "post-users-me-lessons-history",
+        "summary": "Add Text To User History",
+        "operationId": "post-users-me-texts-history",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Lesson"
+                  "$ref": "#/components/schemas/Text"
                 }
               }
             }
@@ -1955,7 +1955,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Lesson"
+                  "$ref": "#/components/schemas/Text"
                 }
               }
             }
@@ -1976,7 +1976,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "lessonId": {
+                  "textId": {
                     "type": "integer"
                   }
                 }
@@ -1985,9 +1985,9 @@
           }
         },
         "tags": [
-          "lesson"
+          "text"
         ],
-        "description": "Add a lesson to user lesson history"
+        "description": "Add a text to user text history"
       }
     },
     "/users/me/vocabs/": {
@@ -2074,7 +2074,7 @@
               "type": "string",
               "enum": [
                 "text",
-                "lessonsCount",
+                "textsCount",
                 "learnersCount"
               ],
               "default": "text"
@@ -2408,19 +2408,19 @@
         ]
       }
     },
-    "/lessons/{lessonId}/vocabs/": {
+    "/texts/{textId}/vocabs/": {
       "parameters": [
         {
           "schema": {
             "type": "integer"
           },
-          "name": "lessonId",
+          "name": "textId",
           "in": "path",
           "required": true
         }
       ],
       "get": {
-        "summary": "Get Lesson Vocabs",
+        "summary": "Get Text Vocabs",
         "tags": [
           "vocab"
         ],
@@ -2448,9 +2448,9 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "operationId": "get-lessons-lessonId-vocabs",
+        "operationId": "get-texts-textId-vocabs",
         "parameters": [],
-        "description": "Get a list of vocabs in a lesson."
+        "description": "Get a list of vocabs in a text."
       }
     },
     "/users/me/dictionaries/": {
@@ -2800,7 +2800,7 @@
         "description": "Get a count of vocabs saved by a user every `savedOnInterval` between `savedOnFrom` and `savedOnTo`, optionally grouped by language"
       }
     },
-    "/collections/{collectionId}/lessons/{lessonId}/next/": {
+    "/collections/{collectionId}/texts/{textId}/next/": {
       "parameters": [
         {
           "schema": {
@@ -2814,13 +2814,13 @@
           "schema": {
             "type": "number"
           },
-          "name": "lessonId",
+          "name": "textId",
           "in": "path",
           "required": true
         }
       ],
       "get": {
-        "summary": "Get Next Lesson In collection",
+        "summary": "Get Next Text In collection",
         "tags": [],
         "responses": {
           "303": {
@@ -2841,8 +2841,8 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "operationId": "get-collections-collectionId-lessons-lessonId-next",
-        "description": "Redirects to next lesson in collection or 404 if not found",
+        "operationId": "get-collections-collectionId-texts-textId-next",
+        "description": "Redirects to next text in collection or 404 if not found",
         "parameters": []
       }
     },
@@ -3310,10 +3310,10 @@
             "type": "string",
             "format": "date-time"
           },
-          "lessons": {
+          "texts": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Lesson"
+              "$ref": "#/components/schemas/Text"
             }
           },
           "vocabsByLevel": {
@@ -3331,10 +3331,10 @@
           "language",
           "addedBy",
           "addedOn",
-          "lessons"
+          "texts"
         ]
       },
-      "Lesson": {
+      "Text": {
         "x-stoplight": {
           "id": "vm860cr6vj1za"
         },
@@ -3465,7 +3465,7 @@
             "type": "number",
             "minimum": 0
           },
-          "lessonsCount": {
+          "textsCount": {
             "type": "number",
             "minimum": 0
           }
@@ -3477,7 +3477,7 @@
           "language",
           "meanings",
           "learnersCount",
-          "lessonsCount"
+          "textsCount"
         ]
       },
       "Meaning": {
@@ -3872,8 +3872,8 @@
           "-1"
         ]
       },
-      "LessonHistoryEntry": {
-        "title": "LessonHistoryEntry",
+      "TextHistoryEntry": {
+        "title": "TextHistoryEntry",
         "x-stoplight": {
           "id": "1qophlmbybah2"
         },

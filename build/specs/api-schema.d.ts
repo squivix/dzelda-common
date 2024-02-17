@@ -56,11 +56,11 @@ export interface CollectionSchema {
     addedBy: string;
     /** @format date-time */
     addedOn: string;
-    lessons: LessonSchema[];
+    texts: TextSchema[];
     vocabsByLevel?: VocabsByLevelSchema;
     isBookmarked?: boolean;
 }
-export interface LessonSchema {
+export interface TextSchema {
     id: number;
     title: string;
     text: string;
@@ -91,7 +91,7 @@ export interface VocabSchema {
     /** @min 0 */
     learnersCount: number;
     /** @min 0 */
-    lessonsCount: number;
+    textsCount: number;
 }
 export interface MeaningSchema {
     id: number;
@@ -183,8 +183,8 @@ export interface VocabsByLevelSchema {
     "5": number;
     "-1": number;
 }
-/** LessonHistoryEntry */
-export interface LessonHistoryEntrySchema {
+/** TextHistoryEntry */
+export interface TextHistoryEntrySchema {
     id: number;
     title: string;
     text: string;
@@ -689,7 +689,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
              */
             pageSize?: number;
             /** @default "title" */
-            sortBy?: "title" | "createdDate" | "avgPastViewersCountPerLesson";
+            sortBy?: "title" | "createdDate" | "avgPastViewersCountPerText";
             /** @default "asc" */
             sortOrder?: "asc" | "desc";
             level?: LanguageLevelSchema[];
@@ -777,15 +777,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Get the list of lessons the user has viewed.
+         * @description Get the list of texts the user has viewed.
          *
-         * @tags lesson
-         * @name GetUsersMeLessonsHistory
-         * @summary Get User Lessons History
-         * @request GET:/users/me/lessons/history/
+         * @tags text
+         * @name GetUsersMeTextsHistory
+         * @summary Get User Texts History
+         * @request GET:/users/me/texts/history/
          * @secure
          */
-        getUsersMeLessonsHistory: (query?: {
+        getUsersMeTextsHistory: (query?: {
             /**
              * @minLength 2
              * @maxLength 4
@@ -819,7 +819,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             pageSize: number;
             /** @min 0 */
             pageCount: number;
-            data: LessonSchema[];
+            data: TextSchema[];
         }, {
             code: 400;
             status: "Bad Request";
@@ -843,17 +843,17 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Add a lesson to user lesson history
+         * @description Add a text to user text history
          *
-         * @tags lesson
-         * @name PostUsersMeLessonsHistory
-         * @summary Add Lesson To User History
-         * @request POST:/users/me/lessons/history/
+         * @tags text
+         * @name PostUsersMeTextsHistory
+         * @summary Add Text To User History
+         * @request POST:/users/me/texts/history/
          * @secure
          */
-        postUsersMeLessonsHistory: (data: {
-            lessonId?: number;
-        }, params?: RequestParams) => Promise<HttpResponse<LessonSchema, {
+        postUsersMeTextsHistory: (data: {
+            textId?: number;
+        }, params?: RequestParams) => Promise<HttpResponse<TextSchema, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -891,7 +891,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
              */
             pageSize?: number;
             /** @default "text" */
-            sortBy?: "text" | "lessonsCount" | "learnersCount";
+            sortBy?: "text" | "textsCount" | "learnersCount";
             /** @default "asc" */
             sortOrder?: "asc" | "desc";
         }, params?: RequestParams) => Promise<HttpResponse<{
@@ -1351,7 +1351,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             addedBy?: string;
             searchQuery?: string;
             /** @default "title" */
-            sortBy?: "title" | "createdDate" | "avgPastViewersCountPerLesson";
+            sortBy?: "title" | "createdDate" | "avgPastViewersCountPerText";
             /** @default "asc" */
             sortOrder?: "asc" | "desc";
             page?: number;
@@ -1453,7 +1453,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             image?: string;
             title: string;
             description: string;
-            lessonsOrder: number[];
+            textsOrder: number[];
         }, params?: RequestParams) => Promise<HttpResponse<CollectionSchema, {
             code: 400;
             status: "Bad Request";
@@ -1519,14 +1519,14 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Redirects to next lesson in collection or 404 if not found
+         * @description Redirects to next text in collection or 404 if not found
          *
-         * @name GetCollectionsCollectionIdLessonsLessonIdNext
-         * @summary Get Next Lesson In collection
-         * @request GET:/collections/{collectionId}/lessons/{lessonId}/next/
+         * @name GetCollectionsCollectionIdTextsTextIdNext
+         * @summary Get Next Text In collection
+         * @request GET:/collections/{collectionId}/texts/{textId}/next/
          * @secure
          */
-        getCollectionsCollectionIdLessonsLessonIdNext: (collectionId: number, lessonId: number, params?: RequestParams) => Promise<HttpResponse<any, void | {
+        getCollectionsCollectionIdTextsTextIdNext: (collectionId: number, textId: number, params?: RequestParams) => Promise<HttpResponse<any, void | {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1539,17 +1539,17 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
     };
-    lessons: {
+    texts: {
         /**
-         * @description Get a list of lessons
+         * @description Get a list of texts
          *
-         * @tags lesson
-         * @name GetLessons
-         * @summary Get Lessons
-         * @request GET:/lessons/
+         * @tags text
+         * @name GetTexts
+         * @summary Get Texts
+         * @request GET:/texts/
          * @secure
          */
-        getLessons: (query?: {
+        getTexts: (query?: {
             /**
              * @minLength 2
              * @maxLength 4
@@ -1583,7 +1583,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             pageSize?: number | undefined;
             /** @min 0 */
             pageCount?: number | undefined;
-            data?: LessonSchema[] | undefined;
+            data?: TextSchema[] | undefined;
         }, {
             code: 400;
             status: "Bad Request";
@@ -1592,15 +1592,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             fields?: object | undefined;
         }>>;
         /**
-         * @description Create a new lesson.
+         * @description Create a new text.
          *
-         * @tags lesson
-         * @name PostLessons
-         * @summary Create Lesson
-         * @request POST:/lessons/
+         * @tags text
+         * @name PostTexts
+         * @summary Create Text
+         * @request POST:/texts/
          * @secure
          */
-        postLessons: (data: {
+        postTexts: (data: {
             title: string;
             text: string;
             languageCode: string;
@@ -1611,7 +1611,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             image?: string;
             /** @format uri */
             audio?: string;
-        }, params?: RequestParams) => Promise<HttpResponse<LessonSchema, {
+        }, params?: RequestParams) => Promise<HttpResponse<TextSchema, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1636,15 +1636,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             fields?: object | undefined;
         }>>;
         /**
-         * @description Get lesson details.
+         * @description Get text details.
          *
-         * @tags lesson
-         * @name GetLessonsLessonId
-         * @summary Get Lesson
-         * @request GET:/lessons/{lessonId}/
+         * @tags text
+         * @name GetTextsTextId
+         * @summary Get Text
+         * @request GET:/texts/{textId}/
          * @secure
          */
-        getLessonsLessonId: (lessonId: number, params?: RequestParams) => Promise<HttpResponse<LessonSchema, {
+        getTextsTextId: (textId: number, params?: RequestParams) => Promise<HttpResponse<TextSchema, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1662,15 +1662,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Update lesson details.
+         * @description Update text details.
          *
-         * @tags lesson
-         * @name PatchLessonsLessonId
-         * @summary Update Lesson
-         * @request PATCH:/lessons/{lessonId}/
+         * @tags text
+         * @name PatchTextsTextId
+         * @summary Update Text
+         * @request PATCH:/texts/{textId}/
          * @secure
          */
-        patchLessonsLessonId: (lessonId: number, data: {
+        patchTextsTextId: (textId: number, data: {
             /** @format uri */
             image?: string;
             /** @format uri */
@@ -1679,7 +1679,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             title: string;
             text: string;
             level?: LanguageLevelSchema;
-        }, params?: RequestParams) => Promise<HttpResponse<LessonSchema, {
+        }, params?: RequestParams) => Promise<HttpResponse<TextSchema, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1704,12 +1704,12 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         /**
          * No description
          *
-         * @name DeleteLessonsLessonId
-         * @summary Delete Lesson
-         * @request DELETE:/lessons/{lessonId}/
+         * @name DeleteTextsTextId
+         * @summary Delete Text
+         * @request DELETE:/texts/{textId}/
          * @secure
          */
-        deleteLessonsLessonId: (lessonId: number, params?: RequestParams) => Promise<HttpResponse<void, {
+        deleteTextsTextId: (textId: number, params?: RequestParams) => Promise<HttpResponse<void, {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1732,15 +1732,15 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Get a list of vocabs in a lesson.
+         * @description Get a list of vocabs in a text.
          *
          * @tags vocab
-         * @name GetLessonsLessonIdVocabs
-         * @summary Get Lesson Vocabs
-         * @request GET:/lessons/{lessonId}/vocabs/
+         * @name GetTextsTextIdVocabs
+         * @summary Get Text Vocabs
+         * @request GET:/texts/{textId}/vocabs/
          * @secure
          */
-        getLessonsLessonIdVocabs: (lessonId: number, params?: RequestParams) => Promise<HttpResponse<LearnerVocabSchema[], {
+        getTextsTextIdVocabs: (textId: number, params?: RequestParams) => Promise<HttpResponse<LearnerVocabSchema[], {
             code: 400;
             status: "Bad Request";
             message: string;
@@ -1801,7 +1801,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             level?: VocabLevelSchema[];
             searchQuery?: string;
             /** @default "text" */
-            sortBy?: "text" | "lessonsCount" | "learnersCount";
+            sortBy?: "text" | "textsCount" | "learnersCount";
             /** @default "asc" */
             sortOrder?: "asc" | "desc";
             page?: number;
