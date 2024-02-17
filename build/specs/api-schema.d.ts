@@ -204,6 +204,8 @@ export interface TextHistoryEntrySchema {
     /** @format date-time */
     timeViewed: string;
     pastViewer: string;
+    addedBy: string;
+    isPublic: boolean;
 }
 /** TTSPronunciation */
 export interface TTSPronunciationSchema {

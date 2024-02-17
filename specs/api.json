@@ -3951,6 +3951,18 @@
           },
           "pastViewer": {
             "type": "string"
+          },
+          "addedBy": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "49lzo8fuk0xrs"
+            }
+          },
+          "isPublic": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "wo1ty2tszd92h"
+            }
           }
         },
         "required": [
@@ -3967,7 +3979,9 @@
           "parsedTitle",
           "parsedContent",
           "timeViewed",
-          "pastViewer"
+          "pastViewer",
+          "addedBy",
+          "isPublic"
         ]
       },
       "TTSPronunciation": {
