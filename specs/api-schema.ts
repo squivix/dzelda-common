@@ -231,6 +231,7 @@ export interface TextHistoryEntrySchema {
   pastViewer: string;
   addedBy: string;
   isPublic: boolean;
+  isBookmarked?: string;
 }
 
 /** TTSPronunciation */

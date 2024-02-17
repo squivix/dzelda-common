@@ -4127,6 +4127,12 @@
             "x-stoplight": {
               "id": "wo1ty2tszd92h"
             }
+          },
+          "isBookmarked": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "5www7qn8hgdke"
+            }
           }
         },
         "required": [
