@@ -1234,7 +1234,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
          */
         pageSize?: number;
         /** @default "title" */
-        sortBy?: "title" | "createdDate" | "pastViewersCount";
+        sortBy?: "title" | "createdDate" | "pastViewersCount" | "timeViewed";
         /** @default "asc" */
         sortOrder?: "asc" | "desc";
       },

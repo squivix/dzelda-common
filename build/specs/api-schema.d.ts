@@ -806,7 +806,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
              */
             pageSize?: number;
             /** @default "title" */
-            sortBy?: "title" | "createdDate" | "pastViewersCount";
+            sortBy?: "title" | "createdDate" | "pastViewersCount" | "timeViewed";
             /** @default "asc" */
             sortOrder?: "asc" | "desc";
         }, params?: RequestParams) => Promise<HttpResponse<{

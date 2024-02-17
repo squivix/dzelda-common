@@ -1929,7 +1929,8 @@
               "enum": [
                 "title",
                 "createdDate",
-                "pastViewersCount"
+                "pastViewersCount",
+                "timeViewed"
               ],
               "default": "title"
             },
