@@ -463,17 +463,6 @@ export class ApiClient extends HttpClient {
              */
             getUsersUsernameVocabsSavedCount: (username, query, params = {}) => this.request(Object.assign({ path: `/users/${username}/vocabs/saved/count/`, method: "GET", query: query, secure: true, format: "json" }, params)),
             /**
-             * @description Get a count of vocabs saved by a user, optionally grouped by language
-             *
-             * @name GetUsersUsernameVocabsSavedCount2
-             * @summary Get User Saved Vocabs Count
-             * @request GET:/users/{username}/vocabs/saved/count/ - copy
-             * @originalName getUsersUsernameVocabsSavedCount
-             * @duplicate
-             * @secure
-             */
-            getUsersUsernameVocabsSavedCount2: (username, query, params = {}) => this.request(Object.assign({ path: `/users/${username}/vocabs/saved/count/ - copy`, method: "GET", query: query, secure: true, format: "json" }, params)),
-            /**
              * @description Get a count of vocabs saved by a user every `savedOnInterval` between `savedOnFrom` and `savedOnTo`, optionally grouped by language
              *
              * @name GetUsersUsernameVocabsSavedCountTimeSeries

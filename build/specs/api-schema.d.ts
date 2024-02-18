@@ -1275,44 +1275,6 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Get a count of vocabs saved by a user, optionally grouped by language
-         *
-         * @name GetUsersUsernameVocabsSavedCount2
-         * @summary Get User Saved Vocabs Count
-         * @request GET:/users/{username}/vocabs/saved/count/ - copy
-         * @originalName getUsersUsernameVocabsSavedCount
-         * @duplicate
-         * @secure
-         */
-        getUsersUsernameVocabsSavedCount2: (username: string, query?: {
-            /** @format date */
-            savedOnFrom?: string;
-            /** @format date */
-            savedOnTo?: string;
-            level?: VocabLevelSchema[];
-            isPhrase?: boolean;
-            groupBy?: "language";
-        }, params?: RequestParams) => Promise<HttpResponse<{
-            vocabsCount: number;
-            language?: string | undefined;
-        }[], {
-            code: 400;
-            status: "Bad Request";
-            message: string;
-            details: string;
-            fields?: object | undefined;
-        } | {
-            code: 401;
-            status: "Unauthorized";
-            message: string;
-            details: string;
-        } | {
-            code: 404;
-            status: "Not Found";
-            message: string;
-            details: string;
-        }>>;
-        /**
          * @description Get a count of vocabs saved by a user every `savedOnInterval` between `savedOnFrom` and `savedOnTo`, optionally grouped by language
          *
          * @name GetUsersUsernameVocabsSavedCountTimeSeries
@@ -1700,7 +1662,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             pageSize?: number | undefined;
             /** @min 0 */
             pageCount?: number | undefined;
-            data?: TextSchema[] | undefined;
+            data: TextSchema[];
         }, {
             code: 400;
             status: "Bad Request";

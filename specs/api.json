@@ -823,7 +823,10 @@
                         "$ref": "#/components/schemas/Text"
                       }
                     }
-                  }
+                  },
+                  "required": [
+                    "data"
+                  ]
                 }
               }
             }
@@ -2728,92 +2731,6 @@
       }
     },
     "/users/{username}/vocabs/saved/count/": {
-      "get": {
-        "summary": "Get User Saved Vocabs Count",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "vocabsCount": {
-                        "type": "integer"
-                      },
-                      "language": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "vocabsCount"
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthenticated"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          }
-        },
-        "operationId": "get-users-username-vocabs-saved-count",
-        "description": "Get a count of vocabs saved by a user, optionally grouped by language",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "format": "date"
-            },
-            "in": "query",
-            "name": "savedOnFrom"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "format": "date"
-            },
-            "in": "query",
-            "name": "savedOnTo"
-          },
-          {
-            "$ref": "#/components/parameters/vocabLevel"
-          },
-          {
-            "schema": {
-              "type": "boolean"
-            },
-            "in": "query",
-            "name": "isPhrase"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "language"
-              ]
-            },
-            "in": "query",
-            "name": "groupBy"
-          }
-        ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/username"
-        }
-      ]
-    },
-    "/users/{username}/vocabs/saved/count/ - copy": {
       "get": {
         "summary": "Get User Saved Vocabs Count",
         "tags": [],
