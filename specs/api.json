@@ -825,6 +825,9 @@
                     }
                   },
                   "required": [
+                    "page",
+                    "pageSize",
+                    "pageCount",
                     "data"
                   ]
                 }

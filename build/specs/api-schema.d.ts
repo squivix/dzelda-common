@@ -1654,14 +1654,14 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             pageSize?: number;
         }, params?: RequestParams) => Promise<HttpResponse<{
             /** @min 1 */
-            page?: number | undefined;
+            page: number;
             /**
              * @min 1
              * @max 100
              */
-            pageSize?: number | undefined;
+            pageSize: number;
             /** @min 0 */
-            pageCount?: number | undefined;
+            pageCount: number;
             data: TextSchema[];
         }, {
             code: 400;

@@ -2482,14 +2482,14 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       this.request<
         {
           /** @min 1 */
-          page?: number;
+          page: number;
           /**
            * @min 1
            * @max 100
            */
-          pageSize?: number;
+          pageSize: number;
           /** @min 0 */
-          pageCount?: number;
+          pageCount: number;
           data: TextSchema[];
         },
         {
