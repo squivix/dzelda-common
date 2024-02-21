@@ -1520,7 +1520,8 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      */
     postUsersMeVocabs: (
       data: {
-        vocabId?: number;
+        vocabId: number;
+        level?: -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6;
       },
       params: RequestParams = {},
     ) =>

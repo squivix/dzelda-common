@@ -1005,7 +1005,8 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         postUsersMeVocabs: (data: {
-            vocabId?: number;
+            vocabId: number;
+            level?: -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6;
         }, params?: RequestParams) => Promise<HttpResponse<LearnerVocabSchema, {
             code: 400;
             status: "Bad Request";

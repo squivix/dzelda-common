@@ -2314,8 +2314,27 @@
                 "properties": {
                   "vocabId": {
                     "type": "integer"
+                  },
+                  "level": {
+                    "type": "integer",
+                    "x-stoplight": {
+                      "id": "mczd6u8fvprzm"
+                    },
+                    "enum": [
+                      -1,
+                      0,
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      6
+                    ]
                   }
-                }
+                },
+                "required": [
+                  "vocabId"
+                ]
               }
             }
           }
@@ -4744,7 +4763,6 @@
       "languageLevel": {
         "name": "level",
         "in": "query",
-        "required": false,
         "schema": {
           "type": "array",
           "items": {
