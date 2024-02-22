@@ -1955,7 +1955,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             reasonForReporting: string;
             reportText?: string;
             /** @default true */
-            ""?: boolean;
+            hideText?: boolean;
         }, params?: RequestParams) => Promise<HttpResponse<void, {
             code: 400;
             status: "Bad Request";

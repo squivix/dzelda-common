@@ -2919,7 +2919,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         reasonForReporting: string;
         reportText?: string;
         /** @default true */
-        ""?: boolean;
+        hideText?: boolean;
       },
       params: RequestParams = {},
     ) =>

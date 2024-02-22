@@ -3574,7 +3574,7 @@
                       "id": "rt3m0oofs6bg0"
                     }
                   },
-                  "": {
+                  "hideText": {
                     "type": "boolean",
                     "x-stoplight": {
                       "id": "jvt2tyt33erqi"
