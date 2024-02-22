@@ -3573,6 +3573,13 @@
                     "x-stoplight": {
                       "id": "rt3m0oofs6bg0"
                     }
+                  },
+                  "": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "jvt2tyt33erqi"
+                    },
+                    "default": true
                   }
                 },
                 "required": [

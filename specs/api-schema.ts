@@ -2918,6 +2918,8 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       data: {
         reasonForReporting: string;
         reportText?: string;
+        /** @default true */
+        ""?: boolean;
       },
       params: RequestParams = {},
     ) =>
