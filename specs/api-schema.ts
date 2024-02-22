@@ -1434,6 +1434,115 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     /**
      * No description
      *
+     * @name GetUsersMeTextsHidden
+     * @summary Get user hidden texts
+     * @request GET:/users/me/texts/hidden/
+     * @secure
+     */
+    getUsersMeTextsHidden: (
+      query?: {
+        /**
+         * @minLength 2
+         * @maxLength 4
+         */
+        languageCode?: string;
+        searchQuery?: string;
+        /**
+         * @minLength 4
+         * @maxLength 20
+         */
+        addedBy?: string;
+        hasAudio?: boolean;
+        /** @default "title" */
+        sortBy?: "title" | "createdDate" | "pastViewersCount";
+        /** @default "asc" */
+        sortOrder?: "asc" | "desc";
+        page?: number;
+        /**
+         * @min 1
+         * @max 100
+         * @default 10
+         */
+        pageSize?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        {
+          /** @min 1 */
+          page: number;
+          /**
+           * @min 1
+           * @max 100
+           */
+          pageSize: number;
+          /** @min 0 */
+          pageCount: number;
+          data: TextSchema[];
+        },
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/users/me/texts/hidden/`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name PostUsersMeTextsHidden
+     * @summary Hide text for user
+     * @request POST:/users/me/texts/hidden/
+     * @secure
+     */
+    postUsersMeTextsHidden: (
+      data: {
+        textId: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        void,
+        | TextSchema
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/users/me/texts/hidden/`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
      * @name DeleteUsersMeTextsBookmarkedTextId
      * @summary Remove text from user bookmarks
      * @request DELETE:/users/me/texts/bookmarked/{textId}/
@@ -2039,6 +2148,49 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         body: data,
         secure: true,
         type: ContentType.Json,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteUsersMeTextsHiddenTextId
+     * @summary Unhide text for user
+     * @request DELETE:/users/me/texts/hidden/{textId}/
+     * @secure
+     */
+    deleteUsersMeTextsHiddenTextId: (textId: number, params: RequestParams = {}) =>
+      this.request<
+        void,
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/users/me/texts/hidden/${textId}/`,
+        method: "DELETE",
+        secure: true,
         ...params,
       }),
   };
@@ -2750,6 +2902,58 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         method: "GET",
         secure: true,
         format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name GetTextsTextIdReports
+     * @summary Report text
+     * @request GET:/texts/{textId}/reports/
+     * @secure
+     */
+    getTextsTextIdReports: (
+      textId: number,
+      data: {
+        reasonForReporting: string;
+        reportText?: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        void,
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/texts/${textId}/reports/`,
+        method: "GET",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
         ...params,
       }),
   };

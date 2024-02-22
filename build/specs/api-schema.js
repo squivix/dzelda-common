@@ -359,6 +359,24 @@ export class ApiClient extends HttpClient {
             /**
              * No description
              *
+             * @name GetUsersMeTextsHidden
+             * @summary Get user hidden texts
+             * @request GET:/users/me/texts/hidden/
+             * @secure
+             */
+            getUsersMeTextsHidden: (query, params = {}) => this.request(Object.assign({ path: `/users/me/texts/hidden/`, method: "GET", query: query, secure: true, format: "json" }, params)),
+            /**
+             * No description
+             *
+             * @name PostUsersMeTextsHidden
+             * @summary Hide text for user
+             * @request POST:/users/me/texts/hidden/
+             * @secure
+             */
+            postUsersMeTextsHidden: (data, params = {}) => this.request(Object.assign({ path: `/users/me/texts/hidden/`, method: "POST", body: data, secure: true, type: ContentType.Json }, params)),
+            /**
+             * No description
+             *
              * @name DeleteUsersMeTextsBookmarkedTextId
              * @summary Remove text from user bookmarks
              * @request DELETE:/users/me/texts/bookmarked/{textId}/
@@ -480,6 +498,15 @@ export class ApiClient extends HttpClient {
              * @secure
              */
             putUsersMeLanguagesLanguageCodeDictionaries: (languageCode, data, params = {}) => this.request(Object.assign({ path: `/users/me/languages/${languageCode}/dictionaries/`, method: "PUT", body: data, secure: true, type: ContentType.Json }, params)),
+            /**
+             * No description
+             *
+             * @name DeleteUsersMeTextsHiddenTextId
+             * @summary Unhide text for user
+             * @request DELETE:/users/me/texts/hidden/{textId}/
+             * @secure
+             */
+            deleteUsersMeTextsHiddenTextId: (textId, params = {}) => this.request(Object.assign({ path: `/users/me/texts/hidden/${textId}/`, method: "DELETE", secure: true }, params)),
         };
         this.sessions = {
             /**
@@ -631,6 +658,15 @@ export class ApiClient extends HttpClient {
              * @secure
              */
             getTextsTextIdVocabs: (textId, params = {}) => this.request(Object.assign({ path: `/texts/${textId}/vocabs/`, method: "GET", secure: true, format: "json" }, params)),
+            /**
+             * No description
+             *
+             * @name GetTextsTextIdReports
+             * @summary Report text
+             * @request GET:/texts/{textId}/reports/
+             * @secure
+             */
+            getTextsTextIdReports: (textId, data, params = {}) => this.request(Object.assign({ path: `/texts/${textId}/reports/`, method: "GET", body: data, secure: true, type: ContentType.Json }, params)),
         };
         this.vocabs = {
             /**

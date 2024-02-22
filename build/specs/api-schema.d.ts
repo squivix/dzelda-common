@@ -943,6 +943,82 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         /**
          * No description
          *
+         * @name GetUsersMeTextsHidden
+         * @summary Get user hidden texts
+         * @request GET:/users/me/texts/hidden/
+         * @secure
+         */
+        getUsersMeTextsHidden: (query?: {
+            /**
+             * @minLength 2
+             * @maxLength 4
+             */
+            languageCode?: string;
+            searchQuery?: string;
+            /**
+             * @minLength 4
+             * @maxLength 20
+             */
+            addedBy?: string;
+            hasAudio?: boolean;
+            /** @default "title" */
+            sortBy?: "title" | "createdDate" | "pastViewersCount";
+            /** @default "asc" */
+            sortOrder?: "asc" | "desc";
+            page?: number;
+            /**
+             * @min 1
+             * @max 100
+             * @default 10
+             */
+            pageSize?: number;
+        }, params?: RequestParams) => Promise<HttpResponse<{
+            /** @min 1 */
+            page: number;
+            /**
+             * @min 1
+             * @max 100
+             */
+            pageSize: number;
+            /** @min 0 */
+            pageCount: number;
+            data: TextSchema[];
+        }, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+        }>>;
+        /**
+         * No description
+         *
+         * @name PostUsersMeTextsHidden
+         * @summary Hide text for user
+         * @request POST:/users/me/texts/hidden/
+         * @secure
+         */
+        postUsersMeTextsHidden: (data: {
+            textId: number;
+        }, params?: RequestParams) => Promise<HttpResponse<void, TextSchema | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+        } | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
+        /**
+         * No description
+         *
          * @name DeleteUsersMeTextsBookmarkedTextId
          * @summary Remove text from user bookmarks
          * @request DELETE:/users/me/texts/bookmarked/{textId}/
@@ -1341,6 +1417,36 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         } | {
             code: 403;
             status: string;
+            message: string;
+            details: string;
+        }>>;
+        /**
+         * No description
+         *
+         * @name DeleteUsersMeTextsHiddenTextId
+         * @summary Unhide text for user
+         * @request DELETE:/users/me/texts/hidden/{textId}/
+         * @secure
+         */
+        deleteUsersMeTextsHiddenTextId: (textId: number, params?: RequestParams) => Promise<HttpResponse<void, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+        } | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+        } | {
+            code: 404;
+            status: "Not Found";
             message: string;
             details: string;
         }>>;
@@ -1829,6 +1935,39 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         } | {
             code: 401;
             status: "Unauthorized";
+            message: string;
+            details: string;
+        } | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
+        /**
+         * No description
+         *
+         * @name GetTextsTextIdReports
+         * @summary Report text
+         * @request GET:/texts/{textId}/reports/
+         * @secure
+         */
+        getTextsTextIdReports: (textId: number, data: {
+            reasonForReporting: string;
+            reportText?: string;
+        }, params?: RequestParams) => Promise<HttpResponse<void, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+        } | {
+            code: 403;
+            status: string;
             message: string;
             details: string;
         } | {
