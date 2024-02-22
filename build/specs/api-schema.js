@@ -661,12 +661,12 @@ export class ApiClient extends HttpClient {
             /**
              * No description
              *
-             * @name GetTextsTextIdReports
+             * @name PostTextsTextIdReports
              * @summary Report text
-             * @request GET:/texts/{textId}/reports/
+             * @request POST:/texts/{textId}/reports/
              * @secure
              */
-            getTextsTextIdReports: (textId, data, params = {}) => this.request(Object.assign({ path: `/texts/${textId}/reports/`, method: "GET", body: data, secure: true, type: ContentType.Json }, params)),
+            postTextsTextIdReports: (textId, data, params = {}) => this.request(Object.assign({ path: `/texts/${textId}/reports/`, method: "POST", body: data, secure: true, type: ContentType.Json }, params)),
         };
         this.vocabs = {
             /**

@@ -3534,7 +3534,7 @@
           "required": true
         }
       ],
-      "get": {
+      "post": {
         "summary": "Report text",
         "tags": [],
         "responses": {
@@ -3554,7 +3554,7 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "operationId": "get-texts-textId-reports",
+        "operationId": "post-texts-textId-reports",
         "description": "",
         "requestBody": {
           "content": {

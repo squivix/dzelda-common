@@ -2908,12 +2908,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     /**
      * No description
      *
-     * @name GetTextsTextIdReports
+     * @name PostTextsTextIdReports
      * @summary Report text
-     * @request GET:/texts/{textId}/reports/
+     * @request POST:/texts/{textId}/reports/
      * @secure
      */
-    getTextsTextIdReports: (
+    postTextsTextIdReports: (
       textId: number,
       data: {
         reasonForReporting: string;
@@ -2950,7 +2950,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
           }
       >({
         path: `/texts/${textId}/reports/`,
-        method: "GET",
+        method: "POST",
         body: data,
         secure: true,
         type: ContentType.Json,

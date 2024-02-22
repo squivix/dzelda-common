@@ -1946,12 +1946,12 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         /**
          * No description
          *
-         * @name GetTextsTextIdReports
+         * @name PostTextsTextIdReports
          * @summary Report text
-         * @request GET:/texts/{textId}/reports/
+         * @request POST:/texts/{textId}/reports/
          * @secure
          */
-        getTextsTextIdReports: (textId: number, data: {
+        postTextsTextIdReports: (textId: number, data: {
             reasonForReporting: string;
             reportText?: string;
         }, params?: RequestParams) => Promise<HttpResponse<void, {
