@@ -262,7 +262,7 @@ export class ApiClient extends HttpClient {
              */
             postUsersUsernameLanguages: (data, params = {}) => this.request(Object.assign({ path: `/users/me/languages/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
-             * @description Updates user language last time opneed timestamp.
+             * @description Updates user language data
              *
              * @tags language
              * @name PatchUsersMeLanguagesLanguageCode

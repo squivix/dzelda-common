@@ -916,7 +916,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * @description Updates user language last time opneed timestamp.
+     * @description Updates user language data
      *
      * @tags language
      * @name PatchUsersMeLanguagesLanguageCode
@@ -928,11 +928,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       languageCode: string,
       data: {
         lastOpened?: "now";
+        preferredTranslationLanguageCodes?: string[];
       },
       params: RequestParams = {},
     ) =>
       this.request<
-        LanguageSchema,
+        LearnerLanguageSchema,
         | {
             code: 400;
             status: "Bad Request";

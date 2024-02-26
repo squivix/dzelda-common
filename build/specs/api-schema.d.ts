@@ -582,7 +582,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             details: string;
         }>>;
         /**
-         * @description Updates user language last time opneed timestamp.
+         * @description Updates user language data
          *
          * @tags language
          * @name PatchUsersMeLanguagesLanguageCode
@@ -592,7 +592,8 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          */
         patchUsersMeLanguagesLanguageCode: (languageCode: string, data: {
             lastOpened?: "now";
-        }, params?: RequestParams) => Promise<HttpResponse<LanguageSchema, void | {
+            preferredTranslationLanguageCodes?: string[];
+        }, params?: RequestParams) => Promise<HttpResponse<LearnerLanguageSchema, void | {
             code: 400;
             status: "Bad Request";
             message: string;
