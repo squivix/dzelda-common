@@ -47,7 +47,6 @@ export interface LanguageSchema {
   /** @format uri */
   flagCircular: string | null;
   flagEmoji: string | null;
-  isSupported: boolean;
   levelThresholds: {
     beginner1: number;
     beginner2: number;
@@ -173,6 +172,7 @@ export interface LearnerLanguageSchema {
   lastOpened: string;
   color: string | null;
   preferredTtsVoice: null | TTSVoiceSchema;
+  preferredTranslationLanguages: TranslationLanguageSchema[];
 }
 
 /** VocabLevel */
@@ -283,6 +283,13 @@ export interface AttributionSchema {
   licenseLongName: string;
   licenseUrl?: string;
   attributionMarkdown: string;
+}
+
+/** TranslationLanguage */
+export interface TranslationLanguageSchema {
+  id: number;
+  name: string;
+  code: string;
 }
 
 export type QueryParamsType = Record<string | number, any>;
