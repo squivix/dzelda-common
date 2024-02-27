@@ -784,6 +784,16 @@ export class ApiClient extends HttpClient {
              */
             postTtsPronunciations: (data, params = {}) => this.request(Object.assign({ path: `/tts-pronunciations/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
         };
+        this.translationLanguages = {
+            /**
+             * No description
+             *
+             * @name GetTranslationLanguages
+             * @summary Get translation languages
+             * @request GET:/translation-languages/
+             */
+            getTranslationLanguages: (params = {}) => this.request(Object.assign({ path: `/translation-languages/`, method: "GET", format: "json" }, params)),
+        };
     }
 }
 //# sourceMappingURL=api-schema.js.map

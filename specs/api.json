@@ -3602,6 +3602,32 @@
           }
         }
       }
+    },
+    "/translation-languages/": {
+      "get": {
+        "summary": "Get translation languages",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TranslationLanguage",
+                    "x-stoplight": {
+                      "id": "27u797k7l3vy8"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-translation-languages",
+        "security": []
+      }
     }
   },
   "components": {

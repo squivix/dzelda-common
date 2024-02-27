@@ -3378,4 +3378,20 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         ...params,
       }),
   };
+  translationLanguages = {
+    /**
+     * No description
+     *
+     * @name GetTranslationLanguages
+     * @summary Get translation languages
+     * @request GET:/translation-languages/
+     */
+    getTranslationLanguages: (params: RequestParams = {}) =>
+      this.request<TranslationLanguageSchema[], any>({
+        path: `/translation-languages/`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+  };
 }
