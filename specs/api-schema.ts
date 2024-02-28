@@ -120,6 +120,7 @@ export interface MeaningSchema {
   /** @format date-time */
   addedOn: string;
   attribution: null | AttributionSchema;
+  attributionSource: null | AttributionSourceSchema;
 }
 
 export interface DictionarySchema {
@@ -268,13 +269,11 @@ export interface HumanPronunciationSchema {
   speakerRegion: string | null;
   language: string;
   attribution: null | AttributionSchema;
+  attributionSource: null | AttributionSourceSchema;
 }
 
 /** Attribution */
 export interface AttributionSchema {
-  sourceRootName: string;
-  sourceRootUrl?: string;
-  sourceRootLogoUrl?: string;
   sourcePageTitle?: string;
   sourcePageUrl?: string;
   authorName?: string;
@@ -291,6 +290,16 @@ export interface TranslationLanguageSchema {
   name: string;
   code: string;
   isDefault: boolean;
+}
+
+/** AttributionSource */
+export interface AttributionSourceSchema {
+  id: number;
+  name: string;
+  /** @format uri */
+  url: string;
+  /** @format uri */
+  logoUrl?: string;
 }
 
 export type QueryParamsType = Record<string | number, any>;
