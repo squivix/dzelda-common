@@ -1486,8 +1486,23 @@
                 "properties": {
                   "languageCode": {
                     "type": "string"
+                  },
+                  "preferredTranslationLanguageCodes": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "12hr6za2x2904"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "dgb4i35sks8bo"
+                      },
+                      "type": "string"
+                    }
                   }
-                }
+                },
+                "required": [
+                  "languageCode"
+                ]
               }
             }
           }

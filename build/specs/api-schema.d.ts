@@ -558,7 +558,8 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         postUsersUsernameLanguages: (data: {
-            languageCode?: string;
+            languageCode: string;
+            preferredTranslationLanguageCodes?: string[];
         }, params?: RequestParams) => Promise<HttpResponse<LanguageSchema, {
             code: 400;
             status: "Bad Request";

@@ -874,7 +874,8 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      */
     postUsersUsernameLanguages: (
       data: {
-        languageCode?: string;
+        languageCode: string;
+        preferredTranslationLanguageCodes?: string[];
       },
       params: RequestParams = {},
     ) =>
