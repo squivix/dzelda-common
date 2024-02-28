@@ -290,6 +290,7 @@ export interface TranslationLanguageSchema {
   id: number;
   name: string;
   code: string;
+  isDefault: boolean;
 }
 
 export type QueryParamsType = Record<string | number, any>;

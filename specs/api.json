@@ -4831,12 +4831,19 @@
             "x-stoplight": {
               "id": "kg93k7oifnb0z"
             }
+          },
+          "isDefault": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "hy8jv0s6d1d8v"
+            }
           }
         },
         "required": [
           "id",
           "name",
-          "code"
+          "code",
+          "isDefault"
         ]
       }
     },
