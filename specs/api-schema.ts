@@ -3386,10 +3386,16 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      * @summary Get translation languages
      * @request GET:/translation-languages/
      */
-    getTranslationLanguages: (params: RequestParams = {}) =>
+    getTranslationLanguages: (
+      query?: {
+        isDefault?: boolean;
+      },
+      params: RequestParams = {},
+    ) =>
       this.request<TranslationLanguageSchema[], any>({
         path: `/translation-languages/`,
         method: "GET",
+        query: query,
         format: "json",
         ...params,
       }),

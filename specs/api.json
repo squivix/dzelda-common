@@ -3626,7 +3626,16 @@
           }
         },
         "operationId": "get-translation-languages",
-        "security": []
+        "security": [],
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "isDefault"
+          }
+        ]
       }
     }
   },

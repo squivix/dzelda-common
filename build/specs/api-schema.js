@@ -792,7 +792,7 @@ export class ApiClient extends HttpClient {
              * @summary Get translation languages
              * @request GET:/translation-languages/
              */
-            getTranslationLanguages: (params = {}) => this.request(Object.assign({ path: `/translation-languages/`, method: "GET", format: "json" }, params)),
+            getTranslationLanguages: (query, params = {}) => this.request(Object.assign({ path: `/translation-languages/`, method: "GET", query: query, format: "json" }, params)),
         };
     }
 }

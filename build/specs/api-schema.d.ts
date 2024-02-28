@@ -2249,7 +2249,9 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @summary Get translation languages
          * @request GET:/translation-languages/
          */
-        getTranslationLanguages: (params?: RequestParams) => Promise<HttpResponse<TranslationLanguageSchema[], any>>;
+        getTranslationLanguages: (query?: {
+            isDefault?: boolean;
+        }, params?: RequestParams) => Promise<HttpResponse<TranslationLanguageSchema[], any>>;
     };
 }
 export {};
