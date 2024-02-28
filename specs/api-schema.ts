@@ -297,7 +297,7 @@ export interface AttributionSourceSchema {
   id: number;
   name: string;
   /** @format uri */
-  url: string;
+  url?: string;
   /** @format uri */
   logoUrl?: string;
 }
