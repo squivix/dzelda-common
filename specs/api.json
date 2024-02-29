@@ -4013,16 +4013,16 @@
             "type": "number",
             "minimum": 0
           },
-          "rootForms": {
+          "tags": {
             "type": "array",
             "x-stoplight": {
               "id": "bnr79kajn7mr1"
             },
             "items": {
+              "$ref": "#/components/schemas/VocabTag",
               "x-stoplight": {
                 "id": "e3yyrqr9iix8i"
-              },
-              "type": "string"
+              }
             }
           }
         },
@@ -4034,7 +4034,7 @@
           "meanings",
           "learnersCount",
           "textsCount",
-          "rootForms"
+          "tags"
         ]
       },
       "Meaning": {
@@ -4217,6 +4217,25 @@
                 "id": "njafo5jsirfyg"
               }
             }
+          },
+          "tags": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "h7u5b94eu0w5m"
+            },
+            "items": {
+              "$ref": "#/components/schemas/VocabTag",
+              "x-stoplight": {
+                "id": "y2o2ft4zybwva"
+              }
+            }
+          },
+          "rootForms": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "02419r9a2er53"
+            },
+            "items": {}
           }
         },
         "required": [
@@ -4228,7 +4247,9 @@
           "language",
           "meanings",
           "learnerMeanings",
-          "ttsPronunciations"
+          "ttsPronunciations",
+          "tags",
+          "rootForms"
         ]
       },
       "LearnerLanguage": {

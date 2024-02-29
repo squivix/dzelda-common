@@ -92,7 +92,7 @@ export interface VocabSchema {
     learnersCount: number;
     /** @min 0 */
     textsCount: number;
-    rootForms: string[];
+    tags: VocabTagSchema[];
 }
 export interface MeaningSchema {
     id: number;
@@ -125,6 +125,8 @@ export interface LearnerVocabSchema {
     meanings: MeaningSchema[];
     learnerMeanings: MeaningSchema[];
     ttsPronunciations: TTSPronunciationSchema[];
+    tags: VocabTagSchema[];
+    rootForms: any[];
 }
 /** LearnerLanguage */
 export interface LearnerLanguageSchema {
