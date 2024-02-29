@@ -108,6 +108,7 @@ export interface VocabSchema {
   learnersCount: number;
   /** @min 0 */
   textsCount: number;
+  rootForms: string[];
 }
 
 export interface MeaningSchema {
@@ -300,6 +301,13 @@ export interface AttributionSourceSchema {
   url?: string;
   /** @format uri */
   logoUrl?: string;
+}
+
+/** VocabTag */
+export interface VocabTagSchema {
+  id: number;
+  name: string;
+  category: string | null;
 }
 
 export type QueryParamsType = Record<string | number, any>;

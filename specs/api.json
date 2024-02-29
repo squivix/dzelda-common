@@ -4012,6 +4012,18 @@
           "textsCount": {
             "type": "number",
             "minimum": 0
+          },
+          "rootForms": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "bnr79kajn7mr1"
+            },
+            "items": {
+              "x-stoplight": {
+                "id": "e3yyrqr9iix8i"
+              },
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -4021,7 +4033,8 @@
           "language",
           "meanings",
           "learnersCount",
-          "textsCount"
+          "textsCount",
+          "rootForms"
         ]
       },
       "Meaning": {
@@ -4905,6 +4918,38 @@
         "required": [
           "id",
           "name"
+        ]
+      },
+      "VocabTag": {
+        "title": "VocabTag",
+        "x-stoplight": {
+          "id": "nzrkzojwl2iec"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "9z8jdlu2o0zni"
+            }
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "x-stoplight": {
+              "id": "cj0b3stm6t98t"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "category"
         ]
       }
     },
