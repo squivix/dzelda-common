@@ -92,7 +92,6 @@ export interface VocabSchema {
     learnersCount: number;
     /** @min 0 */
     textsCount: number;
-    tags: VocabTagSchema[];
 }
 export interface MeaningSchema {
     id: number;
@@ -105,6 +104,7 @@ export interface MeaningSchema {
     addedOn: string;
     attribution: null | AttributionSchema;
     attributionSource: null | AttributionSourceSchema;
+    tags: MeaningTagSchema[];
 }
 export interface DictionarySchema {
     id: number;
@@ -125,7 +125,6 @@ export interface LearnerVocabSchema {
     meanings: MeaningSchema[];
     learnerMeanings: MeaningSchema[];
     ttsPronunciations: TTSPronunciationSchema[];
-    tags: VocabTagSchema[];
     rootForms: any[];
 }
 /** LearnerLanguage */
@@ -274,8 +273,8 @@ export interface AttributionSourceSchema {
     /** @format uri */
     logoUrl?: string;
 }
-/** VocabTag */
-export interface VocabTagSchema {
+/** MeaningTag */
+export interface MeaningTagSchema {
     id: number;
     name: string;
     category: string | null;
