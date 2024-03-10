@@ -146,6 +146,7 @@ export interface LearnerVocabSchema {
   ttsPronunciations: TTSPronunciationSchema[];
   tags: VocabTagSchema[];
   rootForms: any[];
+  learnersCount: number;
 }
 
 /** LearnerLanguage */
