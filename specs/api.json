@@ -3652,6 +3652,45 @@
           }
         ]
       }
+    },
+    "/vocabs/{vocabId}/tts-pronunciations/": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "vocabId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get vocab TTS pronunciations",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TTSPronunciation",
+                    "x-stoplight": {
+                      "id": "d5uezef54yifd"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-vocabs-vocabId-tts-pronunciations",
+        "description": ""
+      }
     }
   },
   "components": {
@@ -4206,17 +4245,12 @@
               "$ref": "#/components/schemas/Meaning"
             }
           },
-          "ttsPronunciations": {
+          "ttsPronunciationUrl": {
             "x-stoplight": {
               "id": "vnufwcsjpmnuo"
             },
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TTSPronunciation",
-              "x-stoplight": {
-                "id": "p515btchjvhl9"
-              }
-            }
+            "type": "string",
+            "format": "uri"
           },
           "tags": {
             "type": "array",
@@ -4253,7 +4287,7 @@
           "language",
           "meanings",
           "learnerMeanings",
-          "ttsPronunciations",
+          "ttsPronunciationUrl",
           "tags",
           "rootForms",
           "learnersCount"

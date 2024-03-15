@@ -143,7 +143,8 @@ export interface LearnerVocabSchema {
   language: string;
   meanings: MeaningSchema[];
   learnerMeanings: MeaningSchema[];
-  ttsPronunciations: TTSPronunciationSchema[];
+  /** @format uri */
+  ttsPronunciationUrl: string;
   tags: VocabTagSchema[];
   rootForms: any[];
   learnersCount: number;
@@ -3100,6 +3101,31 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     getVocabsVocabIdHumanPronunciations: (vocabId: number, params: RequestParams = {}) =>
       this.request<HumanPronunciationSchema[], any>({
         path: `/vocabs/${vocabId}/human-pronunciations/`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name GetVocabsVocabIdTtsPronunciations
+     * @summary Get vocab TTS pronunciations
+     * @request GET:/vocabs/{vocabId}/tts-pronunciations/
+     * @secure
+     */
+    getVocabsVocabIdTtsPronunciations: (vocabId: number, params: RequestParams = {}) =>
+      this.request<
+        TTSPronunciationSchema[],
+        {
+          code: 404;
+          status: "Not Found";
+          message: string;
+          details: string;
+        }
+      >({
+        path: `/vocabs/${vocabId}/tts-pronunciations/`,
         method: "GET",
         secure: true,
         format: "json",

@@ -696,6 +696,15 @@ export class ApiClient extends HttpClient {
              * @secure
              */
             getVocabsVocabIdHumanPronunciations: (vocabId, params = {}) => this.request(Object.assign({ path: `/vocabs/${vocabId}/human-pronunciations/`, method: "GET", secure: true, format: "json" }, params)),
+            /**
+             * No description
+             *
+             * @name GetVocabsVocabIdTtsPronunciations
+             * @summary Get vocab TTS pronunciations
+             * @request GET:/vocabs/{vocabId}/tts-pronunciations/
+             * @secure
+             */
+            getVocabsVocabIdTtsPronunciations: (vocabId, params = {}) => this.request(Object.assign({ path: `/vocabs/${vocabId}/tts-pronunciations/`, method: "GET", secure: true, format: "json" }, params)),
         };
         this.meanings = {
             /**

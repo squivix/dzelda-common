@@ -124,7 +124,8 @@ export interface LearnerVocabSchema {
     language: string;
     meanings: MeaningSchema[];
     learnerMeanings: MeaningSchema[];
-    ttsPronunciations: TTSPronunciationSchema[];
+    /** @format uri */
+    ttsPronunciationUrl: string;
     tags: VocabTagSchema[];
     rootForms: any[];
     learnersCount: number;
@@ -2083,6 +2084,20 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         getVocabsVocabIdHumanPronunciations: (vocabId: number, params?: RequestParams) => Promise<HttpResponse<HumanPronunciationSchema[], any>>;
+        /**
+         * No description
+         *
+         * @name GetVocabsVocabIdTtsPronunciations
+         * @summary Get vocab TTS pronunciations
+         * @request GET:/vocabs/{vocabId}/tts-pronunciations/
+         * @secure
+         */
+        getVocabsVocabIdTtsPronunciations: (vocabId: number, params?: RequestParams) => Promise<HttpResponse<TTSPronunciationSchema[], {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
     };
     meanings: {
         /**
