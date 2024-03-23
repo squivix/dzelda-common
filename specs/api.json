@@ -4249,7 +4249,10 @@
             "x-stoplight": {
               "id": "vnufwcsjpmnuo"
             },
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uri"
           },
           "tags": {

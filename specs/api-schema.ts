@@ -144,7 +144,7 @@ export interface LearnerVocabSchema {
   meanings: MeaningSchema[];
   learnerMeanings: MeaningSchema[];
   /** @format uri */
-  ttsPronunciationUrl: string;
+  ttsPronunciationUrl: string | null;
   tags: VocabTagSchema[];
   rootForms: any[];
   learnersCount: number;
