@@ -161,25 +161,9 @@ export interface LearnerLanguageSchema {
     preferredTranslationLanguages: TranslationLanguageSchema[];
 }
 /** VocabLevel */
-export declare enum VocabLevelSchema {
-    IGNORED = -1,
-    NEW = 0,
-    LEVEL1 = 1,
-    LEVEL2 = 2,
-    LEVEL3 = 3,
-    LEVEL4 = 4,
-    LEARNED = 5,
-    KNOWN = 6
-}
+export type VocabLevelSchema = -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6;
 /** LanguageLevel */
-export declare enum LanguageLevelSchema {
-    BEGINNER1 = "beginner1",
-    BEGINNER2 = "beginner2",
-    INTERMEDIATE1 = "intermediate1",
-    INTERMEDIATE2 = "intermediate2",
-    ADVANCED1 = "advanced1",
-    ADVANCED2 = "advanced2"
-}
+export type LanguageLevelSchema = "beginner1" | "beginner2" | "intermediate1" | "intermediate2" | "advanced1" | "advanced2";
 /** VocabsByLevel */
 export interface VocabsByLevelSchema {
     "0": number;

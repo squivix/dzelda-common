@@ -19,28 +19,6 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-/** VocabLevel */
-export var VocabLevelSchema;
-(function (VocabLevelSchema) {
-    VocabLevelSchema[VocabLevelSchema["IGNORED"] = -1] = "IGNORED";
-    VocabLevelSchema[VocabLevelSchema["NEW"] = 0] = "NEW";
-    VocabLevelSchema[VocabLevelSchema["LEVEL1"] = 1] = "LEVEL1";
-    VocabLevelSchema[VocabLevelSchema["LEVEL2"] = 2] = "LEVEL2";
-    VocabLevelSchema[VocabLevelSchema["LEVEL3"] = 3] = "LEVEL3";
-    VocabLevelSchema[VocabLevelSchema["LEVEL4"] = 4] = "LEVEL4";
-    VocabLevelSchema[VocabLevelSchema["LEARNED"] = 5] = "LEARNED";
-    VocabLevelSchema[VocabLevelSchema["KNOWN"] = 6] = "KNOWN";
-})(VocabLevelSchema || (VocabLevelSchema = {}));
-/** LanguageLevel */
-export var LanguageLevelSchema;
-(function (LanguageLevelSchema) {
-    LanguageLevelSchema["BEGINNER1"] = "beginner1";
-    LanguageLevelSchema["BEGINNER2"] = "beginner2";
-    LanguageLevelSchema["INTERMEDIATE1"] = "intermediate1";
-    LanguageLevelSchema["INTERMEDIATE2"] = "intermediate2";
-    LanguageLevelSchema["ADVANCED1"] = "advanced1";
-    LanguageLevelSchema["ADVANCED2"] = "advanced2";
-})(LanguageLevelSchema || (LanguageLevelSchema = {}));
 export var ContentType;
 (function (ContentType) {
     ContentType["Json"] = "application/json";
