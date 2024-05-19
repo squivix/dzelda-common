@@ -53,12 +53,14 @@ export interface CollectionSchema {
     image: string;
     language: string;
     addedBy: string;
+    isPublic: boolean;
     /** @format date-time */
     addedOn: string;
     texts: TextSchema[];
     vocabsByLevel?: VocabsByLevelSchema;
     isBookmarked?: boolean;
 }
+/** Text */
 export interface TextSchema {
     id: number;
     title: string;
@@ -1599,6 +1601,8 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             level?: LanguageLevelSchema;
             /** @format uri */
             image?: string;
+            /** @default true */
+            isPublic?: boolean;
         }, params?: RequestParams) => Promise<HttpResponse<CollectionSchema, {
             code: 400;
             status: "Bad Request";
@@ -1652,6 +1656,8 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             title: string;
             description: string;
             textsOrder: number[];
+            /** @default true */
+            isPublic?: boolean;
         }, params?: RequestParams) => Promise<HttpResponse<CollectionSchema, {
             code: 400;
             status: "Bad Request";
