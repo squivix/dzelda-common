@@ -67,6 +67,7 @@ export interface CollectionSchema {
   image: string;
   language: string;
   addedBy: string;
+  isPublic: boolean;
   /** @format date-time */
   addedOn: string;
   texts: TextSchema[];
@@ -74,6 +75,7 @@ export interface CollectionSchema {
   isBookmarked?: boolean;
 }
 
+/** Text */
 export interface TextSchema {
   id: number;
   title: string;
@@ -2402,6 +2404,8 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         level?: LanguageLevelSchema;
         /** @format uri */
         image?: string;
+        /** @default true */
+        isPublic?: boolean;
       },
       params: RequestParams = {},
     ) =>
@@ -2486,6 +2490,8 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         title: string;
         description: string;
         textsOrder: number[];
+        /** @default true */
+        isPublic?: boolean;
       },
       params: RequestParams = {},
     ) =>

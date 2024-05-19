@@ -625,6 +625,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "languageCode",
+                  "title"
+                ],
                 "properties": {
                   "languageCode": {
                     "type": "string"
@@ -641,12 +645,15 @@
                   "image": {
                     "type": "string",
                     "format": "uri"
+                  },
+                  "isPublic": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "y4qjwudzhtrms"
+                    },
+                    "default": true
                   }
-                },
-                "required": [
-                  "languageCode",
-                  "title"
-                ]
+                }
               }
             }
           },
@@ -737,6 +744,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "title",
+                  "description",
+                  "textsOrder"
+                ],
                 "properties": {
                   "image": {
                     "type": "string",
@@ -753,13 +765,15 @@
                     "items": {
                       "type": "integer"
                     }
+                  },
+                  "isPublic": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "nvbeed6ss9m5c"
+                    },
+                    "default": true
                   }
-                },
-                "required": [
-                  "title",
-                  "description",
-                  "textsOrder"
-                ]
+                }
               }
             }
           }
@@ -3877,6 +3891,9 @@
           "addedBy": {
             "type": "string"
           },
+          "isPublic": {
+            "type": "boolean"
+          },
           "addedOn": {
             "type": "string",
             "format": "date-time"
@@ -3902,7 +3919,8 @@
           "language",
           "addedBy",
           "addedOn",
-          "texts"
+          "texts",
+          "isPublic"
         ]
       },
       "Text": {
@@ -4017,7 +4035,7 @@
           "addedBy",
           "language"
         ],
-        "title": ""
+        "title": "Text"
       },
       "Vocab": {
         "type": "object",
