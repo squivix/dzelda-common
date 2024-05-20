@@ -2255,6 +2255,37 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         format: "json",
         ...params,
       }),
+
+    /**
+     * No description
+     *
+     * @name DeleteUsersMeNotificationsNotificationId
+     * @summary Delete user notification
+     * @request DELETE:/users/me/notifications/{notificationId}/
+     * @secure
+     */
+    deleteUsersMeNotificationsNotificationId: (notificationId: string, params: RequestParams = {}) =>
+      this.request<
+        void,
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+        | void
+      >({
+        path: `/users/me/notifications/${notificationId}/`,
+        method: "DELETE",
+        secure: true,
+        ...params,
+      }),
   };
   sessions = {
     /**
