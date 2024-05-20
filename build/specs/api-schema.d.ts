@@ -1479,7 +1479,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @request GET:/users/me/notifications
          * @secure
          */
-        getUsersMeNotifications: (data: any, params?: RequestParams) => Promise<HttpResponse<NotificationSchema[], {
+        getUsersMeNotifications: (params?: RequestParams) => Promise<HttpResponse<NotificationSchema[], {
             code: 401;
             status: "Unauthorized";
             message: string;
