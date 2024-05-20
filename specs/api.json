@@ -4028,6 +4028,7 @@
           "id": "zegmna6pow1ye"
         },
         "type": "object",
+        "title": "Text",
         "properties": {
           "id": {
             "type": "integer"
@@ -4118,6 +4119,12 @@
             "x-stoplight": {
               "id": "8kas44ub1dhw0"
             }
+          },
+          "isProcessing": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "nk4ax82unfj9r"
+            }
           }
         },
         "required": [
@@ -4133,9 +4140,9 @@
           "parsedContent",
           "isPublic",
           "addedBy",
-          "language"
-        ],
-        "title": "Text"
+          "language",
+          "isProcessing"
+        ]
       },
       "Vocab": {
         "type": "object",

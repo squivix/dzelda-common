@@ -98,6 +98,7 @@ export interface TextSchema {
   language: string;
   level?: LanguageLevelSchema;
   isBookmarked?: boolean;
+  isProcessing: boolean;
 }
 
 export interface VocabSchema {
