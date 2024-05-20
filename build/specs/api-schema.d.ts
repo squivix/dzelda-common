@@ -1498,7 +1498,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @request DELETE:/users/me/notifications/{notificationId}/
          * @secure
          */
-        deleteUsersMeNotificationsNotificationId: (notificationId: string, params?: RequestParams) => Promise<HttpResponse<void, void | {
+        deleteUsersMeNotificationsNotificationId: (notificationId: number, params?: RequestParams) => Promise<HttpResponse<void, void | {
             code: 401;
             status: "Unauthorized";
             message: string;

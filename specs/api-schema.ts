@@ -2264,7 +2264,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      * @request DELETE:/users/me/notifications/{notificationId}/
      * @secure
      */
-    deleteUsersMeNotificationsNotificationId: (notificationId: string, params: RequestParams = {}) =>
+    deleteUsersMeNotificationsNotificationId: (notificationId: number, params: RequestParams = {}) =>
       this.request<
         void,
         | {

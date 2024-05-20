@@ -3780,7 +3780,7 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "integer"
           },
           "name": "notificationId",
           "in": "path",
