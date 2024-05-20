@@ -490,10 +490,10 @@ export class ApiClient extends HttpClient {
              *
              * @name GetUsersMeNotifications
              * @summary Get user notifications
-             * @request GET:/users/me/notifications
+             * @request GET:/users/me/notifications/
              * @secure
              */
-            getUsersMeNotifications: (params = {}) => this.request(Object.assign({ path: `/users/me/notifications`, method: "GET", secure: true, format: "json" }, params)),
+            getUsersMeNotifications: (params = {}) => this.request(Object.assign({ path: `/users/me/notifications/`, method: "GET", secure: true, format: "json" }, params)),
         };
         this.sessions = {
             /**

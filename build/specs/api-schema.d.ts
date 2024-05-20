@@ -1476,7 +1476,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          *
          * @name GetUsersMeNotifications
          * @summary Get user notifications
-         * @request GET:/users/me/notifications
+         * @request GET:/users/me/notifications/
          * @secure
          */
         getUsersMeNotifications: (params?: RequestParams) => Promise<HttpResponse<NotificationSchema[], {

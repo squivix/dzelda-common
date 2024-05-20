@@ -3745,7 +3745,7 @@
         "description": ""
       }
     },
-    "/users/me/notifications": {
+    "/users/me/notifications/": {
       "get": {
         "summary": "Get user notifications",
         "tags": [],
@@ -3773,7 +3773,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "operationId": "get-users-me-notifications",
+        "operationId": "get-users-me-notifications"
       }
     }
   },

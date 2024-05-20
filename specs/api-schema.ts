@@ -2230,7 +2230,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      *
      * @name GetUsersMeNotifications
      * @summary Get user notifications
-     * @request GET:/users/me/notifications
+     * @request GET:/users/me/notifications/
      * @secure
      */
     getUsersMeNotifications: (params: RequestParams = {}) =>
@@ -2249,7 +2249,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
             details: string;
           }
       >({
-        path: `/users/me/notifications`,
+        path: `/users/me/notifications/`,
         method: "GET",
         secure: true,
         format: "json",
