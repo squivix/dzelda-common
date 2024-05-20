@@ -485,6 +485,15 @@ export class ApiClient extends HttpClient {
              * @secure
              */
             deleteUsersMeTextsHiddenTextId: (textId, params = {}) => this.request(Object.assign({ path: `/users/me/texts/hidden/${textId}/`, method: "DELETE", secure: true }, params)),
+            /**
+             * No description
+             *
+             * @name GetUsersMeNotifications
+             * @summary Get user notifications
+             * @request GET:/users/me/notifications
+             * @secure
+             */
+            getUsersMeNotifications: (data, params = {}) => this.request(Object.assign({ path: `/users/me/notifications`, method: "GET", body: data, secure: true, format: "json" }, params)),
         };
         this.sessions = {
             /**

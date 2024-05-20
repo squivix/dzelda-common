@@ -306,6 +306,14 @@ export interface VocabTagSchema {
   category: string | null;
 }
 
+/** Notification */
+export interface NotificationSchema {
+  id: number;
+  text: string;
+  /** @format date-time */
+  createdDate: string;
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 
@@ -2216,6 +2224,38 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         secure: true,
         ...params,
       }),
+
+    /**
+     * No description
+     *
+     * @name GetUsersMeNotifications
+     * @summary Get user notifications
+     * @request GET:/users/me/notifications
+     * @secure
+     */
+    getUsersMeNotifications: (data: any, params: RequestParams = {}) =>
+      this.request<
+        NotificationSchema[],
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 403;
+            status: string;
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/users/me/notifications`,
+        method: "GET",
+        body: data,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
   };
   sessions = {
     /**
@@ -2406,6 +2446,12 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         image?: string;
         /** @default true */
         isPublic?: boolean;
+        texts?: {
+          title: string;
+          content: string;
+          isPublic?: boolean;
+          level?: LanguageLevelSchema;
+        }[];
       },
       params: RequestParams = {},
     ) =>

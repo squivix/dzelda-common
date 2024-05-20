@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "x-stoplight": {
-    "id": "foxc093vi7iwo"
+    "id": "kb29awwvhsavk"
   },
   "info": {
     "title": "dzelda-api",
@@ -625,10 +625,6 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "languageCode",
-                  "title"
-                ],
                 "properties": {
                   "languageCode": {
                     "type": "string"
@@ -649,11 +645,54 @@
                   "isPublic": {
                     "type": "boolean",
                     "x-stoplight": {
-                      "id": "y4qjwudzhtrms"
+                      "id": "q7x96xpms51ta"
                     },
                     "default": true
+                  },
+                  "texts": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "45exuhhw1liac"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "4a86v40u9xoby"
+                      },
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "desgotxq6eatf"
+                          }
+                        },
+                        "isPublic": {
+                          "type": "boolean",
+                          "x-stoplight": {
+                            "id": "ec8324srdn152"
+                          }
+                        },
+                        "level": {
+                          "$ref": "#/components/schemas/LanguageLevel",
+                          "x-stoplight": {
+                            "id": "wnbs7f3vzo0lu"
+                          }
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "content"
+                      ]
+                    }
                   }
-                }
+                },
+                "required": [
+                  "languageCode",
+                  "title"
+                ]
               }
             }
           },
@@ -769,7 +808,7 @@
                   "isPublic": {
                     "type": "boolean",
                     "x-stoplight": {
-                      "id": "nvbeed6ss9m5c"
+                      "id": "put8es38hj2uy"
                     },
                     "default": true
                   }
@@ -958,13 +997,13 @@
                   "content": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "zkwzrzztjwu4c"
+                      "id": "desgotxq6eatf"
                     }
                   },
                   "languageCode": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "1yujp3rq8iatr"
+                      "id": "823aw5a00fd01"
                     }
                   },
                   "collectionId": {
@@ -976,13 +1015,13 @@
                   "isPublic": {
                     "type": "boolean",
                     "x-stoplight": {
-                      "id": "k5ys5js4rsdqr"
+                      "id": "ec8324srdn152"
                     }
                   },
                   "level": {
                     "$ref": "#/components/schemas/LanguageLevel",
                     "x-stoplight": {
-                      "id": "dofqy8r1269w3"
+                      "id": "wnbs7f3vzo0lu"
                     }
                   },
                   "image": {
@@ -1102,7 +1141,7 @@
                   "content": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "17cv5gdmopjnc"
+                      "id": "l8c3wjicw2b7x"
                     }
                   },
                   "level": {
@@ -1504,11 +1543,11 @@
                   "preferredTranslationLanguageCodes": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "wvhr4jvq2dhpg"
+                      "id": "00jn4qpxdb7qr"
                     },
                     "items": {
                       "x-stoplight": {
-                        "id": "rv61iusgygkwx"
+                        "id": "xrhdf7fpbrpbn"
                       },
                       "type": "string"
                     }
@@ -1581,11 +1620,11 @@
                   "preferredTranslationLanguageCodes": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "zywu4z26vjk99"
+                      "id": "vobv3eyzpwsdi"
                     },
                     "items": {
                       "x-stoplight": {
-                        "id": "24e9o0cg3dtfy"
+                        "id": "u64jp3k0a44ty"
                       },
                       "type": "string"
                     }
@@ -2187,7 +2226,7 @@
                   "textId": {
                     "type": "integer",
                     "x-stoplight": {
-                      "id": "zcxbog5u1v796"
+                      "id": "4zxdp62wv0bpn"
                     }
                   }
                 },
@@ -2350,7 +2389,7 @@
                   "textId": {
                     "type": "integer",
                     "x-stoplight": {
-                      "id": "u036vk659zm4f"
+                      "id": "u4u1nk7kbqmsj"
                     }
                   }
                 },
@@ -2522,7 +2561,7 @@
                   "level": {
                     "type": "integer",
                     "x-stoplight": {
-                      "id": "lwhuc5hrmdbqv"
+                      "id": "8xh020fxnf0mc"
                     },
                     "enum": [
                       -1,
@@ -3348,11 +3387,11 @@
                   "dictionaryIds": {
                     "type": "array",
                     "x-stoplight": {
-                      "id": "e05uowcva7za2"
+                      "id": "xvzn512e490r1"
                     },
                     "items": {
                       "x-stoplight": {
-                        "id": "iii0e74k2nt76"
+                        "id": "5o7eb96dgtmi3"
                       },
                       "type": "integer"
                     }
@@ -3381,7 +3420,7 @@
                   "items": {
                     "$ref": "#/components/schemas/HumanPronunciation",
                     "x-stoplight": {
-                      "id": "ni9u5lrnynkun"
+                      "id": "i9ubtzsn22vxl"
                     }
                   }
                 }
@@ -3512,13 +3551,13 @@
                   "vocabId": {
                     "type": "integer",
                     "x-stoplight": {
-                      "id": "7lj4u2svafpnu"
+                      "id": "m474zowet90ds"
                     }
                   },
                   "voiceCode": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "4tjzjcxtjatkt"
+                      "id": "ch0vj99qknxmy"
                     }
                   }
                 },
@@ -3606,19 +3645,19 @@
                   "reasonForReporting": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "5l60a7o4t7cg6"
+                      "id": "gepp6pnlnbiiy"
                     }
                   },
                   "reportText": {
                     "type": "string",
                     "x-stoplight": {
-                      "id": "5nlp5dmnf1lhu"
+                      "id": "nomf7hmt920m3"
                     }
                   },
                   "hideText": {
                     "type": "boolean",
                     "x-stoplight": {
-                      "id": "iirbs4h5ng71l"
+                      "id": "c9m4fmpe0yumx"
                     },
                     "default": true
                   }
@@ -3646,7 +3685,7 @@
                   "items": {
                     "$ref": "#/components/schemas/TranslationLanguage",
                     "x-stoplight": {
-                      "id": "bdpymdzcglfyx"
+                      "id": "wskgkrw54tqcy"
                     }
                   }
                 }
@@ -3691,7 +3730,7 @@
                   "items": {
                     "$ref": "#/components/schemas/TTSPronunciation",
                     "x-stoplight": {
-                      "id": "d5uezef54yifd"
+                      "id": "atohc4lwb9owm"
                     }
                   }
                 }
@@ -3705,6 +3744,40 @@
         "operationId": "get-vocabs-vocabId-tts-pronunciations",
         "description": ""
       }
+    },
+    "/users/me/notifications": {
+      "get": {
+        "summary": "Get user notifications",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Notification",
+                    "x-stoplight": {
+                      "id": "cs4lccgkcssr8"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthenticated"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-users-me-notifications",
+        "requestBody": {
+          "content": {}
+        }
+      }
     }
   },
   "components": {
@@ -3713,7 +3786,7 @@
         "type": "object",
         "x-examples": {},
         "x-stoplight": {
-          "id": "vut9fc2745a24"
+          "id": "s8ux9cog3vxdm"
         },
         "properties": {
           "username": {
@@ -3925,7 +3998,7 @@
       },
       "Text": {
         "x-stoplight": {
-          "id": "rtvz4i1zfnokk"
+          "id": "2q4me4hp7tjfe"
         },
         "type": "object",
         "properties": {
@@ -3938,7 +4011,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "bka52kso3zyu7"
+              "id": "0cvl9xaizou8b"
             }
           },
           "audio": {
@@ -3954,12 +4027,12 @@
               {
                 "$ref": "#/components/schemas/Collection",
                 "x-stoplight": {
-                  "id": "i4i5r9ckjr1u0"
+                  "id": "w7ubxr8sx5oq5"
                 }
               },
               {
                 "x-stoplight": {
-                  "id": "vd8rzd3x2vvqm"
+                  "id": "zu43h09pp5nnh"
                 },
                 "type": [
                   "null"
@@ -3995,7 +4068,7 @@
               "null"
             ],
             "x-stoplight": {
-              "id": "ge2ch2pkjmk9v"
+              "id": "jslnk6f0ae814"
             }
           },
           "isPublic": {
@@ -4010,13 +4083,13 @@
           "level": {
             "$ref": "#/components/schemas/LanguageLevel",
             "x-stoplight": {
-              "id": "236sfge4b0q61"
+              "id": "s20qyqbsjsj1e"
             }
           },
           "isBookmarked": {
             "type": "boolean",
             "x-stoplight": {
-              "id": "zb5mirrozdefg"
+              "id": "ia7qi4bt27gg3"
             }
           }
         },
@@ -4041,7 +4114,7 @@
         "type": "object",
         "x-examples": {},
         "x-stoplight": {
-          "id": "22aqo416wzen1"
+          "id": "59r2moc4qo6ue"
         },
         "properties": {
           "id": {
@@ -4073,12 +4146,12 @@
           "tags": {
             "type": "array",
             "x-stoplight": {
-              "id": "hnsi3ijc6gz6m"
+              "id": "8okor05boyvna"
             },
             "items": {
               "$ref": "#/components/schemas/VocabTag",
               "x-stoplight": {
-                "id": "hqweqdie2jxvs"
+                "id": "ys9hss2spfrid"
               }
             }
           }
@@ -4122,12 +4195,12 @@
           },
           "attribution": {
             "x-stoplight": {
-              "id": "8ovgvggzfqmvz"
+              "id": "vwda7vebpe2kd"
             },
             "anyOf": [
               {
                 "x-stoplight": {
-                  "id": "3bb7x874gq5v6"
+                  "id": "q3wkghbdmk3sj"
                 },
                 "type": [
                   "null"
@@ -4136,19 +4209,19 @@
               {
                 "$ref": "#/components/schemas/Attribution",
                 "x-stoplight": {
-                  "id": "iiq5efgmzmsvv"
+                  "id": "d971rfgwunzg2"
                 }
               }
             ]
           },
           "attributionSource": {
             "x-stoplight": {
-              "id": "tu5nrxme9ypw6"
+              "id": "pq2pzs17e6ojb"
             },
             "anyOf": [
               {
                 "x-stoplight": {
-                  "id": "bg6fw0ss0eoct"
+                  "id": "86d3bjzroi6nb"
                 },
                 "type": [
                   "null"
@@ -4157,7 +4230,7 @@
               {
                 "$ref": "#/components/schemas/AttributionSource",
                 "x-stoplight": {
-                  "id": "p8f1s13gc3ibl"
+                  "id": "dh09jyebf5sg3"
                 }
               }
             ]
@@ -4195,7 +4268,7 @@
           "lookupLink": {
             "type": "string",
             "x-stoplight": {
-              "id": "gozcbtuony8j9"
+              "id": "cjuzjdzspidc1"
             }
           },
           "language": {
@@ -4204,13 +4277,13 @@
           "dictionaryLink": {
             "type": "string",
             "x-stoplight": {
-              "id": "c9m7w9kh6u0k2"
+              "id": "bnnesfeikylcl"
             }
           },
           "isPronunciation": {
             "type": "boolean",
             "x-stoplight": {
-              "id": "uzmrf3m2hv0nm"
+              "id": "q20qtuxtbrdmq"
             }
           }
         },
@@ -4226,7 +4299,7 @@
       "LearnerVocab": {
         "title": "LearnerVocab",
         "x-stoplight": {
-          "id": "xr9vaf98hjqjn"
+          "id": "olk9bzwn6duox"
         },
         "type": "object",
         "properties": {
@@ -4265,7 +4338,7 @@
           },
           "ttsPronunciationUrl": {
             "x-stoplight": {
-              "id": "vnufwcsjpmnuo"
+              "id": "04km8o0lbegds"
             },
             "type": [
               "string",
@@ -4276,26 +4349,26 @@
           "tags": {
             "type": "array",
             "x-stoplight": {
-              "id": "gwdv25fcdm49w"
+              "id": "iw2mobgtpuoj7"
             },
             "items": {
               "$ref": "#/components/schemas/VocabTag",
               "x-stoplight": {
-                "id": "63lcn3iqot33c"
+                "id": "tfd43rbr1cyz1"
               }
             }
           },
           "rootForms": {
             "type": "array",
             "x-stoplight": {
-              "id": "qtqgnqtspvxex"
+              "id": "2mulbqces39ou"
             },
             "items": {}
           },
           "learnersCount": {
             "type": "integer",
             "x-stoplight": {
-              "id": "d4o1ojaxci02y"
+              "id": "v1t2idli0oncw"
             }
           }
         },
@@ -4317,7 +4390,7 @@
       "LearnerLanguage": {
         "title": "LearnerLanguage",
         "x-stoplight": {
-          "id": "x70p2adc9xqol"
+          "id": "9gdnm09rv9jpm"
         },
         "type": "object",
         "properties": {
@@ -4407,12 +4480,12 @@
           },
           "preferredTtsVoice": {
             "x-stoplight": {
-              "id": "9s8xchb3uybbq"
+              "id": "35autm91jgltu"
             },
             "anyOf": [
               {
                 "x-stoplight": {
-                  "id": "zmrcs6e137zr1"
+                  "id": "4ewrlhrtmqqsl"
                 },
                 "type": [
                   "null"
@@ -4421,7 +4494,7 @@
               {
                 "$ref": "#/components/schemas/TTSVoice",
                 "x-stoplight": {
-                  "id": "gnop3qbtdew11"
+                  "id": "s4ssa0d54izd0"
                 }
               }
             ]
@@ -4429,12 +4502,12 @@
           "preferredTranslationLanguages": {
             "type": "array",
             "x-stoplight": {
-              "id": "522oesxcgruv3"
+              "id": "t1h3gt69uldaa"
             },
             "items": {
               "$ref": "#/components/schemas/TranslationLanguage",
               "x-stoplight": {
-                "id": "x55yam7iudhu5"
+                "id": "pevo07aiup7ws"
               }
             }
           }
@@ -4461,7 +4534,7 @@
         "title": "VocabLevel",
         "type": "integer",
         "x-stoplight": {
-          "id": "uqb48e86b3orl"
+          "id": "bjlw474025ube"
         },
         "x-enumNames": [
           "IGNORED",
@@ -4489,7 +4562,7 @@
         "title": "LanguageLevel",
         "type": "string",
         "x-stoplight": {
-          "id": "zh9cnwth46tko"
+          "id": "vr5cez7b1d9sj"
         },
         "x-enumNames": [
           "BEGINNER_1",
@@ -4511,7 +4584,7 @@
       "VocabsByLevel": {
         "title": "VocabsByLevel",
         "x-stoplight": {
-          "id": "99or6oyri208e"
+          "id": "13uo0ul7siiiz"
         },
         "type": "object",
         "properties": {
@@ -4550,7 +4623,7 @@
       "TextHistoryEntry": {
         "title": "TextHistoryEntry",
         "x-stoplight": {
-          "id": "r5ggdcejle7h0"
+          "id": "jiyejwm4yvif4"
         },
         "type": "object",
         "properties": {
@@ -4563,7 +4636,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "sssce7cybc8r8"
+              "id": "1fib250f2af6y"
             }
           },
           "audio": {
@@ -4605,7 +4678,7 @@
               "null"
             ],
             "x-stoplight": {
-              "id": "m3cwrlnmi7qzj"
+              "id": "k9kdwupe0yohs"
             }
           },
           "timeViewed": {
@@ -4618,19 +4691,19 @@
           "addedBy": {
             "type": "string",
             "x-stoplight": {
-              "id": "ejegvw0bm3iet"
+              "id": "wuwoz3g3cdaa7"
             }
           },
           "isPublic": {
             "type": "boolean",
             "x-stoplight": {
-              "id": "zgqkl62zdbx99"
+              "id": "4d2nmrpfz78ve"
             }
           },
           "isBookmarked": {
             "type": "string",
             "x-stoplight": {
-              "id": "sz3t860dacigb"
+              "id": "xy32j429o4jn6"
             }
           }
         },
@@ -4656,7 +4729,7 @@
       "TTSPronunciation": {
         "title": "TTSPronunciation",
         "x-stoplight": {
-          "id": "1ageoipnwk42b"
+          "id": "kj9sf6g92urww"
         },
         "type": "object",
         "properties": {
@@ -4666,27 +4739,27 @@
           "url": {
             "type": "string",
             "x-stoplight": {
-              "id": "gr65ku1wa3dp9"
+              "id": "ftndo91jih7zg"
             },
             "format": "uri"
           },
           "addedOn": {
             "type": "string",
             "x-stoplight": {
-              "id": "anwhxbfcv0ulu"
+              "id": "y9n9syo192hk5"
             },
             "format": "date-time"
           },
           "voice": {
             "$ref": "#/components/schemas/TTSVoice",
             "x-stoplight": {
-              "id": "s53wvfgoo03vu"
+              "id": "uz9abswmu6own"
             }
           },
           "vocab": {
             "$ref": "#/components/schemas/Vocab",
             "x-stoplight": {
-              "id": "id5jz1yhabwlh"
+              "id": "mzgetruzh11a8"
             }
           }
         },
@@ -4699,7 +4772,7 @@
       "TTSVoice": {
         "title": "TTSVoice",
         "x-stoplight": {
-          "id": "vn9hh9xkz06oe"
+          "id": "uksmygmcejnq2"
         },
         "type": "object",
         "properties": {
@@ -4709,43 +4782,43 @@
           "code": {
             "type": "string",
             "x-stoplight": {
-              "id": "ga4utikbz4l06"
+              "id": "jv1fzrx76upt4"
             }
           },
           "name": {
             "type": "string",
             "x-stoplight": {
-              "id": "arujq259glbvu"
+              "id": "wp5k78o2iyyd4"
             }
           },
           "gender": {
             "type": "string",
             "x-stoplight": {
-              "id": "kckftnx5ksalf"
+              "id": "dgy9o8ho6bsd2"
             }
           },
           "provider": {
             "type": "string",
             "x-stoplight": {
-              "id": "mho2dcvnabggd"
+              "id": "nze9vusq87ii9"
             }
           },
           "accentCountryCode": {
             "type": "string",
             "x-stoplight": {
-              "id": "cu643bbyuxfbo"
+              "id": "j7corrphk1fts"
             }
           },
           "language": {
             "type": "string",
             "x-stoplight": {
-              "id": "gymbrsxxfoteo"
+              "id": "e9qatwh9mb0u5"
             }
           },
           "isDefault": {
             "type": "boolean",
             "x-stoplight": {
-              "id": "nidzyf54ujsm9"
+              "id": "yt0n6ih00fmuq"
             }
           }
         },
@@ -4763,7 +4836,7 @@
       "HumanPronunciation": {
         "title": "HumanPronunciation",
         "x-stoplight": {
-          "id": "cahltpdooc1ft"
+          "id": "2fikc7f9437hi"
         },
         "type": "object",
         "examples": [],
@@ -4774,20 +4847,20 @@
           "url": {
             "type": "string",
             "x-stoplight": {
-              "id": "k5hmhhcr0njte"
+              "id": "g1ve2kdtdywq7"
             },
             "format": "uri"
           },
           "text": {
             "type": "string",
             "x-stoplight": {
-              "id": "tmd4i4f4uyez8"
+              "id": "qkpz7rcz7vyoi"
             }
           },
           "parsedText": {
             "type": "string",
             "x-stoplight": {
-              "id": "eu79d7lfhffe1"
+              "id": "bohofs7urhlw0"
             }
           },
           "speakerCountryCode": {
@@ -4796,7 +4869,7 @@
               "null"
             ],
             "x-stoplight": {
-              "id": "6mbrgyl88l2gp"
+              "id": "xa989lgj3ynid"
             }
           },
           "speakerRegion": {
@@ -4805,23 +4878,23 @@
               "null"
             ],
             "x-stoplight": {
-              "id": "9sb13lkyfiyet"
+              "id": "onrres5ts0dxk"
             }
           },
           "language": {
             "type": "string",
             "x-stoplight": {
-              "id": "cjoe9wfxj3icg"
+              "id": "u2dxc80a97g0c"
             }
           },
           "attribution": {
             "x-stoplight": {
-              "id": "6on5j4me7gl2i"
+              "id": "t72ha2dgkp1xq"
             },
             "anyOf": [
               {
                 "x-stoplight": {
-                  "id": "1hjl1idnc9n4j"
+                  "id": "i1ipuw05cn2k7"
                 },
                 "type": [
                   "null"
@@ -4830,19 +4903,19 @@
               {
                 "$ref": "#/components/schemas/Attribution",
                 "x-stoplight": {
-                  "id": "vor3kpog2g15h"
+                  "id": "7r3ubbfigsi9s"
                 }
               }
             ]
           },
           "attributionSource": {
             "x-stoplight": {
-              "id": "vr85x2hvmttp0"
+              "id": "j9oa33r47aokf"
             },
             "anyOf": [
               {
                 "x-stoplight": {
-                  "id": "coislk0nb92uy"
+                  "id": "g816nl5wckljq"
                 },
                 "type": [
                   "null"
@@ -4851,7 +4924,7 @@
               {
                 "$ref": "#/components/schemas/AttributionSource",
                 "x-stoplight": {
-                  "id": "7oj27k9edbk5c"
+                  "id": "ah8c5s8zsvtpv"
                 }
               }
             ]
@@ -4872,56 +4945,56 @@
       "Attribution": {
         "title": "Attribution",
         "x-stoplight": {
-          "id": "fzyz7tnp7skb6"
+          "id": "tmfn7itijv8u3"
         },
         "type": "object",
         "properties": {
           "sourcePageTitle": {
             "type": "string",
             "x-stoplight": {
-              "id": "pur5rqbewad4d"
+              "id": "2x5venub8wnoc"
             }
           },
           "sourcePageUrl": {
             "type": "string",
             "x-stoplight": {
-              "id": "9ybhkrors4ii0"
+              "id": "cu7nyl4994y28"
             }
           },
           "authorName": {
             "type": "string",
             "x-stoplight": {
-              "id": "j08yzb0dxkax1"
+              "id": "un3gfqboq8qwv"
             }
           },
           "authorUrl": {
             "type": "string",
             "x-stoplight": {
-              "id": "hhj1mflgq7wm2"
+              "id": "3ruojun0t8up2"
             }
           },
           "licenseShortName": {
             "type": "string",
             "x-stoplight": {
-              "id": "8k569ce400qi5"
+              "id": "b0ayle3dit84b"
             }
           },
           "licenseLongName": {
             "type": "string",
             "x-stoplight": {
-              "id": "fu087q16m8fni"
+              "id": "iyp350nakq5el"
             }
           },
           "licenseUrl": {
             "type": "string",
             "x-stoplight": {
-              "id": "b3pi5p9vv5nu3"
+              "id": "69ild5f9gm9l6"
             }
           },
           "attributionMarkdown": {
             "type": "string",
             "x-stoplight": {
-              "id": "hvmrak128346k"
+              "id": "2f2qcda63qhuq"
             }
           }
         },
@@ -4934,7 +5007,7 @@
       "TranslationLanguage": {
         "title": "TranslationLanguage",
         "x-stoplight": {
-          "id": "jxzsl2tztxylj"
+          "id": "mv1yc2h6dxvup"
         },
         "type": "object",
         "properties": {
@@ -4944,19 +5017,19 @@
           "name": {
             "type": "string",
             "x-stoplight": {
-              "id": "79qgm8u8n425k"
+              "id": "s55y5xlig7hho"
             }
           },
           "code": {
             "type": "string",
             "x-stoplight": {
-              "id": "bq02bay7j2son"
+              "id": "r95g2c2nv8cp5"
             }
           },
           "isDefault": {
             "type": "boolean",
             "x-stoplight": {
-              "id": "7w21nwvzf5r80"
+              "id": "jv6c99yuv7pz5"
             }
           }
         },
@@ -4970,7 +5043,7 @@
       "AttributionSource": {
         "title": "AttributionSource",
         "x-stoplight": {
-          "id": "fei4hpbnwyxrd"
+          "id": "uza5l6zemu6gs"
         },
         "type": "object",
         "properties": {
@@ -4980,20 +5053,20 @@
           "name": {
             "type": "string",
             "x-stoplight": {
-              "id": "lxmdb2p8nvwxi"
+              "id": "f9pl2qesgu0rr"
             }
           },
           "url": {
             "type": "string",
             "x-stoplight": {
-              "id": "nwvdslgkheh7v"
+              "id": "9nkmu30f4yxf9"
             },
             "format": "uri"
           },
           "logoUrl": {
             "type": "string",
             "x-stoplight": {
-              "id": "zkn1k06zaeq1v"
+              "id": "zaycykd2cwdr0"
             },
             "format": "uri"
           }
@@ -5006,7 +5079,7 @@
       "VocabTag": {
         "title": "VocabTag",
         "x-stoplight": {
-          "id": "xhki7320kmqyd"
+          "id": "lh3pnjhf6vv9w"
         },
         "type": "object",
         "properties": {
@@ -5016,7 +5089,7 @@
           "name": {
             "type": "string",
             "x-stoplight": {
-              "id": "zwh4ids3d1m1f"
+              "id": "lyrf57va5yda8"
             }
           },
           "category": {
@@ -5025,7 +5098,7 @@
               "null"
             ],
             "x-stoplight": {
-              "id": "b4l4kotm0j1m3"
+              "id": "hvbr4g5ew933d"
             }
           }
         },
@@ -5033,6 +5106,36 @@
           "id",
           "name",
           "category"
+        ]
+      },
+      "Notification": {
+        "title": "Notification",
+        "x-stoplight": {
+          "id": "kr5m810j1q08k"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "text": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "zsb3drb9fpgh6"
+            }
+          },
+          "createdDate": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "cyqqt0tnqv89s"
+            },
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "createdDate"
         ]
       }
     },
