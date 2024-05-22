@@ -1745,14 +1745,17 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             fields?: object | undefined;
         }>>;
         /**
-         * No description
+         * @description Deletes a collection (and all associated texts if cascadeTexts is true)
          *
          * @name DeleteCollectionsCollectionId
          * @summary Delete collection
          * @request DELETE:/collections/{collectionId}/
          * @secure
          */
-        deleteCollectionsCollectionId: (collectionId: number, params?: RequestParams) => Promise<HttpResponse<void, {
+        deleteCollectionsCollectionId: (collectionId: number, query?: {
+            /** @default "false" */
+            cascadeTexts?: boolean;
+        }, params?: RequestParams) => Promise<HttpResponse<void, {
             code: 400;
             status: "Bad Request";
             message: string;

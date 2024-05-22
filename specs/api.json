@@ -840,7 +840,18 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            },
+            "in": "query",
+            "name": "cascadeTexts"
+          }
+        ],
+        "description": "Deletes a collection (and all associated texts if cascadeTexts is true)"
       }
     },
     "/texts/": {

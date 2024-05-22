@@ -2624,14 +2624,21 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       }),
 
     /**
-     * No description
+     * @description Deletes a collection (and all associated texts if cascadeTexts is true)
      *
      * @name DeleteCollectionsCollectionId
      * @summary Delete collection
      * @request DELETE:/collections/{collectionId}/
      * @secure
      */
-    deleteCollectionsCollectionId: (collectionId: number, params: RequestParams = {}) =>
+    deleteCollectionsCollectionId: (
+      collectionId: number,
+      query?: {
+        /** @default "false" */
+        cascadeTexts?: boolean;
+      },
+      params: RequestParams = {},
+    ) =>
       this.request<
         void,
         | {
@@ -2662,6 +2669,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       >({
         path: `/collections/${collectionId}/`,
         method: "DELETE",
+        query: query,
         secure: true,
         ...params,
       }),

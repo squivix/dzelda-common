@@ -576,14 +576,14 @@ export class ApiClient extends HttpClient {
              */
             putCollectionsCollectionId: (collectionId, data, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/`, method: "PUT", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
             /**
-             * No description
+             * @description Deletes a collection (and all associated texts if cascadeTexts is true)
              *
              * @name DeleteCollectionsCollectionId
              * @summary Delete collection
              * @request DELETE:/collections/{collectionId}/
              * @secure
              */
-            deleteCollectionsCollectionId: (collectionId, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/`, method: "DELETE", secure: true }, params)),
+            deleteCollectionsCollectionId: (collectionId, query, params = {}) => this.request(Object.assign({ path: `/collections/${collectionId}/`, method: "DELETE", query: query, secure: true }, params)),
             /**
              * @description Redirects to next text in collection or 404 if not found
              *
