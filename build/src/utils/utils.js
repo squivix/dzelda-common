@@ -66,10 +66,10 @@ export function kibiBytes(sizeInKib) {
 export function mebiBytes(sizeInMib) {
     return sizeInMib * 1048576;
 }
-export function kiloBytes(sizeInKib) {
-    return sizeInKib * 1000;
+export function kiloBytes(sizeInKb) {
+    return sizeInKb * 1000;
 }
-export function megaBytes(sizeInMib) {
-    return sizeInMib * 1000000;
+export function megaBytes(sizeInMb) {
+    return sizeInMb * 1000000;
 }
 //# sourceMappingURL=utils.js.map

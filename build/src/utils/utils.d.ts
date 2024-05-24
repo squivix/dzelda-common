@@ -20,6 +20,6 @@ export declare function mergeDeep(target: {
 export declare function toSentenceCase(s: string): string;
 export declare function kibiBytes(sizeInKib: number): number;
 export declare function mebiBytes(sizeInMib: number): number;
-export declare function kiloBytes(sizeInKib: number): number;
-export declare function megaBytes(sizeInMib: number): number;
+export declare function kiloBytes(sizeInKb: number): number;
+export declare function megaBytes(sizeInMb: number): number;
 export {};
