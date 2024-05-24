@@ -1,15 +1,3 @@
-export function toCapitalizedCase(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-export function cleanObject<T extends Object>(obj: T) {
-    (Object.keys(obj) as Array<keyof T>).forEach(function (key) {
-        if (obj[key] === undefined)
-            delete obj[key];
-    });
-    return obj;
-}
-
 //from https://stackoverflow.com/a/9310752/14200676
 export function escapeRegExp(text: string) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
@@ -20,7 +8,6 @@ type Enum<E> = Record<keyof E, number | string> & { [k: number]: string };
 export function numericEnumValues<E extends Enum<E>>(inputEnum: E): number[] {
     return Object.values(inputEnum).filter((v) => !isNaN(Number(v))).map(v => Number(v));
 }
-
 
 
 export function shallowObjectEquals(obj1: Record<string, any>, obj2: Record<string, any>): boolean {
@@ -88,45 +75,18 @@ export function toSentenceCase(s: string) {
 
 }
 
-function rangeIntersectsNode(range: Range, node: Node) {
-    if (range.intersectsNode)
-        return range.intersectsNode(node);
-    else {
-        let nodeRange = node.ownerDocument!.createRange();
-        try {
-            nodeRange.selectNode(node);
-        } catch (e) {
-            nodeRange.selectNodeContents(node);
-        }
-        return range.compareBoundaryPoints(Range.END_TO_START, nodeRange) == -1 &&
-            range.compareBoundaryPoints(Range.START_TO_END, nodeRange) == 1;
-    }
+export function kibiBytes(sizeInKib: number) {
+    return sizeInKib * 1024;
 }
 
-export function chuckArray<T>(array: T[], chunkSize: number): T[][] {
-    if (chunkSize <= 0)
-        throw Error("Chuck size must be positive");
-    const chunks: T[][] = [];
-    for (let i = 0; i < array.length; i += chunkSize)
-        chunks.push(array.slice(i, i + chunkSize));
-    return chunks;
+export function mebiBytes(sizeInMib: number) {
+    return sizeInMib * 1048576;
 }
 
-export function padSequence(numbers: number[], leftPadding: number, rightPadding: number, minValue: number, maxValue: number) {
-    const sortedNumbers = [...numbers].sort();
-    const result: number[] = [];
-    for (let i = 1; i <= leftPadding; i++) {
-        const element = sortedNumbers[0] - i;
-        if (element < minValue)
-            break;
-        result.push(element);
-    }
-    result.push(...sortedNumbers);
-    for (let i = 1; i <= rightPadding; i++) {
-        const element = sortedNumbers[sortedNumbers.length - 1] + i;
-        if (element > maxValue)
-            break;
-        result.push(element);
-    }
-    return result;
+export function kiloBytes(sizeInKib: number) {
+    return sizeInKib * 1000;
+}
+
+export function megaBytes(sizeInMib: number) {
+    return sizeInMib * 1000000;
 }

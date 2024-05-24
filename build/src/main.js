@@ -5,4 +5,5 @@ export * from "../src/parsers/WordParser.js";
 export * from "../src/enums/VocabLevel.js";
 export * from "../src/enums/TTSProvider.js";
 export * from "../src/enums/LanguageLevel.js";
+export * from "../src/utils/utils";
 //# sourceMappingURL=main.js.map

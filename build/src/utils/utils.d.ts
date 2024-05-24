@@ -1,5 +1,3 @@
-export declare function toCapitalizedCase(string: string): string;
-export declare function cleanObject<T extends Object>(obj: T): T;
 export declare function escapeRegExp(text: string): string;
 type Enum<E> = Record<keyof E, number | string> & {
     [k: number]: string;
@@ -20,6 +18,8 @@ export declare function mergeDeep(target: {
     [p: string]: any;
 };
 export declare function toSentenceCase(s: string): string;
-export declare function chuckArray<T>(array: T[], chunkSize: number): T[][];
-export declare function padSequence(numbers: number[], leftPadding: number, rightPadding: number, minValue: number, maxValue: number): number[];
+export declare function kibiBytes(sizeInKib: number): number;
+export declare function mebiBytes(sizeInMib: number): number;
+export declare function kiloBytes(sizeInKib: number): number;
+export declare function megaBytes(sizeInMib: number): number;
 export {};

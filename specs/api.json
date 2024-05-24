@@ -4750,6 +4750,12 @@
             "x-stoplight": {
               "id": "355kyjosm57er"
             }
+          },
+          "isProcessing": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "nk4ax82unfj9r"
+            }
           }
         },
         "required": [
@@ -4768,7 +4774,8 @@
           "timeViewed",
           "pastViewer",
           "addedBy",
-          "isPublic"
+          "isPublic",
+          "isProcessing"
         ]
       },
       "TTSPronunciation": {

@@ -1,13 +1,3 @@
-export function toCapitalizedCase(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-export function cleanObject(obj) {
-    Object.keys(obj).forEach(function (key) {
-        if (obj[key] === undefined)
-            delete obj[key];
-    });
-    return obj;
-}
 //from https://stackoverflow.com/a/9310752/14200676
 export function escapeRegExp(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
@@ -70,45 +60,16 @@ export function toSentenceCase(s) {
         return `${s[0].toUpperCase()}${s.slice(1)}`;
     return s;
 }
-function rangeIntersectsNode(range, node) {
-    if (range.intersectsNode)
-        return range.intersectsNode(node);
-    else {
-        let nodeRange = node.ownerDocument.createRange();
-        try {
-            nodeRange.selectNode(node);
-        }
-        catch (e) {
-            nodeRange.selectNodeContents(node);
-        }
-        return range.compareBoundaryPoints(Range.END_TO_START, nodeRange) == -1 &&
-            range.compareBoundaryPoints(Range.START_TO_END, nodeRange) == 1;
-    }
+export function kibiBytes(sizeInKib) {
+    return sizeInKib * 1024;
 }
-export function chuckArray(array, chunkSize) {
-    if (chunkSize <= 0)
-        throw Error("Chuck size must be positive");
-    const chunks = [];
-    for (let i = 0; i < array.length; i += chunkSize)
-        chunks.push(array.slice(i, i + chunkSize));
-    return chunks;
+export function mebiBytes(sizeInMib) {
+    return sizeInMib * 1048576;
 }
-export function padSequence(numbers, leftPadding, rightPadding, minValue, maxValue) {
-    const sortedNumbers = [...numbers].sort();
-    const result = [];
-    for (let i = 1; i <= leftPadding; i++) {
-        const element = sortedNumbers[0] - i;
-        if (element < minValue)
-            break;
-        result.push(element);
-    }
-    result.push(...sortedNumbers);
-    for (let i = 1; i <= rightPadding; i++) {
-        const element = sortedNumbers[sortedNumbers.length - 1] + i;
-        if (element > maxValue)
-            break;
-        result.push(element);
-    }
-    return result;
+export function kiloBytes(sizeInKib) {
+    return sizeInKib * 1000;
+}
+export function megaBytes(sizeInMib) {
+    return sizeInMib * 1000000;
 }
 //# sourceMappingURL=utils.js.map
