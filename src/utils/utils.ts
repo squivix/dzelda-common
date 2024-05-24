@@ -83,10 +83,10 @@ export function mebiBytes(sizeInMib: number) {
     return sizeInMib * 1048576;
 }
 
-export function kiloBytes(sizeInKib: number) {
-    return sizeInKib * 1000;
+export function kiloBytes(sizeInKb: number) {
+    return sizeInKb * 1000;
 }
 
-export function megaBytes(sizeInMib: number) {
-    return sizeInMib * 1000000;
+export function megaBytes(sizeInMb: number) {
+    return sizeInMb * 1000000;
 }
