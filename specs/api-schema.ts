@@ -20,6 +20,7 @@ export interface UserSchema {
   email?: string;
   isEmailConfirmed?: boolean;
   isPendingEmailChange?: boolean;
+  isBanned?: boolean;
   profile: ProfileSchema;
 }
 

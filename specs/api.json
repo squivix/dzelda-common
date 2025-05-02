@@ -3844,6 +3844,9 @@
           "isPendingEmailChange": {
             "type": "boolean"
           },
+          "isBanned": {
+            "type": "boolean"
+          },
           "profile": {
             "$ref": "#/components/schemas/Profile"
           }
