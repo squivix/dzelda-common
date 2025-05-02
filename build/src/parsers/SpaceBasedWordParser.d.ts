@@ -3,8 +3,10 @@ export declare class SpaceBasedWordParser extends WordParser {
     notWordCharsRegex: RegExp;
     notWordCharsKeepDelimiterRegex: RegExp;
     ignoreCase: boolean;
-    constructor(wordChars?: string, { ignoreCase }?: {
+    maxWordLength: number;
+    constructor(wordChars?: string, { ignoreCase, maxWordLength }?: {
         ignoreCase?: boolean;
+        maxWordLength?: number;
     });
     parseText(text: string): string;
     transformWord(wordText: string): string;

@@ -220,5 +220,32 @@
         "phrases": []
       }
     ]
+  },
+  {
+    "text": "Incontrovertibly, the juxtaposition of incomprehensibly multifarious philosophicalconceptualizationselucidatesquintessentialintricaciesinhumananthropocentricepistemologicalframeworksnecessitatingperspicaciousperspicuouslyarticulatedexegesisnavigatelabyrinthineconcatenationabstruseparadigmsfacilitatingameliorationontologicalambiguitiesaugmentationmetacognitiveperspicacity within interdisciplinary discourses.",
+    "phrases": [],
+    "tokens": [
+      {"text": "Incontrovertibly", "parsedText": "incontrovertibly", "isWord": true, "phrases": []},
+      {"text": ",", "isWord": false, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "the", "parsedText": "the", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "juxtaposition", "parsedText": "juxtaposition", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "of", "parsedText": "of", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "incomprehensibly", "parsedText": "incomprehensibly", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "multifarious", "parsedText": "multifarious", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "philosophicalconceptualizationselucidatesquintessentialintricaciesinhumananthropocentricepistemologicalframeworksnecessitatingperspicaciousperspicuouslyarticulatedexegesisnavigatelabyrinthineconcatenationabstruseparadigmsfacilitatingameliorationontologicalambiguitiesaugmentationmetacognitiveperspicacity", "parsedText": "philosophicalconceptualizationselucidatesquintessentialintricaciesinhumananthropocentricepistemologicalframeworksnecessitatingperspicaciousperspicuouslyarticulatedexegesisnavigatelabyrinthineconcatenationabstruseparadigmsfacilitatingameliorationontologicalambiguitiesaugmentationmetacognitiveperspicacity", "isWord": false, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "within", "parsedText": "within", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "interdisciplinary", "parsedText": "interdisciplinary", "isWord": true, "phrases": []},
+      {"text": " ", "isWord": false, "phrases": []},
+      {"text": "discourses", "parsedText": "discourses", "isWord": true, "phrases": []},
+      {"text": ".", "isWord": false, "phrases": []}
+    ]
   }
 ]
