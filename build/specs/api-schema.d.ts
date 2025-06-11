@@ -2365,7 +2365,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @summary Get attribution source
          * @request GET:/attribution-sources/{attributionSourcesId}/
          */
-        getAttributionSourcesAttributionSourcesId: (attributionSourcesId: string, params?: RequestParams) => Promise<HttpResponse<AttributionSourceSchema, {
+        getAttributionSourcesAttributionSourcesId: (attributionSourcesId: number, params?: RequestParams) => Promise<HttpResponse<AttributionSourceSchema, {
             code: 400;
             status: "Bad Request";
             message: string;

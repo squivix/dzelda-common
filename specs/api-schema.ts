@@ -3572,7 +3572,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      * @summary Get attribution source
      * @request GET:/attribution-sources/{attributionSourcesId}/
      */
-    getAttributionSourcesAttributionSourcesId: (attributionSourcesId: string, params: RequestParams = {}) =>
+    getAttributionSourcesAttributionSourcesId: (attributionSourcesId: number, params: RequestParams = {}) =>
       this.request<
         AttributionSourceSchema,
         | {

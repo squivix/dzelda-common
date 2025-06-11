@@ -3889,7 +3889,7 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "number"
           },
           "name": "attributionSourcesId",
           "in": "path",
