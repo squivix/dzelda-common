@@ -1755,7 +1755,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         deleteCollectionsCollectionId: (collectionId: number, query?: {
-            /** @default "false" */
+            /** @default false */
             cascadeTexts?: boolean;
         }, params?: RequestParams) => Promise<HttpResponse<void, {
             code: 400;
@@ -2047,6 +2047,28 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             status: string;
             message: string;
             details: string;
+        } | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
+        /**
+         * No description
+         *
+         * @name GetTextsTextIdMeanings
+         * @summary Get text meanings
+         * @request GET:/texts/{textId}/meanings/
+         */
+        getTextsTextIdMeanings: (textId: number, params?: RequestParams) => Promise<HttpResponse<{
+            meanings: MeaningSchema;
+            learnerMeanings?: MeaningSchema | undefined;
+        }, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
         } | {
             code: 404;
             status: "Not Found";

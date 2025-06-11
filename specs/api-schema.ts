@@ -2636,7 +2636,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     deleteCollectionsCollectionId: (
       collectionId: number,
       query?: {
-        /** @default "false" */
+        /** @default false */
         cascadeTexts?: boolean;
       },
       params: RequestParams = {},
@@ -3070,6 +3070,39 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         body: data,
         secure: true,
         type: ContentType.Json,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name GetTextsTextIdMeanings
+     * @summary Get text meanings
+     * @request GET:/texts/{textId}/meanings/
+     */
+    getTextsTextIdMeanings: (textId: number, params: RequestParams = {}) =>
+      this.request<
+        {
+          meanings: MeaningSchema;
+          learnerMeanings?: MeaningSchema;
+        },
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/texts/${textId}/meanings/`,
+        method: "GET",
+        format: "json",
         ...params,
       }),
   };

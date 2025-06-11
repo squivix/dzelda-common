@@ -845,7 +845,7 @@
           {
             "schema": {
               "type": "boolean",
-              "default": "false"
+              "default": false
             },
             "in": "query",
             "name": "cascadeTexts"
@@ -3815,6 +3815,62 @@
             "description": "Not Found"
           }
         }
+      }
+    },
+    "/texts/{textId}/meanings/": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "number"
+          },
+          "name": "textId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get text meanings",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "meanings"
+                  ],
+                  "properties": {
+                    "meanings": {
+                      "$ref": "#/components/schemas/Meaning",
+                      "x-stoplight": {
+                        "id": "mz71ybdmyx3st"
+                      }
+                    },
+                    "learnerMeanings": {
+                      "$ref": "#/components/schemas/Meaning",
+                      "x-stoplight": {
+                        "id": "m7cq47jyjg7vx"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-texts-textId-meanings",
+        "x-stoplight": {
+          "id": "gwl5ngchwobow"
+        },
+        "security": []
       }
     }
   },
