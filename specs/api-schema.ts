@@ -3083,8 +3083,8 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
     getTextsTextIdMeanings: (textId: number, params: RequestParams = {}) =>
       this.request<
         {
-          meanings: MeaningSchema;
-          learnerMeanings?: MeaningSchema;
+          meanings: MeaningSchema[];
+          learnerMeanings?: MeaningSchema[];
         },
         | {
             code: 400;

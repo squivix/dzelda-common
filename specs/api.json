@@ -3843,15 +3843,27 @@
                   ],
                   "properties": {
                     "meanings": {
-                      "$ref": "#/components/schemas/Meaning",
                       "x-stoplight": {
                         "id": "mz71ybdmyx3st"
+                      },
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Meaning",
+                        "x-stoplight": {
+                          "id": "g7ej7a3v87d36"
+                        }
                       }
                     },
                     "learnerMeanings": {
-                      "$ref": "#/components/schemas/Meaning",
                       "x-stoplight": {
                         "id": "m7cq47jyjg7vx"
+                      },
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Meaning",
+                        "x-stoplight": {
+                          "id": "hqua3zg8ay04l"
+                        }
                       }
                     }
                   }

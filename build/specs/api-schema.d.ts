@@ -2061,8 +2061,8 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @request GET:/texts/{textId}/meanings/
          */
         getTextsTextIdMeanings: (textId: number, params?: RequestParams) => Promise<HttpResponse<{
-            meanings: MeaningSchema;
-            learnerMeanings?: MeaningSchema | undefined;
+            meanings: MeaningSchema[];
+            learnerMeanings?: MeaningSchema[] | undefined;
         }, {
             code: 400;
             status: "Bad Request";
