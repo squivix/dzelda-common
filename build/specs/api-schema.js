@@ -807,6 +807,16 @@ export class ApiClient extends HttpClient {
              */
             getTranslationLanguages: (query, params = {}) => this.request(Object.assign({ path: `/translation-languages/`, method: "GET", query: query, format: "json" }, params)),
         };
+        this.attributionSources = {
+            /**
+             * No description
+             *
+             * @name GetAttributionSourcesAttributionSourcesId
+             * @summary Get attribution source
+             * @request GET:/attribution-sources/{attributionSourcesId}/
+             */
+            getAttributionSourcesAttributionSourcesId: (attributionSourcesId, params = {}) => this.request(Object.assign({ path: `/attribution-sources/${attributionSourcesId}/`, method: "GET", format: "json" }, params)),
+        };
     }
 }
 //# sourceMappingURL=api-schema.js.map

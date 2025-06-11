@@ -3564,4 +3564,35 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         ...params,
       }),
   };
+  attributionSources = {
+    /**
+     * No description
+     *
+     * @name GetAttributionSourcesAttributionSourcesId
+     * @summary Get attribution source
+     * @request GET:/attribution-sources/{attributionSourcesId}/
+     */
+    getAttributionSourcesAttributionSourcesId: (attributionSourcesId: string, params: RequestParams = {}) =>
+      this.request<
+        AttributionSourceSchema,
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/attribution-sources/${attributionSourcesId}/`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+  };
 }

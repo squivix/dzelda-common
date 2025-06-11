@@ -3884,6 +3884,45 @@
         },
         "security": []
       }
+    },
+    "/attribution-sources/{attributionSourcesId}/": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "attributionSourcesId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get attribution source",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttributionSource"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-attribution-sources-attributionSourcesId",
+        "x-stoplight": {
+          "id": "h8ljofysqfabg"
+        },
+        "security": []
+      }
     }
   },
   "components": {

@@ -2357,5 +2357,26 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             isDefault?: boolean;
         }, params?: RequestParams) => Promise<HttpResponse<TranslationLanguageSchema[], any>>;
     };
+    attributionSources: {
+        /**
+         * No description
+         *
+         * @name GetAttributionSourcesAttributionSourcesId
+         * @summary Get attribution source
+         * @request GET:/attribution-sources/{attributionSourcesId}/
+         */
+        getAttributionSourcesAttributionSourcesId: (attributionSourcesId: string, params?: RequestParams) => Promise<HttpResponse<AttributionSourceSchema, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
+    };
 }
 export {};
