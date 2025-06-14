@@ -1,0 +1,1 @@
+This repository contains code shared in common between the [backend](https://github.com/squivix/dzelda-backend) and [frontend](https://github.com/squivix/dzelda-frontend) of [dzelda](https://dzelda.com/), a language learning web app. This includes the OpenAPI specs for the backend REST API, and parsing code.
