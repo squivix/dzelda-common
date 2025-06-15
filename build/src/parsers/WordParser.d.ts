@@ -11,6 +11,7 @@ export type TokenWithPhrases = TokenObject & {
     phrases: TokeObjectPhrases;
 };
 export declare abstract class WordParser {
+    static MAX_WORD_LENGTH: number;
     abstract parseText(text: string): string;
     abstract transformWord(wordText: string): string;
     abstract tokenizeText(text: string): TokenObject[];

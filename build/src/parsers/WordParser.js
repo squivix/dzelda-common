@@ -12,4 +12,5 @@ export class WordParser {
         return words.join(" ");
     }
 }
+WordParser.MAX_WORD_LENGTH = 255;
 //# sourceMappingURL=WordParser.js.map

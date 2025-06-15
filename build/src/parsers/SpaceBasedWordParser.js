@@ -2,19 +2,18 @@ import { WordParser } from "../../src/parsers/WordParser.js";
 import { escapeRegExp } from "../../src/utils/utils.js";
 //TODO investigate why - is being added as a vocab with sample data
 export class SpaceBasedWordParser extends WordParser {
-    constructor(wordChars = "", { ignoreCase = true, maxWordLength = 255 } = {}) {
+    constructor(wordChars = "", { ignoreCase = true } = {}) {
         super();
         this.notWordCharsRegex = new RegExp(`[^${escapeRegExp(wordChars)}]+`, "gmu");
         this.notWordCharsKeepDelimiterRegex = new RegExp(`(${this.notWordCharsRegex.source})`, this.notWordCharsRegex.flags);
         this.ignoreCase = ignoreCase;
-        this.maxWordLength = maxWordLength;
     }
     parseText(text) {
         let parsedText = text;
         //replace all non-word characters with a space
         parsedText = parsedText.replace(this.notWordCharsRegex, " ");
         parsedText = this.transformWord(parsedText);
-        parsedText = parsedText.split(' ').filter(word => word.length <= this.maxWordLength).join(' ');
+        parsedText = parsedText.split(' ').filter(word => word.length <= WordParser.MAX_WORD_LENGTH).join(' ');
         return parsedText;
     }
     transformWord(wordText) {
@@ -34,7 +33,7 @@ export class SpaceBasedWordParser extends WordParser {
                 tokenObjects.push({
                     text: tokens[i],
                     parsedText: this.transformWord(tokens[i]),
-                    isWord: isWord && tokens[i].length < this.maxWordLength,
+                    isWord: isWord && tokens[i].length < WordParser.MAX_WORD_LENGTH,
                 });
             }
             else {

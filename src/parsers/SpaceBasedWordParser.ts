@@ -7,9 +7,8 @@ export class SpaceBasedWordParser extends WordParser {
     notWordCharsRegex: RegExp;
     notWordCharsKeepDelimiterRegex: RegExp;
     ignoreCase: boolean;
-    maxWordLength: number;
 
-    constructor(wordChars: string = "", {ignoreCase = true, maxWordLength = 255}: {
+    constructor(wordChars: string = "", {ignoreCase = true}: {
         ignoreCase?: boolean,
         maxWordLength?: number
     } = {}) {
@@ -17,7 +16,6 @@ export class SpaceBasedWordParser extends WordParser {
         this.notWordCharsRegex = new RegExp(`[^${escapeRegExp(wordChars)}]+`, "gmu");
         this.notWordCharsKeepDelimiterRegex = new RegExp(`(${this.notWordCharsRegex.source})`, this.notWordCharsRegex.flags);
         this.ignoreCase = ignoreCase;
-        this.maxWordLength = maxWordLength;
     }
 
     parseText(text: string): string {
@@ -26,7 +24,7 @@ export class SpaceBasedWordParser extends WordParser {
         //replace all non-word characters with a space
         parsedText = parsedText.replace(this.notWordCharsRegex, " ");
         parsedText = this.transformWord(parsedText);
-        parsedText = parsedText.split(' ').filter(word => word.length <= this.maxWordLength).join(' ');
+        parsedText = parsedText.split(' ').filter(word => word.length <= WordParser.MAX_WORD_LENGTH).join(' ');
         return parsedText;
     }
 
@@ -50,7 +48,7 @@ export class SpaceBasedWordParser extends WordParser {
                 tokenObjects.push({
                     text: tokens[i],
                     parsedText: this.transformWord(tokens[i]),
-                    isWord: isWord && tokens[i].length < this.maxWordLength,
+                    isWord: isWord && tokens[i].length < WordParser.MAX_WORD_LENGTH,
                 });
             } else {
                 tokenObjects.push(...tokens[i].split("").map(t => ({
