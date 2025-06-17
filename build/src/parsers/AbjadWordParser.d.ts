@@ -1,11 +1,10 @@
 import { ParseTextResult, TokenObject, WordParser } from "../../src/parsers/WordParser.js";
-export declare class SpaceBasedWordParser extends WordParser {
+export declare class AbjadWordParser extends WordParser {
     splitCharsRegex: RegExp;
     splitKeepDelimCharsRegex: RegExp;
-    ignoreCase: boolean;
-    constructor(wordChars: string, { ignoreCase }?: {
-        ignoreCase?: boolean;
-    });
+    diacriticsChars: string;
+    diacriticsCharSet: Set<string>;
+    constructor(wordChars: string, diacriticsCharacters: string, options?: {});
     parseText(text: string): ParseTextResult;
     transformWord(wordText: string): string;
     tokenizeText(text: string): TokenObject[];

@@ -97,6 +97,7 @@ export interface VocabSchema {
     /** @min 0 */
     textsCount: number;
     tags: VocabTagSchema[];
+    variants: VocabVariantSchema[];
 }
 export interface MeaningSchema {
     id: number;
@@ -133,6 +134,7 @@ export interface LearnerVocabSchema {
     tags: VocabTagSchema[];
     rootForms: any[];
     learnersCount: number;
+    variants: VocabVariantSchema[];
 }
 /** LearnerLanguage */
 export interface LearnerLanguageSchema {
@@ -277,6 +279,12 @@ export interface NotificationSchema {
     text: string;
     /** @format date-time */
     createdDate: string;
+}
+/** VocabVariant */
+export interface VocabVariantSchema {
+    id: number;
+    text: string;
+    ttsPronunciationUrl: string | null;
 }
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
