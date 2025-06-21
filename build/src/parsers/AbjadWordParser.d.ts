@@ -6,6 +6,6 @@ export declare class AbjadWordParser extends WordParser {
     diacriticsCharSet: Set<string>;
     constructor(wordChars: string, diacriticsCharacters: string, options?: {});
     parseText(text: string): ParseTextResult;
-    transformWord(wordText: string): string;
+    normalizeText(wordText: string): string;
     tokenizeText(text: string): TokenObject[];
 }

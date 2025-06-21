@@ -709,6 +709,15 @@ export class ApiClient extends HttpClient {
              * @secure
              */
             getVocabsVocabIdTtsPronunciations: (vocabId, params = {}) => this.request(Object.assign({ path: `/vocabs/${vocabId}/tts-pronunciations/`, method: "GET", secure: true, format: "json" }, params)),
+            /**
+             * No description
+             *
+             * @name GetVocabsVocabIdVariants
+             * @summary Get vocab variants
+             * @request GET:/vocabs/{vocabId}/variants/
+             * @secure
+             */
+            getVocabsVocabIdVariants: (vocabId, params = {}) => this.request(Object.assign({ path: `/vocabs/${vocabId}/variants/`, method: "GET", secure: true, format: "json" }, params)),
         };
         this.meanings = {
             /**
@@ -816,6 +825,17 @@ export class ApiClient extends HttpClient {
              * @request GET:/attribution-sources/{attributionSourcesId}/
              */
             getAttributionSourcesAttributionSourcesId: (attributionSourcesId, params = {}) => this.request(Object.assign({ path: `/attribution-sources/${attributionSourcesId}/`, method: "GET", format: "json" }, params)),
+        };
+        this.vocabVariants = {
+            /**
+             * No description
+             *
+             * @name PostVocabVariants
+             * @summary Create Vocab Variant
+             * @request POST:/vocab-variants/
+             * @secure
+             */
+            postVocabVariants: (data, params = {}) => this.request(Object.assign({ path: `/vocab-variants/`, method: "POST", body: data, secure: true, type: ContentType.Json, format: "json" }, params)),
         };
     }
 }

@@ -1236,6 +1236,11 @@
               "schema": {
                 "type": "object",
                 "x-examples": {},
+                "required": [
+                  "languageCode",
+                  "text",
+                  "isPhrase"
+                ],
                 "properties": {
                   "languageCode": {
                     "type": "string"
@@ -1245,6 +1250,12 @@
                   },
                   "isPhrase": {
                     "type": "boolean"
+                  },
+                  "variantText": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "n8tteqa9zgrpl"
+                    }
                   }
                 }
               }
@@ -3558,6 +3569,9 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "vocabId"
+                ],
                 "properties": {
                   "vocabId": {
                     "type": "integer",
@@ -3570,11 +3584,14 @@
                     "x-stoplight": {
                       "id": "nukl6ithskxqk"
                     }
+                  },
+                  "vocabVariantId": {
+                    "type": "number",
+                    "x-stoplight": {
+                      "id": "hsbg5qier93hq"
+                    }
                   }
-                },
-                "required": [
-                  "vocabId"
-                ]
+                }
               }
             }
           }
@@ -3923,6 +3940,119 @@
         },
         "security": []
       }
+    },
+    "/vocabs/{vocabId}/variants/": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "vocabId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get vocab variants",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VocabVariant",
+                    "x-stoplight": {
+                      "id": "lfgtcpc5rs5j3"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-vocabs-vocabId-variants",
+        "x-stoplight": {
+          "id": "u91uksc4kbxj6"
+        }
+      }
+    },
+    "/vocab-variants/": {
+      "post": {
+        "summary": "Create Vocab Variant",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VocabVariant"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VocabVariant"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthenticated"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "post-vocab-variants",
+        "x-stoplight": {
+          "id": "owiy8g97fzkzv"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "vocabId",
+                  "text"
+                ],
+                "properties": {
+                  "vocabId": {
+                    "type": "integer",
+                    "x-stoplight": {
+                      "id": "l1nwkl1pmo220"
+                    }
+                  },
+                  "text": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "0kzkbsqdj1g08"
+                    },
+                    "maxLength": 255
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -4003,6 +4133,19 @@
         "type": "object",
         "x-examples": {},
         "examples": [],
+        "required": [
+          "id",
+          "code",
+          "name",
+          "greeting",
+          "isRtl",
+          "flag",
+          "flagCircular",
+          "flagEmoji",
+          "levelThresholds",
+          "learnersCount",
+          "color"
+        ],
         "properties": {
           "id": {
             "type": "integer"
@@ -4017,6 +4160,12 @@
           },
           "greeting": {
             "type": "string"
+          },
+          "isRtl": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "6qshob3t166xe"
+            }
           },
           "flag": {
             "type": [
@@ -4075,19 +4224,7 @@
           "color": {
             "type": "string"
           }
-        },
-        "required": [
-          "id",
-          "code",
-          "name",
-          "greeting",
-          "flag",
-          "flagCircular",
-          "flagEmoji",
-          "levelThresholds",
-          "learnersCount",
-          "color"
-        ]
+        }
       },
       "Collection": {
         "type": "object",
@@ -4574,6 +4711,23 @@
           "id": "j4jgzpyu9z2nh"
         },
         "type": "object",
+        "required": [
+          "id",
+          "code",
+          "name",
+          "greeting",
+          "isRtl",
+          "flag",
+          "flagCircular",
+          "flagEmoji",
+          "levelThresholds",
+          "learnersCount",
+          "startedLearningOn",
+          "lastOpened",
+          "color",
+          "preferredTtsVoice",
+          "preferredTranslationLanguages"
+        ],
         "properties": {
           "id": {
             "type": "number"
@@ -4586,6 +4740,12 @@
           },
           "greeting": {
             "type": "string"
+          },
+          "isRtl": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "odct9bs8k02r9"
+            }
           },
           "flag": {
             "type": [
@@ -4607,9 +4767,6 @@
               "null"
             ],
             "format": "uri"
-          },
-          "isSupported": {
-            "type": "boolean"
           },
           "levelThresholds": {
             "type": "object",
@@ -4692,24 +4849,7 @@
               }
             }
           }
-        },
-        "required": [
-          "id",
-          "code",
-          "name",
-          "greeting",
-          "flag",
-          "flagCircular",
-          "flagEmoji",
-          "isSupported",
-          "levelThresholds",
-          "learnersCount",
-          "startedLearningOn",
-          "lastOpened",
-          "color",
-          "preferredTtsVoice",
-          "preferredTranslationLanguages"
-        ]
+        }
       },
       "VocabLevel": {
         "title": "VocabLevel",
@@ -4920,6 +5060,14 @@
           "id": "sy52evxfx8vga"
         },
         "type": "object",
+        "required": [
+          "id",
+          "url",
+          "addedOn",
+          "voice",
+          "vocabId",
+          "variantId"
+        ],
         "properties": {
           "id": {
             "type": "integer"
@@ -4944,18 +5092,25 @@
               "id": "3osneabahgvcj"
             }
           },
-          "vocab": {
-            "$ref": "#/components/schemas/Vocab",
+          "vocabId": {
             "x-stoplight": {
               "id": "9rafq6a47pn64"
+            },
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "variantId": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "x-stoplight": {
+              "id": "3hx3o39wgkpdc"
             }
           }
-        },
-        "required": [
-          "id",
-          "url",
-          "addedOn"
-        ]
+        }
       },
       "TTSVoice": {
         "title": "TTSVoice",
@@ -5234,6 +5389,12 @@
           "id": "31agflnhvh1ug"
         },
         "type": "object",
+        "required": [
+          "id",
+          "name",
+          "url",
+          "logoUrl"
+        ],
         "properties": {
           "id": {
             "type": "number"
@@ -5245,24 +5406,26 @@
             }
           },
           "url": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-stoplight": {
               "id": "2lse2ki5ftmbf"
             },
             "format": "uri"
           },
           "logoUrl": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-stoplight": {
               "id": "r1bcy6cu40yxl"
             },
             "format": "uri"
           }
-        },
-        "required": [
-          "id",
-          "name"
-        ]
+        }
       },
       "VocabTag": {
         "title": "VocabTag",

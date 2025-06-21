@@ -26,7 +26,7 @@ describe("SpaceBasedWordParser", () => {
                 });
             });
         });
-        /**{@link SpaceBasedWordParser#transformWord}*/
+        /**{@link SpaceBasedWordParser#normalizeText}*/
         describe.todo("transformWord", () => {
         });
     });

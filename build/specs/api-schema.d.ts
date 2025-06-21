@@ -30,6 +30,7 @@ export interface LanguageSchema {
     code: string;
     name: string;
     greeting: string;
+    isRtl: boolean;
     /** @format uri */
     flag: string | null;
     /** @format uri */
@@ -142,13 +143,13 @@ export interface LearnerLanguageSchema {
     code: string;
     name: string;
     greeting: string;
+    isRtl: boolean;
     /** @format uri */
     flag: string | null;
     /** @format uri */
     flagCircular: string | null;
     /** @format uri */
     flagEmoji: string | null;
-    isSupported: boolean;
     levelThresholds: {
         beginner1: number;
         beginner2: number;
@@ -213,8 +214,9 @@ export interface TTSPronunciationSchema {
     url: string;
     /** @format date-time */
     addedOn: string;
-    voice?: TTSVoiceSchema;
-    vocab?: VocabSchema;
+    voice: TTSVoiceSchema;
+    vocabId: number | null;
+    variantId: number | null;
 }
 /** TTSVoice */
 export interface TTSVoiceSchema {
@@ -263,9 +265,9 @@ export interface AttributionSourceSchema {
     id: number;
     name: string;
     /** @format uri */
-    url?: string;
+    url: string | null;
     /** @format uri */
-    logoUrl?: string;
+    logoUrl: string | null;
 }
 /** VocabTag */
 export interface VocabTagSchema {
@@ -2095,9 +2097,10 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         postVocabs: (data: {
-            languageCode?: string;
-            text?: string;
-            isPhrase?: boolean;
+            languageCode: string;
+            text: string;
+            isPhrase: boolean;
+            variantText?: string;
         }, params?: RequestParams) => Promise<HttpResponse<VocabSchema, {
             code: 400;
             status: "Bad Request";
@@ -2170,6 +2173,26 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
          * @secure
          */
         getVocabsVocabIdTtsPronunciations: (vocabId: number, params?: RequestParams) => Promise<HttpResponse<TTSPronunciationSchema[], {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
+        /**
+         * No description
+         *
+         * @name GetVocabsVocabIdVariants
+         * @summary Get vocab variants
+         * @request GET:/vocabs/{vocabId}/variants/
+         * @secure
+         */
+        getVocabsVocabIdVariants: (vocabId: number, params?: RequestParams) => Promise<HttpResponse<VocabVariantSchema[], {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
             code: 404;
             status: "Not Found";
             message: string;
@@ -2330,6 +2353,7 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
         postTtsPronunciations: (data: {
             vocabId: number;
             voiceCode?: string;
+            vocabVariantId?: number;
         }, params?: RequestParams) => Promise<HttpResponse<TTSPronunciationSchema, void | {
             code: 400;
             status: "Bad Request";
@@ -2379,6 +2403,37 @@ export declare class ApiClient<SecurityDataType extends unknown> extends HttpCli
             message: string;
             details: string;
             fields?: object | undefined;
+        } | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+        }>>;
+    };
+    vocabVariants: {
+        /**
+         * No description
+         *
+         * @name PostVocabVariants
+         * @summary Create Vocab Variant
+         * @request POST:/vocab-variants/
+         * @secure
+         */
+        postVocabVariants: (data: {
+            vocabId: number;
+            /** @maxLength 255 */
+            text: string;
+        }, params?: RequestParams) => Promise<HttpResponse<VocabVariantSchema, {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object | undefined;
+        } | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
         } | {
             code: 404;
             status: "Not Found";

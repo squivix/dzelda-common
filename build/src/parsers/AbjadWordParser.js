@@ -17,7 +17,7 @@ export class AbjadWordParser extends WordParser {
         for (const originalWord of parsedText.split(" ")) {
             if (originalWord.length > WordParser.MAX_WORD_LENGTH)
                 continue;
-            const normalizedWord = this.transformWord(originalWord);
+            const normalizedWord = this.normalizeText(originalWord);
             normalizedWords.push(normalizedWord);
             if (normalizedWord != originalWord) {
                 if (variantSets[normalizedWord] === undefined)
@@ -35,7 +35,7 @@ export class AbjadWordParser extends WordParser {
             wordToVariantsMap: variants
         };
     }
-    transformWord(wordText) {
+    normalizeText(wordText) {
         return [...wordText].filter(char => !this.diacriticsCharSet.has(char)).join('');
     }
     tokenizeText(text) {
@@ -48,7 +48,7 @@ export class AbjadWordParser extends WordParser {
             if (isWord) {
                 tokenObjects.push({
                     text: tokens[i],
-                    parsedText: this.transformWord(tokens[i]),
+                    parsedText: this.normalizeText(tokens[i]),
                     isWord: isWord && tokens[i].length < WordParser.MAX_WORD_LENGTH,
                 });
             }

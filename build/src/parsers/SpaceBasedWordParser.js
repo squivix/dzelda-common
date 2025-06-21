@@ -12,7 +12,7 @@ export class SpaceBasedWordParser extends WordParser {
         let parsedText = text;
         //replace all non-word characters with a space
         parsedText = parsedText.replace(this.splitCharsRegex, " ");
-        parsedText = this.transformWord(parsedText);
+        parsedText = this.normalizeText(parsedText);
         parsedText = parsedText.split(' ').filter(word => word.length <= WordParser.MAX_WORD_LENGTH).join(' ');
         return {
             normalizedText: parsedText,
@@ -20,7 +20,7 @@ export class SpaceBasedWordParser extends WordParser {
             wordToVariantsMap: {}
         };
     }
-    transformWord(wordText) {
+    normalizeText(wordText) {
         wordText = wordText.trim();
         if (this.ignoreCase)
             wordText = wordText.toLowerCase();
@@ -36,7 +36,7 @@ export class SpaceBasedWordParser extends WordParser {
             if (isWord) {
                 tokenObjects.push({
                     text: tokens[i],
-                    parsedText: this.transformWord(tokens[i]),
+                    parsedText: this.normalizeText(tokens[i]),
                     isWord: isWord && tokens[i].length < WordParser.MAX_WORD_LENGTH,
                 });
             }

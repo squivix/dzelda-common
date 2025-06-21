@@ -43,6 +43,7 @@ export interface LanguageSchema {
   code: string;
   name: string;
   greeting: string;
+  isRtl: boolean;
   /** @format uri */
   flag: string | null;
   /** @format uri */
@@ -162,13 +163,13 @@ export interface LearnerLanguageSchema {
   code: string;
   name: string;
   greeting: string;
+  isRtl: boolean;
   /** @format uri */
   flag: string | null;
   /** @format uri */
   flagCircular: string | null;
   /** @format uri */
   flagEmoji: string | null;
-  isSupported: boolean;
   levelThresholds: {
     beginner1: number;
     beginner2: number;
@@ -244,8 +245,9 @@ export interface TTSPronunciationSchema {
   url: string;
   /** @format date-time */
   addedOn: string;
-  voice?: TTSVoiceSchema;
-  vocab?: VocabSchema;
+  voice: TTSVoiceSchema;
+  vocabId: number | null;
+  variantId: number | null;
 }
 
 /** TTSVoice */
@@ -299,9 +301,9 @@ export interface AttributionSourceSchema {
   id: number;
   name: string;
   /** @format uri */
-  url?: string;
+  url: string | null;
   /** @format uri */
-  logoUrl?: string;
+  logoUrl: string | null;
 }
 
 /** VocabTag */
@@ -3127,9 +3129,10 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
      */
     postVocabs: (
       data: {
-        languageCode?: string;
-        text?: string;
-        isPhrase?: boolean;
+        languageCode: string;
+        text: string;
+        isPhrase: boolean;
+        variantText?: string;
       },
       params: RequestParams = {},
     ) =>
@@ -3251,6 +3254,38 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
         }
       >({
         path: `/vocabs/${vocabId}/tts-pronunciations/`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name GetVocabsVocabIdVariants
+     * @summary Get vocab variants
+     * @request GET:/vocabs/{vocabId}/variants/
+     * @secure
+     */
+    getVocabsVocabIdVariants: (vocabId: number, params: RequestParams = {}) =>
+      this.request<
+        VocabVariantSchema[],
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/vocabs/${vocabId}/variants/`,
         method: "GET",
         secure: true,
         format: "json",
@@ -3510,6 +3545,7 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       data: {
         vocabId: number;
         voiceCode?: string;
+        vocabVariantId?: number;
       },
       params: RequestParams = {},
     ) =>
@@ -3600,6 +3636,54 @@ export class ApiClient<SecurityDataType extends unknown> extends HttpClient<Secu
       >({
         path: `/attribution-sources/${attributionSourcesId}/`,
         method: "GET",
+        format: "json",
+        ...params,
+      }),
+  };
+  vocabVariants = {
+    /**
+     * No description
+     *
+     * @name PostVocabVariants
+     * @summary Create Vocab Variant
+     * @request POST:/vocab-variants/
+     * @secure
+     */
+    postVocabVariants: (
+      data: {
+        vocabId: number;
+        /** @maxLength 255 */
+        text: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        VocabVariantSchema,
+        | {
+            code: 400;
+            status: "Bad Request";
+            message: string;
+            details: string;
+            fields?: object;
+          }
+        | {
+            code: 401;
+            status: "Unauthorized";
+            message: string;
+            details: string;
+          }
+        | {
+            code: 404;
+            status: "Not Found";
+            message: string;
+            details: string;
+          }
+      >({
+        path: `/vocab-variants/`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),

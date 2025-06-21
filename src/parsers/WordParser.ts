@@ -17,7 +17,7 @@ export abstract class WordParser {
 
     abstract parseText(text: string): ParseTextResult
 
-    abstract transformWord(wordText: string): string;
+    abstract normalizeText(wordText: string): string;
 
     abstract tokenizeText(text: string): TokenObject[]
 

@@ -1,4 +1,4 @@
-import {ParseTextResult, TokenObject, TokenWithPhrases, WordParser} from "@/src/parsers/WordParser.js";
+import {ParseTextResult, TokenObject, WordParser} from "@/src/parsers/WordParser.js";
 import {escapeRegExp} from "@/src/utils/utils.js";
 
 export class AbjadWordParser extends WordParser {
@@ -24,7 +24,7 @@ export class AbjadWordParser extends WordParser {
         for (const originalWord of parsedText.split(" ")) {
             if (originalWord.length > WordParser.MAX_WORD_LENGTH)
                 continue;
-            const normalizedWord = this.transformWord(originalWord)
+            const normalizedWord = this.normalizeText(originalWord)
             normalizedWords.push(normalizedWord);
             if (normalizedWord != originalWord) {
                 if (variantSets[normalizedWord] === undefined)
@@ -43,7 +43,7 @@ export class AbjadWordParser extends WordParser {
         };
     }
 
-    transformWord(wordText: string): string {
+    normalizeText(wordText: string): string {
         return [...wordText].filter(char => !this.diacriticsCharSet.has(char)).join('');
     }
 
@@ -58,7 +58,7 @@ export class AbjadWordParser extends WordParser {
             if (isWord) {
                 tokenObjects.push({
                     text: tokens[i],
-                    parsedText: this.transformWord(tokens[i]),
+                    parsedText: this.normalizeText(tokens[i]),
                     isWord: isWord && tokens[i].length < WordParser.MAX_WORD_LENGTH,
                 });
             } else {

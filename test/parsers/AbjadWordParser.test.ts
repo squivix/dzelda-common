@@ -43,7 +43,7 @@ describe("AbjadWordParser", () => {
             describe.todo<LocalTestContext>("It should tokenize text and correctly identify phrases", () => {
             });
         });
-        /**{@link SpaceBasedWordParser#transformWord}*/
+        /**{@link SpaceBasedWordParser#normalizeText}*/
         describe.todo("transformWord", () => {
         });
     });

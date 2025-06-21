@@ -7,6 +7,6 @@ export declare class SpaceBasedWordParser extends WordParser {
         ignoreCase?: boolean;
     });
     parseText(text: string): ParseTextResult;
-    transformWord(wordText: string): string;
+    normalizeText(wordText: string): string;
     tokenizeText(text: string): TokenObject[];
 }
